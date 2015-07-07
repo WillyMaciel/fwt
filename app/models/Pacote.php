@@ -1,0 +1,33 @@
+<?php
+
+class Pacote extends Produto {
+
+	// Add your validation rules here
+	public static $rules = [
+		// 'title' => 'required'
+	];
+
+	// Don't forget to fill this array
+	protected $fillable = [];
+
+	public function pais()
+	{
+		return $this->belongsTo('Pais');
+	}
+
+	public function imagens()
+    {
+        return $this->morphMany('Imagem', 'imagemMorph');
+    }
+
+    public function apartamentos()
+    {
+    	return $this->morphedByMany('Apartamento', 'pacote_relacoes');
+    }
+
+    public function hoteis()
+    {
+    	return $this->morphedByMany('Hotel', 'pacote_relacoes');
+    }
+
+}

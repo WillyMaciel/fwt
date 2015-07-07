@@ -1,0 +1,1 @@
+C:\wamp\www\funworldtours\app/views/hotels/show.blade.php
