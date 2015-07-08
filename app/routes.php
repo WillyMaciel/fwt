@@ -72,6 +72,10 @@ Route::group(array('before' => 'auth'), function()
 		Route::get('admin/eventoespecial/delete/{id}', 'ADMEventoEspecialController@destroy');
 		Route::resource('admin/eventoespecial', 'ADMEventoEspecialController');
 
+		//Pacote Destaque
+		Route::get('admin/pacote-destaque/delete/{id}', 'ADMPacoteDestaqueController@destroy');
+		Route::resource('admin/pacote-destaque', 'ADMPacoteDestaqueController');
+
 		//Pedidos
 		Route::get('admin/pedido/delete/{id}', 'ADMPedidoController@destroy');
 		Route::resource('admin/pedido', 'ADMPedidoController');
@@ -116,6 +120,7 @@ Route::group(array('before' => 'guest'), function()
 });
 //Requer Guest END
 
+Route::controller('pacote-destaque', 'PacoteDestaqueController');
 Route::controller('pacote', 'PacoteController');
 Route::controller('checkout', 'CheckoutController');
 Route::controller('carrinho', 'CarrinhoController');

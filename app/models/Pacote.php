@@ -22,12 +22,12 @@ class Pacote extends Produto {
 
     public function apartamentos()
     {
-    	return $this->morphedByMany('Apartamento', 'pacote_relacoes');
+    	return $this->morphedByMany('Apartamento', 'pacote_relacoes', 'pacote_relacoes', 'pacote_id', 'produto_id');
     }
 
     public function hoteis()
     {
-    	return $this->morphedByMany('Hotel', 'pacote_relacoes');
+    	return $this->morphedByMany('Hotel', 'pacote_relacoes', 'pacote_relacoes', 'pacote_id', 'produto_id');
     }
 
 }

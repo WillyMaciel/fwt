@@ -158,13 +158,17 @@ class PacoteController extends \BaseController {
 	 */
 	public function getShow($id)
 	{
-		$pacote = Pacote::with('reviews.cliente')->find($id);
+		$pacote = Pacote::with('reviews.cliente', 'hoteis.imagens', 'apartamentos.imagens')->find($id);
 
 		$this->addVisita($pacote);
 
-		$hoteis = Hotel::with('imagens')->where('pais_id', $pacote->pais_id)->where('cidade', 'LIKE', "%{$pacote->cidade}%")->where('publicado', 1)->get();
+		// $hoteis = Hotel::with('imagens')->where('pais_id', $pacote->pais_id)->where('cidade', 'LIKE', "%{$pacote->cidade}%")->where('publicado', 1)->get();
 
-		$apartamentos = Apartamento::with('imagens')->where('pais_id', $pacote->pais_id)->where('cidade', 'LIKE', "%{$pacote->cidade}%")->where('publicado', 1)->get();
+		// $apartamentos = Apartamento::with('imagens')->where('pais_id', $pacote->pais_id)->where('cidade', 'LIKE', "%{$pacote->cidade}%")->where('publicado', 1)->get();
+
+		$hoteis = $pacote->hoteis;
+
+		$apartamentos = $pacote->apartamentos;
 
 		$passeios = Passeio::with('imagens')->where('pais_id', $pacote->pais_id)->where('cidade', 'LIKE', "%{$pacote->cidade}%")->where('publicado', 1)->get();
 

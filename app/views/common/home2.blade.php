@@ -492,80 +492,51 @@
             </div>
 
             <div class="global-map-area section parallax" data-stellar-background-ratio="0.5">
-                <div class="container description">
-                    <!-- <div class="col-sm-6 col-md-3">
-                        <div class="icon-box style6 animated" data-animation-type="slideInLeft" data-animation-delay="0">
-                            <i class="soap-icon-friends"></i>
 
-                            <div class="description">
-                                <h4 class="box-title">Group Booking</h4>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-3">
-                        <div class="icon-box style6 animated" data-animation-type="slideInDown" data-animation-delay="0.6">
-                            <i class="soap-icon-pickanddrop"></i>
-                            <div class="description">
-                                <h4 class="box-title">Car Hiring</h4>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-3">
-                        <div class="icon-box style6 animated" data-animation-type="slideInDown" data-animation-delay="0.9">
-                            <i class="soap-icon-insurance"></i>
-                            <div class="description">
-                                <h4 class="box-title">Travel Insurance</h4>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-3">
-                        <div class="icon-box style6 animated"  data-animation-type="slideInRight" data-animation-delay="1.2">
-                            <i class="soap-icon-guideline"></i>
-                            <div class="description">
-                                <h4 class="box-title">Travel Guidelines</h4>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                            </div>
-                        </div>
-                    </div> -->
+            	<div class="container">
+	                <h1 class="specialeventstab"> <a href="{{trans('pacote-destaque')}}" style="color: white;"> {{trans('menu.pacote_destaque')}} </a>
+	                            </h1>
+	                <div class="row image-box style4">
+	                    <div class="col-sm-4">
+	                        <article class="box animated" data-animation-type="fadeInLeft" data-animation-delay="0">
+	                            <figure>
+	                                <a title="" href="{{URL::to('pacote-destaque?tipo=Honeymoon')}}" class="hover-effect"><img width="370" height="172" alt="" img src= "images/honeymoon.jpg"></a>
+	                            </figure>
+	                            <div class="details">
+	                                <h4 class="box-title">{{trans('menu.lua_de_mel')}}</h4>
+	                                <a class="goto-detail" href="{{URL::to('pacote-destaque?tipo=Honeymoon')}}"><span class="glyphicon glyphicon-arrow-right"></span></a>
+	                            </div>
+	                        </article>
+	                    </div>
 
 
-                	<div class="col-sm-6 col-md-2">
+	                                       <div class="col-sm-4">
+	                        <article class="box animated" data-animation-type="fadeInLeft" data-animation-delay="0.6">
+	                            <figure>
+	                                <a title="" href="{{trans('pacote-destaque?tipo=Bachelor')}}" class="hover-effect"><img width="370" height="172" alt="" img src= "images/bachelor.jpg"></a>
+	                            </figure>
+	                            <div class="details">
+	                                <h4 class="box-title">{{trans('menu.despedida_solteiro')}}</h4>
+	                                <a class="goto-detail" href="{{URL::to('pacote-destaque?tipo=Bachelor')}}"><span class="glyphicon glyphicon-arrow-right"></span></a>
+	                            </div>
+	                        </article>
+	                    </div>
 
-                    </div>
 
-                    <div class="col-sm-6 col-md-8">
-                        <div class="icon-box style6 animated"  data-animation-type="slideInRight" data-animation-delay="1.2">
-                        <article class="box" style="background-color: white;">
-                        	<div class="details" style="text-align: center;">
-                        		<div class="row">
-                        			<div class="col-md-12">
-                        				<h2 style="color: black;">Dollar Quotation</h2>
-                        			</div>
-                        		</div>
-                        		<div class="row">
-	                        		<div class="col-md-4">
-	                        		</div>
-	                        		<div class="col-md-4">
-	                        			<input type="text" disabled="disabled" value="{{$cotacao_dolar or ''}}" class="form-control">
-	                        		</div>
-	                        		<div class="col-md-4">
-	                        		</div>
-	                        	</div>
-                        	</div>
-                        </article>
-                    		<!--a href="http://click.linksynergy.com/fs-bin/click?id=F9icTVyoNdc&offerid=215652.10000024&type=4&subid=0" target="_blank"><IMG border=0 alt="Car Rental - 468 X 60" src="http://www.cheapoair.com/Travel/affiliate/banners/CA-promo9-Banners/images/468x60.gif"></a><IMG border=0 width=1 height=1 alt=banner src="http://ad.linksynergy.com/fs-bin/show?id=F9icTVyoNdc&bids=215652.10000024&type=4&subid=0"-->
-                        	<!--a href="http://click.linksynergy.com/fs-bin/click?id=F9icTVyoNdc&offerid=215652.10000561&type=4&subid=0"><IMG alt="Tropical Getaway Deals!  Take up to $40 ◊ off our fees with Promo Code GETAWAYS40. Book Now!" border="0" src="http://affiliates.cheapoair.com/banners/CA-Vacation/images/730x360.jpg"></a><IMG border="0" width="1" height="1" src="http://ad.linksynergy.com/fs-bin/show?id=F9icTVyoNdc&bids=215652.10000561&type=4&subid=0"-->
-                        </div>
-                    </div>
+	                    <div class="col-sm-4">
+	                        <article class="box animated" data-animation-type="fadeInLeft" data-animation-delay="0.3">
+	                            <figure>
+	                                <a title="" href="{{URL::to('pacote-destaque?tipo=GayFriendly')}}" class="hover-effect"><img width="370" height="172" alt="" img src= "images/gayfriendly.jpg";></a>
+	                            </figure>
+	                            <div class="details">
+	                                <h4 class="box-title">{{trans('menu.gay_friendly')}}</h4>
+	                                <a class="goto-detail" href="{{URL::to('pacote-destaque?tipo=GayFriendly')}}"><span class="glyphicon glyphicon-arrow-right"></span></a>
+	                            </div>
+	                        </article>
+	                    </div>
 
-                    <div class="col-sm-6 col-md-2">
-
-                    </div>
-
-                </div>
+	                </div>
+	            </div>
             </div>
 	</section>
 

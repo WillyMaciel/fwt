@@ -36,6 +36,6 @@ class Hotel extends Produto
     public function pacotes()
     {
     	return $this->morphToMany('Pacote', 'pacote_relacoes');
-    };
+    }
 
 }

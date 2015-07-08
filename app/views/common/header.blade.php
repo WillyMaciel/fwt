@@ -127,10 +127,13 @@
                             </li>
                             <li class="menu-item-has-children">
                                 <a href="{{URL::to('eventoespecial')}}">{{trans('menu.eventos_especiais')}}</a>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="{{URL::to('pacote-destaque')}}">{{trans('menu.pacote_destaque')}}</a>
                                 <ul>
-                                    <li><a href="{{URL::to('eventoespecial?tipo=GayFriendly')}}">{{trans('menu.gay_friendly')}}</a></li>
-                                    <li><a href="{{URL::to('eventoespecial?tipo=Bachelor')}}">{{trans('menu.despedida_solteiro')}}</a></li>
-                                    <li><a href="{{URL::to('eventoespecial?tipo=Honeymoon')}}">{{trans('menu.lua_de_mel')}}</a></li>
+                                    <li><a href="{{URL::to('pacote-destaque?tipo=GayFriendly')}}">{{trans('menu.gay_friendly')}}</a></li>
+                                    <li><a href="{{URL::to('pacote-destaque?tipo=Bachelor')}}">{{trans('menu.despedida_solteiro')}}</a></li>
+                                    <li><a href="{{URL::to('pacote-destaque?tipo=Honeymoon')}}">{{trans('menu.lua_de_mel')}}</a></li>
                                 </ul>
                             </li>
                         </ul>

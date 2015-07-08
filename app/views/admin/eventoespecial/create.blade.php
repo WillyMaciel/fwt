@@ -44,7 +44,7 @@
 		                	<span id="div_descricao_br"><label for="descricao_br" class="">Descricao PT</label>
 		                	{{Form::textarea('descricao_br', null, array('class' => 'form-control', 'id' => 'nome_br', 'cols' => 50, 'rows' => 10))}}
 		                </div>
-		                
+
 		            </div>
 		            <div class="tab-pane fade" id="second-tab">
 		                <h2 class="tab-content-title"><img src="images/icon/flags/en-us.png"> - Inglês</h2>
@@ -97,7 +97,7 @@
 		            </div> -->
 	            <div class="tab-pane fade" id="sixth-tab">
 	                <h2 class="tab-content-title">Imagens</h2>
-	                
+
 
 	                <div id="imagens" class="form-group">
 	                	<!-- <div class="row">
@@ -145,12 +145,12 @@
 @section('scripts')
 
 <script type="text/javascript">
-	function readURL() 
+	function readURL()
 	{
 		//	rehide the image and remove its current "src",
 		//	this way if the new image doesn't load,
 		//	then the image element is "gone" for now
-		if (this.files && this.files[0]) 
+		if (this.files && this.files[0])
 		{
 			var reader = new FileReader();
 			$(reader).load(function(e) {

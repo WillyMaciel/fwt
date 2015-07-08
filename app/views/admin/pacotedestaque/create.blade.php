@@ -3,14 +3,14 @@
 <div class="page-title-container">
     <div class="container">
         <div class="page-title pull-left">
-            <h2 class="entry-title">Evento Especial - Editando "{{$evento->nome_br}}"</h2>
+            <h2 class="entry-title">Pacote em Destaque - Criar</h2>
         </div>
     </div>
 </div>
 @stop
 @section('content')
 
-{{Form::model($evento, array('url' => array("admin/eventoespecial", $evento->id), 'method' => 'PUT', 'files' => true))}}
+{{Form::open(array('url' => array("admin/eventoespecial"), 'method' => 'POST', 'files' => true))}}
 		<div class="btn-toolbar" role="toolbar">
 		    <div class="pull-left">
 		    	<h2></h2>
@@ -21,7 +21,7 @@
 		    </div>
 	    </div>
 		<div class="block">
-			<img id="img" src="@if($evento->imagem) uploads/eventosespeciais/{{$evento->imagem}} @else images/no-img.png @endif" alt="" width="570" height="300" style="width: 100%; cursor: pointer;">
+			<img id="img" src="images/no-img.png" alt="" width="570" height="300" style="width: 100%; cursor: pointer;">
 		    <div class="tab-container trans-style box">
 		        <ul class="tabs full-width">
 		            <li class="active"><a href="#first-tab" data-toggle="tab"><i class="circle"><img src="images/icon/flags/pt-br.png"></i>Português</a></li>
@@ -94,7 +94,7 @@
 		                	{{Form::text('valor', null, array('class' => 'form-control', 'id' => 'valor_masculino'))}}
 		                </div>
 
-		            </div>
+		            </div> -->
 	            <div class="tab-pane fade" id="sixth-tab">
 	                <h2 class="tab-content-title">Imagens</h2>
 
@@ -110,16 +110,6 @@
 								<img id="img" src="uploads/hoteis/no-img.png" alt="" style="width: 100%; height: 100%; cursor: pointer;">
 							</div>
 						</div> -->
-
-						{? $i = 0 ?}
-						@foreach($evento->imagens as $img)
-						<div class="row">
-						    <div class="col-md-6"><span><label class="">Imagem {{$i}}</label><input class="form-control imginput" type="file" id="{{$i}}" name="imagens[{{$img->id}}]"></span></div>
-						    <div class="col-md-2"><span><label class="">Deletar Imagem</label> <button type="button" class="btn btn-danger delimg" inputid = "{{$i}}" imgid="{{$img->id}}"> Deletar </button> </div>
-						    <div class="col-md-4"><img id="img{{$i}}" src="{{$img->caminho}}{{$img->nome}}" alt="" style="width: 100%; height: 100%; cursor: pointer;"></div>
-						</div>
-						{? $i++ ?}
-						@endforeach
 
 	                </div>
 
@@ -201,11 +191,8 @@
 		});
 
 
-		@if($evento->imagens->count() > 1)
-			var i = {{$evento->imagens->count()}}
-		@else
-			var i = 1;
-		@endif
+		var i = 1;
+
 
 		$("#addimg").click(function()
 		{

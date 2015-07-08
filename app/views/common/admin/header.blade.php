@@ -90,6 +90,7 @@
                                     <li><a href="{{URL::to('admin/passeio')}}">{{trans('menu.passeios')}}</a></li>
                                     <li><a href="{{URL::to('admin/serviconoturno')}}">{{trans('menu.servicos_noturnos')}}</a></li>
                                     <li><a href="{{URL::to('admin/eventoespecial')}}">{{trans('menu.eventos_especiais')}}</a></li>
+                                    <li><a href="{{URL::to('admin/pacote-destaque')}}">{{trans('menu.pacote_destaque')}}</a></li>
                                 </ul>
                             </li>
                             <li class="menu-item-has-children">

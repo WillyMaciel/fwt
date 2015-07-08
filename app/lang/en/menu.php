@@ -44,5 +44,6 @@ return array(
 	'cotacao_dollar'	=> 'Dollar Quotation',
 	'cotacao_euro'		=> 'Euro Quotation',
 	'esportes'			=> 'Sports',
-	'trilhas'			=> 'Tracks'
+	'trilhas'			=> 'Tracks',
+	'pacote_destaque'	=> 'Featured Packages'
 	);

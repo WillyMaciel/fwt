@@ -20,7 +20,7 @@ class ADMPacoteController extends \BaseController {
 		$grid = DataGrid::source($filter);  //same source types of DataSet
 		$grid->attributes(array("class"=>"table table-striped table-hover"));
 		$grid->add('nome_br','Nome PT', true); //field name, label, sortable
-		$grid->add('nome_en','Nome EN'); //relation.fieldname 
+		$grid->add('nome_en','Nome EN'); //relation.fieldname
 		$grid->add('publicado', 'Publicado', true);
 		$grid->add('pais.name', 'Pais');
 		$grid->add('
@@ -89,7 +89,11 @@ class ADMPacoteController extends \BaseController {
 	{
 		$paises = Pais::lists("name", "id");
 
-		return View::make('admin.pacote.create', compact('paises'));
+		$hoteis = Hotel::with('pais')->get();
+
+		$apartamentos = Apartamento::with('pais')->get();
+
+		return View::make('admin.pacote.create', compact('paises', 'hoteis', 'apartamentos'));
 	}
 
 	/**
@@ -128,6 +132,19 @@ class ADMPacoteController extends \BaseController {
 		}
 
 		$pacote->save();
+
+		if(Input::has('hoteis'))
+		{
+			$hoteis = Input::get('hoteis');
+			$pacote->hoteis()->sync($hoteis);
+
+		}
+
+		if(Input::has('apartamentos'))
+		{
+			$apartamentos = Input::get('apartamentos');
+			$pacote->apartamentos()->sync($apartamentos);
+		}
 
 		if(Input::hasFile('imagens'))
 		{
@@ -172,10 +189,14 @@ class ADMPacoteController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		$pacote = Pacote::find($id);
+		$pacote = Pacote::with('hoteis', 'apartamentos')->find($id);
 		$paises = Pais::lists("name", "id");
 
-		return View::make('admin.pacote.edit', compact('pacote', 'paises'));
+		$hoteis = Hotel::with('pais')->get();
+
+		$apartamentos = Apartamento::with('pais')->get();
+
+		return View::make('admin.pacote.edit', compact('pacote', 'paises', 'hoteis', 'apartamentos'));
 	}
 
 	/**
@@ -215,6 +236,19 @@ class ADMPacoteController extends \BaseController {
 		}
 
 		$pacote->save();
+
+		if(Input::has('hoteis'))
+		{
+			$hoteis = Input::get('hoteis');
+			$pacote->hoteis()->sync($hoteis);
+
+		}
+
+		if(Input::has('apartamentos'))
+		{
+			$apartamentos = Input::get('apartamentos');
+			$pacote->apartamentos()->sync($apartamentos);
+		}
 
 		if(Input::hasFile('imagens'))
 		{

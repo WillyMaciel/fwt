@@ -3,20 +3,20 @@
 <div class="page-title-container">
     <div class="container">
         <div class="page-title pull-left">
-            <h2 class="entry-title">Evento Especial - Editando "{{$evento->nome_br}}"</h2>
+            <h2 class="entry-title">Pacote em Destaque - Editando "{{$evento->nome_br}}"</h2>
         </div>
     </div>
 </div>
 @stop
 @section('content')
 
-{{Form::model($evento, array('url' => array("admin/eventoespecial", $evento->id), 'method' => 'PUT', 'files' => true))}}
+{{Form::model($evento, array('url' => array("admin/pacote-destaque", $evento->id), 'method' => 'PUT', 'files' => true))}}
 		<div class="btn-toolbar" role="toolbar">
 		    <div class="pull-left">
 		    	<h2></h2>
 			</div>
 		    <div class="pull-right">
-			    <a href="http://funworldtours.dev/admin/eventoespecial" class="btn btn-default">Voltar para listagem</a>
+			    <a href="http://funworldtours.dev/admin/pacote-destaque" class="btn btn-default">Voltar para listagem</a>
 			    <button type="submit" class="btn btn-success">Salvar</button>
 		    </div>
 	    </div>

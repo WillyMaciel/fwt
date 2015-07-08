@@ -3,7 +3,7 @@
 <div class="page-title-container">
     <div class="container">
         <div class="page-title pull-left">
-            <h2 class="entry-title">Eventos Especiais - Lista</h2>
+            <h2 class="entry-title">Pacotes em Destaque - Lista</h2>
         </div>
     </div>
 </div>

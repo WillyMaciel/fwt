@@ -110,10 +110,66 @@
 		        <div class="tab-pane fade" id="hoteis">
 		                <h2 class="tab-content-title">Hotéis</h2>
 
+		                <table class="table table-striped table-hover">
+						    <thead>
+						    <tr>
+						        <th></th>
+						        <th>Nome PT</th>
+						        <th>Nome EN</th>
+						        <th>Pais</th>
+						    </tr>
+						    </thead>
+						    <tbody>
+					        	@forelse($hoteis as $h)
+						            <tr>
+						                <td> <input type="checkbox" name="hoteis[]" value="{{$h->id}}" /> </td>
+						                <td>{{$h->nome_br}}</td>
+						                <td>{{$h->nome_en}}</td>
+						                <td>{{$h->pais->name}}</td>
+						            </tr>
+					            @empty
+						            <tr>
+						                <td>Nenhum hotel encontrado</td>
+						                <td></td>
+						                <td></td>
+						                <td></td>
+						            </tr>
+					            @endforelse
+					        </tbody>
+						</table>
+
 		        </div>
 
 		        <div class="tab-pane fade" id="apartamentos">
 		                <h2 class="tab-content-title">Apartamentos</h2>
+
+		                <table class="table table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th>Nome PT</th>
+                                <th>Nome EN</th>
+                                <th>Pais</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                @forelse($apartamentos as $ap)
+                                    <tr>
+                                        <td> <input type="checkbox" name="apartamentos[]" value="{{$ap->id}}" /> </td>
+                                        <td>{{$ap->nome_br}}</td>
+                                        <td>{{$ap->nome_en}}</td>
+                                        <td>{{$ap->pais->name}}</td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td>Nenhum apartamento encontrado</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
 
 		        </div>
 
