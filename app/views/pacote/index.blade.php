@@ -179,7 +179,7 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <p>@if(Session::get('lang') == 'pt') {{substr($pacote->descricao_br, 0, 150) . ' ...'}} @else {{substr($pacote->descricao_en, 0, 150) . ' ...'}} @endif</p>
+                                    <p>@if(Session::get('lang') == 'pt') {{strip_tags(substr($pacote->descricao_br, 0, 150)) . ' ...'}} @else {{strip_tags(substr($pacote->descricao_en, 0, 150)) . ' ...'}} @endif</p>
                                     <div>
                                         <span class="price"><small>{{trans('hotel.preco_noite')}}</small>{{$pacote->valor}}</span>
                                         <a class="button btn-small full-width text-center" title="" href="{{URL::to("pacote/show/{$pacote->id}")}}">{{trans('hotel.selecionar')}}</a>
