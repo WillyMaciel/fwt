@@ -62,7 +62,7 @@
                         </div>
                         <div class="col-sm-6 col-md-3 footer4">
                             <h2>About FunWorldTours</h2>
-                            <p>Nunc cursus libero purus ac congue arcu cursus ut sed vitae pulvinar massaidp nequetiam lore elerisque.</p>
+                            <p>Fun World Tours was founded to help tourists in reaching and having access to the best events in South America & etc</p>
                             <br />
                             <address class="contact-details">
                                 <span class="contact-phone"><i class="soap-icon-phone"></i> 1-800-123-HELLO</span>
@@ -72,7 +72,7 @@
                             <ul class="social-icons clearfix">
                                 <li class="twitter"><a title="twitter" href="#" data-toggle="tooltip"><i class="soap-icon-twitter"></i></a></li>
                                 <li class="googleplus"><a title="googleplus" href="#" data-toggle="tooltip"><i class="soap-icon-googleplus"></i></a></li>
-                                <li class="facebook"><a title="facebook" href="#" data-toggle="tooltip"><i class="soap-icon-facebook"></i></a></li>
+                                <li class="facebook"><a title="facebook" href="https://www.facebook.com/funworldtravel?fref=ts" data-toggle="tooltip"><i class="soap-icon-facebook"></i></a></li>
                                 <li class="linkedin"><a title="linkedin" href="#" data-toggle="tooltip"><i class="soap-icon-linkedin"></i></a></li>
                                 <li class="vimeo"><a title="vimeo" href="#" data-toggle="tooltip"><i class="soap-icon-vimeo"></i></a></li>
                                 <li class="dribble"><a title="dribble" href="#" data-toggle="tooltip"><i class="soap-icon-dribble"></i></a></li>
