@@ -25,14 +25,14 @@
                                 <li>                                    
                                     <div class="description" style="padding-left: 0px;">
                                         <h5 class="s-title">{{trans('menu.cotacao_dollar')}}</h5>
-                                            <input type="text" disabled="disabled" value="{{Configuracao::where('param', 'cotacao_dolar')->first()->valor}}" class="form-control">
+                                            <input type="text" disabled="disabled" value="{{Configuracao::where('param', 'cotacao_dolar')->first()->valor}}" class="form-control" style="width: 70%;">
                                         <!-- <span class="date">25 Sep, 2013</span> -->
                                     </div>
                                 </li>
                                 <li>                                    
                                     <div class="description" style="padding-left: 0px;">
                                         <h5 class="s-title">{{trans('menu.cotacao_euro')}}</h5>
-                                            <input type="text" disabled="disabled" value="{{Configuracao::where('param', 'cotacao_euro')->first()->valor}}" class="form-control">
+                                            <input type="text" disabled="disabled" value="{{Configuracao::where('param', 'cotacao_euro')->first()->valor}}" class="form-control" style="width: 70%;">
                                         <!-- <span class="date">24 Sep, 2013</span> -->
                                     </div>
                                 </li>
