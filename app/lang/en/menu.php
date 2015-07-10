@@ -45,5 +45,6 @@ return array(
 	'cotacao_euro'		=> 'Euro Quotation',
 	'esportes'			=> 'Sports',
 	'trilhas'			=> 'Tracks',
-	'pacote_destaque'	=> 'Featured Packages'
+	'pacote_destaque'	=> 'Featured Packages',
+	'cambio'			=> 'Exchange'
 	);

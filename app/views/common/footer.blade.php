@@ -5,22 +5,22 @@
                         <div class="col-sm-6 col-md-3">
                             <h2>{{trans('footer.menu_rapido')}}</h2>
                             <ul class="discover triangle hover row">
-                                <li class="col-xs-6"><a href="#">Safety</a></li>
-                                <li class="col-xs-6"><a href="#">About</a></li>
-                                <li class="col-xs-6"><a href="#">Travelo Picks</a></li>
-                                <li class="col-xs-6"><a href="#">Latest Jobs</a></li>
-                                <li class="active col-xs-6"><a href="#">Mobile</a></li>
-                                <li class="col-xs-6"><a href="#">Press Releases</a></li>
-                                <li class="col-xs-6"><a href="#">Why Host</a></li>
-                                <li class="col-xs-6"><a href="#">Blog Posts</a></li>
+                                <li class="col-xs-6"><a href="{{URL::to('price')}}">{{trans('menu.orcar')}}</a></li>
+                                <li class="col-xs-6"><a href="{{URL::to('pacote/continentes')}}">{{trans('menu.destinos')}}</a></li>
+                                <li class="col-xs-6"><a href="{{URL::to('translado')}}">{{trans('menu.translado')}}</a></li>
+                                <li class="col-xs-6"><a href="{{URL::to('passeio')}}">{{trans('menu.passeios')}}</a></li>
+                                <li class="col-xs-6"><a href="{{URL::to('serviconoturno')}}">{{trans('menu.servicos_noturnos')}}</a></li>
+                                <li class="col-xs-6"><a href="{{URL::to('eventoespecial')}}">{{trans('menu.eventos_especiais')}}</a></li>
+                                <li class="col-xs-6"><a href="{{URL::to('pacote-destaque')}}">{{trans('menu.pacote_destaque')}}</a></li>
+                                <!-- <li class="col-xs-6"><a href="#">Blog Posts</a></li>
                                 <li class="col-xs-6"><a href="#">Social Connect</a></li>
                                 <li class="col-xs-6"><a href="#">Help Topics</a></li>
                                 <li class="col-xs-6"><a href="#">Site Map</a></li>
-                                <li class="col-xs-6"><a href="#">Policies</a></li>
+                                <li class="col-xs-6"><a href="#">Policies</a></li> -->
                             </ul>
                         </div>
                         <div class="col-sm-6 col-md-3">
-                            <h2>Travel News</h2>
+                            <h2>{{trans('menu.cambio')}}</h2>
                             <ul class="travel-news">
                                 <li>                                    
                                     <div class="description" style="padding-left: 0px;">

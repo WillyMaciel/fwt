@@ -45,5 +45,6 @@ return array(
 	'cotacao_euro'		=> 'Cotação do Euro',
 	'esportes'			=> 'Esportes',
 	'trilhas'			=> 'Trilhas',
-	'pacote_destaque'	=> 'Pacotes em Destaque'
+	'pacote_destaque'	=> 'Pacotes em Destaque',
+	'cambio'			=> 'Cambio'
 	);
