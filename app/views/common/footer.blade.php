@@ -70,13 +70,9 @@
                                 <a href="#" class="contact-email">leads@funworldtours.com</a>
                             </address>
                             <ul class="social-icons clearfix">
-                                <li class="twitter"><a title="twitter" href="#" data-toggle="tooltip"><i class="soap-icon-twitter"></i></a></li>
                                 <li class="googleplus"><a title="googleplus" href="#" data-toggle="tooltip"><i class="soap-icon-googleplus"></i></a></li>
                                 <li class="facebook"><a title="facebook" href="https://www.facebook.com/funworldtravel?fref=ts" data-toggle="tooltip"><i class="soap-icon-facebook"></i></a></li>
                                 <li class="linkedin"><a title="linkedin" href="#" data-toggle="tooltip"><i class="soap-icon-linkedin"></i></a></li>
-                                <li class="vimeo"><a title="vimeo" href="#" data-toggle="tooltip"><i class="soap-icon-vimeo"></i></a></li>
-                                <li class="dribble"><a title="dribble" href="#" data-toggle="tooltip"><i class="soap-icon-dribble"></i></a></li>
-                                <li class="flickr"><a title="flickr" href="#" data-toggle="tooltip"><i class="soap-icon-flickr"></i></a></li>
                             </ul>
                         </div>
                     </div>
