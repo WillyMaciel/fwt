@@ -2,7 +2,7 @@
             <div class="footer-wrapper">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-6 col-md-3">
+                        <div class="col-sm-6 col-md-3 footer1">
                             <h2>{{trans('footer.menu_rapido')}}</h2>
                             <ul class="discover triangle hover row">
                                 <li class="col-xs-6"><a href="{{URL::to('price')}}">{{trans('menu.orcar')}}</a></li>
@@ -19,17 +19,17 @@
                                 <li class="col-xs-6"><a href="#">Policies</a></li> -->
                             </ul>
                         </div>
-                        <div class="col-sm-6 col-md-3">
+                        <div class="col-sm-6 col-md-3 footer2">
                             <h2>{{trans('menu.cambio')}}</h2>
                             <ul class="travel-news">
-                                <li>                                    
+                                <li>
                                     <div class="description" style="padding-left: 0px;">
                                         <h5 class="s-title">{{trans('menu.cotacao_dollar')}}</h5>
                                             <input type="text" disabled="disabled" value="{{Configuracao::where('param', 'cotacao_dolar')->first()->valor}}" class="form-control" style="width: 70%;">
                                         <!-- <span class="date">25 Sep, 2013</span> -->
                                     </div>
                                 </li>
-                                <li>                                    
+                                <li>
                                     <div class="description" style="padding-left: 0px;">
                                         <h5 class="s-title">{{trans('menu.cotacao_euro')}}</h5>
                                             <input type="text" disabled="disabled" value="{{Configuracao::where('param', 'cotacao_euro')->first()->valor}}" class="form-control" style="width: 70%;">
@@ -38,7 +38,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="col-sm-6 col-md-3">
+                        <div class="col-sm-6 col-md-3 footer3">
                             <h2>Request a Callback</h2>
                             <p>Interested in our services? Let us get in touch to offer customized services!</p>
                             <br />
@@ -60,7 +60,7 @@
                             </form>
                             <br />
                         </div>
-                        <div class="col-sm-6 col-md-3">
+                        <div class="col-sm-6 col-md-3 footer4">
                             <h2>About FunWorldTours</h2>
                             <p>Nunc cursus libero purus ac congue arcu cursus ut sed vitae pulvinar massaidp nequetiam lore elerisque.</p>
                             <br />
