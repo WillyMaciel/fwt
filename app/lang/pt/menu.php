@@ -46,5 +46,5 @@ return array(
 	'esportes'			=> 'Esportes',
 	'trilhas'			=> 'Trilhas',
 	'pacote_destaque'	=> 'Pacotes em Destaque',
-	'cambio'			=> 'Cambio'
+	'cambio'			=> 'Câmbio'
 	);
