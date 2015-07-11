@@ -10,3 +10,4 @@
 [07-Jul-2015 01:16:22 UTC] PHP Fatal error:  Call to undefined function tranas() in /home/funwo301/app/storage/views/b072addc2aa64e40957aa147f0f075c2 on line 454
 [07-Jul-2015 01:38:18 UTC] PHP Parse error:  syntax error, unexpected 'or' (T_LOGICAL_OR) in /home/funwo301/app/storage/views/c4c7e54e53dcad45dd34413b220e37d4 on line 28
 [07-Jul-2015 01:38:28 UTC] PHP Parse error:  syntax error, unexpected 'or' (T_LOGICAL_OR) in /home/funwo301/app/storage/views/c4c7e54e53dcad45dd34413b220e37d4 on line 28
+[10-Jul-2015 03:07:25 UTC] PHP Fatal error:  Call to a member function getClientOriginalName() on a non-object in /home/funwo301/app/controllers/BaseController.php on line 22
