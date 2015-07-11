@@ -38,6 +38,8 @@ class PasseioController extends \BaseController {
 
 		$passeios = $passeios->paginate(5);
 
+		$passeios = $this->removeHtmlDescricao($passeios);
+
 		$pais = Pais::all();
 
 		foreach($pais as $pais)

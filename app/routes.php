@@ -70,6 +70,7 @@ Route::group(array('before' => 'auth'), function()
 		//Eventos Especiais
 		//Route::any('admin/translado/crud', 'ADMTransladoController@Crud');
 		Route::get('admin/eventoespecial/delete/{id}', 'ADMEventoEspecialController@destroy');
+		Route::get('admin/eventoespecial/{id}/destaque', 'ADMEventoEspecialController@destaque');
 		Route::resource('admin/eventoespecial', 'ADMEventoEspecialController');
 
 		//Pacote Destaque

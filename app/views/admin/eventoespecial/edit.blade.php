@@ -70,12 +70,12 @@
 		                    </span>
 		                </div>
 
-		                <div class="form-group">
+		                <!-- <div class="form-group">
 		                    <span id="div_pais_id">
 		                        <label for="pais_id" class="">Tipo</label>
 		                        {{Form::select('tipo', array('GayFriendly' => 'Gay Friendly', 'Bachelor' => 'Bachelor\'s', 'Honeymoon' => 'Honeymoon'), null, array('class' => 'form-control', 'id' => 'tipo'))}}
 		                    </span>
-		                </div>
+		                </div> -->
 
 		                <div class="form-group">
 		                    <span id="div_publicado"><label for="publicado" class="">Publicado</label>

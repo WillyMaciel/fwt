@@ -70,12 +70,12 @@
 		                    </span>
 		                </div>
 
-		                <div class="form-group">
+		                <!-- <div class="form-group">
 		                    <span id="div_pais_id">
 		                        <label for="pais_id" class="">Tipo</label>
 		                        {{Form::select('tipo', array('GayFriendly' => 'Gay Friendly', 'Bachelor' => 'Bachelor\'s', 'Honeymoon' => 'Honeymoon'), null, array('class' => 'form-control', 'id' => 'tipo'))}}
 		                    </span>
-		                </div>
+		                </div> -->
 
 		                <div class="form-group">
 		                    <span id="div_publicado"><label for="publicado" class="">Publicado</label>
@@ -85,7 +85,7 @@
 		            </div>
 		            <!-- <div class="tab-pane fade" id="fourth-tab">
 		                <h2 class="tab-content-title">Fourth Tab</h2>
-		            </div-->
+		            </div -->
 		            <div class="tab-pane fade" id="fifth-tab">
 		                <h2 class="tab-content-title">Preços</h2>
 
@@ -94,7 +94,7 @@
 		                	{{Form::text('valor', null, array('class' => 'form-control', 'id' => 'valor_masculino'))}}
 		                </div>
 
-		            </div> -->
+		            </div>
 	            <div class="tab-pane fade" id="sixth-tab">
 	                <h2 class="tab-content-title">Imagens</h2>
 

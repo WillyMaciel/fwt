@@ -32,6 +32,8 @@ class TransladoController extends \BaseController {
 			$count  = Translado::with('pais')->Where('publicado', '=', 1)->count();
 		}
 
+		$translados = $this->removeHtmlDescricao($translados);
+
 		$paises = Pais::all();
 
 		foreach($paises as $pais)

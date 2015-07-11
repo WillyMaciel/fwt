@@ -19724,3 +19724,27 @@ element.style {
 /*  nav#main-menu {
   display: none !important;
 }*/
+
+.col-sm-6.col-md-3.footer2 {
+  width: 20%;
+  margin-right: -37px !important;
+margin-left: -19px;}
+
+
+.col-sm-6.col-md-3.footer1 {
+  width: 29%;
+}
+
+
+
+.col-sm-6.col-md-3.footer4 {  padding-left: 4%;
+}
+
+
+.col-sm-6.col-md-3.footer3 {
+  padding-left: 3%;
+}
+
+#footer .footer-wrapper {
+  padding: 38px 0;
+}

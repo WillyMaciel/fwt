@@ -15,6 +15,17 @@ class BaseController extends Controller {
 		}
 	}
 
+	protected function removeHtmlDescricao($collection)
+	{
+		$collection->each(function($e)
+		{
+			$e->descricao_br = strip_tags($e->descricao_br);
+			$e->descricao_en = strip_tags($e->descricao_en);
+		});
+
+		return $collection;
+	}
+
 	protected function uploadImage($img, $folder)
 	{
 		//$destinationPath = public_path() . '/uploads/hoteis/';

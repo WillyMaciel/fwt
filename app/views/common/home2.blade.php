@@ -315,23 +315,28 @@
 
 	<section>
 		<div class="section container">
-            <h3 class="specialeventstab"> <a href="{{trans('eventoespecial')}}"> {{trans('menu.eventos_especiais')}} </a>
-                            </h3>
+            <h3 class="specialeventstab"> <a href="{{trans('eventoespecial')}}"> {{trans('menu.eventos_especiais')}} </a> </h3>
                 <div class="row image-box style4">
+
+
+                	@forelse($eventos as $evento)
                     <div class="col-sm-4">
                         <article class="box animated" data-animation-type="fadeInLeft" data-animation-delay="0">
                             <figure>
-                                <a title="" href="{{trans('eventoespecial?tipo=Honeymoon')}}" class="hover-effect"><img width="370" height="172" alt="" img src= "images/honeymoon.jpg"></a>
+                                <a title="" href="{{trans('eventoespecial?tipo=Honeymoon')}}" class="hover-effect"><img width="370" height="172" alt="" img src= "uploads/eventosespeciais/270x160_{{$evento->imagem}}"></a>
                             </figure>
                             <div class="details">
-                                <h4 class="box-title">{{trans('menu.lua_de_mel')}}</h4>
-                                <a class="goto-detail" href="{{trans('eventoespecial?tipo=Honeymoon')}}"><span class="glyphicon glyphicon-arrow-right"></span></a>
+                                <h4 class="box-title">{{$evento->nome_en}}</h4>
+                                <a class="goto-detail" href="{{URL::to("eventoespecial/show/{$evento->id}")}}"><span class="glyphicon glyphicon-arrow-right"></span></a>
                             </div>
                         </article>
                     </div>
+                    @empty
+
+                    @endforelse
 
 
-                                       <div class="col-sm-4">
+                    <!-- <div class="col-sm-4">
                         <article class="box animated" data-animation-type="fadeInLeft" data-animation-delay="0.6">
                             <figure>
                                 <a title="" href="{{trans('eventoespecial?tipo=Bachelor')}}" class="hover-effect"><img width="370" height="172" alt="" img src= "images/bachelor.jpg"></a>
@@ -354,7 +359,7 @@
                                 <a class="goto-detail" href="{{trans('eventoespecial?tipo=GayFriendly')}}"><span class="glyphicon glyphicon-arrow-right"></span></a>
                             </div>
                         </article>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
@@ -366,7 +371,7 @@
                     </div>
                     <div class="image-carousel style3 flex-slider" data-item-width="170" data-item-margin="30">
                         <ul class="slides image-box style9">
-                        	@foreach($populares as $produto)
+                        	@forelse($populares as $produto)
                             <li>
                                 <article class="box">
                                     <figure>
@@ -380,7 +385,8 @@
                                     </div>
                                 </article>
                             </li>
-                            @endforeach
+                            @empty
+                            @endforelse
                             <!-- <li>
                                 <article class="box">
                                     <figure>

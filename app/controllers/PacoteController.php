@@ -47,6 +47,8 @@ class PacoteController extends \BaseController {
 
 		$pacotes = $pacotes->paginate(5);
 
+		$pacotes = $this->removeHtmlDescricao($pacotes);
+
 		$continentes = Continente::all();
 
 		foreach($continentes as $cont)

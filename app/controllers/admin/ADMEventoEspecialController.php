@@ -12,7 +12,7 @@ class ADMEventoEspecialController extends \BaseController {
 
 		$filter = DataFilter::source(EventoEspecial::with('pais'));
         $filter->add('nome_br','Nome - PT', 'text');
-        $filter->add('tipo','Tipo','select')->options(array('' => 'Tipo', 'Restaurante' => 'Restaurante', 'Evento' => 'Evento', 'Boate' => 'Boate'));;
+        // $filter->add('tipo','Tipo','select')->options(array('' => 'Tipo', 'Restaurante' => 'Restaurante', 'Evento' => 'Evento', 'Boate' => 'Boate'));;
         $filter->add('pais.name','Paises','text');
         $filter->submit('Filtrar');
         $filter->reset('Limpar Filtro');
@@ -24,10 +24,12 @@ class ADMEventoEspecialController extends \BaseController {
 		$grid->add('nome_en','Nome EN'); //relation.fieldname 
 		$grid->add('publicado', 'Publicado', true);
 		$grid->add('pais.name', 'Pais');
-		$grid->add('tipo', 'Tipo');
+		$grid->add("destaque", "Destaque");
+		// $grid->add('tipo', 'Tipo');
 		$grid->add('
-					<a class="" title="Visualizar" href="admin/eventoespecial/{{$id}}"><span class="glyphicon glyphicon-eye-open"> </span></a>
-					<a class="" title="Modificar" href="admin/eventoespecial/{{$id}}/edit"><span class="glyphicon glyphicon-edit"> </span></a>
+					<a href="'. URL::to('admin/eventoespecial/{{$id}}/destaque') .'"> <span class="glyphicon glyphicon-star-empty"></span></a>
+					<a class="" title="Visualizar" href="admin/eventoespecial/{{$id}}"><span class="glyphicon glyphicon-eye-open"></span></a>
+					<a class="" title="Modificar" href="admin/eventoespecial/{{$id}}/edit"><span class="glyphicon glyphicon-edit"></span></a>
 					<a class="text-danger" title="Deletar" href="admin/eventoespecial/delete/{{$id}}"><span class="glyphicon glyphicon-trash"> </span></a>
 					', 'Ações');
 		//$grid->edit('admin/eventoespecial/crud', 'Ações','show|modify|delete'); //shortcut to link DataEdit actions
@@ -47,6 +49,16 @@ class ADMEventoEspecialController extends \BaseController {
 			{
 				$row->cell('publicado')->value = '<span class="label label-danger"> Não </span>';
 			}
+
+			if($row->cell('destaque')->value == 1)
+			{
+				$row->cell('destaque')->value = '<span class="label label-success"> Sim </span>';
+			}
+			else
+			{
+				$row->cell('destaque')->value = '<span class="label label-danger"> Não </span>';
+			}
+
 		});
 
 		// $evento = EventoEspecial::find(1);
@@ -115,7 +127,7 @@ class ADMEventoEspecialController extends \BaseController {
 		$evento->descricao_br = $data['descricao_br'];
 		$evento->descricao_en = $data['descricao_en'];
 		$evento->pais_id = $data['pais_id'];
-		$evento->tipo	= $data['tipo'];
+		// $evento->tipo	= $data['tipo'];
 		$evento->valor = $data['valor'];
 		//$evento->estado = $data['estado'];
 		$evento->publicado = $data['publicado'];
@@ -204,7 +216,7 @@ class ADMEventoEspecialController extends \BaseController {
 		$evento->pais_id = $data['pais_id'];
 		//$evento->estado = $data['estado'];
 		$evento->publicado = $data['publicado'];
-		$evento->tipo	= $data['tipo'];
+		// $evento->tipo	= $data['tipo'];
 		$evento->valor = $data['valor'];
 
 		if(Input::hasFile('imagem'))
@@ -257,6 +269,16 @@ class ADMEventoEspecialController extends \BaseController {
 		$evento->delete();
 
 		return Redirect::to('admin/eventoespecial/')->with('success', array('Registro deletado.'));
+	}
+
+	public function destaque($id)
+	{
+		$evento = EventoEspecial::find($id);
+
+		$evento->destaque = ($evento->destaque == 1) ? 0 : 1;
+		$evento->save();
+
+		return Redirect::back()->with('success', array('Destaque alterado'));
 	}
 
 }

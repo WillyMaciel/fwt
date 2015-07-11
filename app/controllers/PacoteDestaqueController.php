@@ -30,6 +30,8 @@ class PacoteDestaqueController extends \BaseController {
 
 		$eventos = $eventos->paginate(5);
 
+		$eventos = $this->removeHtmlDescricao($eventos);
+
 		$pais = Pais::all();
 
 		foreach($pais as $pais)

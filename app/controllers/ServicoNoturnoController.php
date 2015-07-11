@@ -30,6 +30,8 @@ class ServicoNoturnoController extends \BaseController {
 
 		$servicosnoturnos = $servicosnoturnos->paginate(5);
 
+		$servicosnoturnos = $this->removeHtmlDescricao($servicosnoturnos);
+
 		$pais = Pais::all();
 
 		foreach($pais as $pais)
