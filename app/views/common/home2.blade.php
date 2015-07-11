@@ -323,7 +323,7 @@
                     <div class="col-sm-4">
                         <article class="box animated" data-animation-type="fadeInLeft" data-animation-delay="0">
                             <figure>
-                                <a title="" href="{{trans('eventoespecial?tipo=Honeymoon')}}" class="hover-effect"><img width="370" height="172" alt="" img src= "uploads/eventosespeciais/270x160_{{$evento->imagem}}"></a>
+                                <a title="" href="{{URL::to("eventoespecial/show/{$evento->id}")}}" class="hover-effect"><img width="370" height="172" alt="" img src= "uploads/eventosespeciais/270x160_{{$evento->imagem}}"></a>
                             </figure>
                             <div class="details">
                                 <h4 class="box-title">{{$evento->nome_en}}</h4>
