@@ -651,8 +651,7 @@ We suggest that you contact the host to confirm availability and rates before su
                             <span class="five-stars" style="width: {{$passeio->estrelas * 20}}%;"></span>
                         </div>
                         <span class="review pull-right">{{$passeio->estrelas or 0}} {{trans('hotel.estrelas')}}</span>
-                    </div>
-                    <p class="description">@if(Session::get('lang') == 'pt') {{substr($passeio->descricao_br, 0, 150) . ' ...'}} @else {{substr($passeio->descricao_en, 0, 150) . ' ...'}} @endif</p>
+                    </div>                    
                         <!-- CARRINHO -->
                         <form action="{{URL::to('carrinho/add')}}" method="POST">
                             <input type="hidden" name="produto" value="{{$passeio->id}}" />
