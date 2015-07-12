@@ -2,7 +2,7 @@
             <div class="footer-wrapper">
                 <div class="container">
                     <div class="row">
-                        <div id="wraper">
+                        <div class="row" id="wraper">
                             <div class="col-sm-6 col-md-3 footer1">
                                 <h2>{{trans('footer.menu_rapido')}}</h2>
                                 <ul class="discover triangle hover row">
