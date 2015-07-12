@@ -30,4 +30,14 @@ class Pacote extends Produto {
     	return $this->morphedByMany('Hotel', 'pacote_relacoes', 'pacote_relacoes', 'pacote_id', 'produto_id');
     }
 
+    public function passeios()
+    {
+    	return $this->morphedByMany('Passeio', 'pacote_relacoes', 'pacote_relacoes', 'pacote_id', 'produto_id');
+    }
+
+    public function servicosnoturnos()
+    {
+    	return $this->morphedByMany('ServicoNoturno', 'pacote_relacoes', 'pacote_relacoes', 'pacote_id', 'produto_id');
+    }
+
 }

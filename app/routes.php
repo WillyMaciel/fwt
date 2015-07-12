@@ -94,6 +94,9 @@ Route::group(array('before' => 'auth'), function()
 		Route::any('admin/usuario/crud', 'ADMUserController@Crud');
 		Route::controller('admin/usuario', 'ADMUserController');
 
+		//Configurações
+		Route::controller('admin/configuracao', 'ADMConfiguracoesController');
+
 		//Manipulador de Imagens
 		Route::post('admin/imagem/delete/{id}', 'ADMImagemController@postDelete');
 

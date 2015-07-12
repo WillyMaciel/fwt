@@ -54,37 +54,6 @@ class ADMPacoteController extends \BaseController {
 		return View::make('admin.pacote.index', compact('filter', 'grid'));
 	}
 
-	/**
-	 * Show the form for creating a new pacote
-	 *
-	 * @return Response
-	 */
-	public function Crud()
-	{
-		//simple crud for Article entity
-	    $form = DataEdit::source(new Pacote);
-	    $form->link("admin/pacote/","Voltar para listagem", "TR")->back();
-	    $form->text('nome_br', 'Nome PT', 'text')->rule('required');
-	    $form->text('nome_en', 'Nome EN', 'text')->rule('required');
-	    $form->textarea('descricao_br','Descricao PT');
-	    $form->textarea('descricao_en','Descricao EN');
-	    $form->select('destinos_id','Pertence ao Destino')
-     		 ->options(Destino::lists("nome_br", "id"));
-     	$form->radiogroup('publicado','Publicado')
-		->option(0,'Não')->option(1,'Sim');
-		$form->add('imagem','Imagem Principal', 'image')->move('uploads/pacotes/')->fit(900, 500)->preview(260,180);
-		//$form->text('valor_diaria', 'Valor da diária', 'text');
-		//$form->text('deposito', 'Valor do depósito de segurança', 'text');
-	    //$form->add('author.name','Author','autocomplete')->search(array('firstname','lastname'));
-	    //$form->autocomplete('author.name','Author')->search(array('firstname','lastname'));
-
-	    //->attributes(array('multiple'))
-
-	    $form->build();
-
-	    return $form->view('admin.pacote.crud', compact('form'));
-	}
-
 	public function create()
 	{
 		$paises = Pais::lists("name", "id");
@@ -93,7 +62,11 @@ class ADMPacoteController extends \BaseController {
 
 		$apartamentos = Apartamento::with('pais')->get();
 
-		return View::make('admin.pacote.create', compact('paises', 'hoteis', 'apartamentos'));
+		$passeios = Passeio::with('pais')->get();
+
+		$servicosnoturnos = ServicoNoturno::with('pais')->get();
+
+		return View::make('admin.pacote.create', compact('paises', 'hoteis', 'apartamentos', 'passeios', 'servicosnoturnos'));
 	}
 
 	/**
@@ -146,6 +119,18 @@ class ADMPacoteController extends \BaseController {
 			$pacote->apartamentos()->sync($apartamentos);
 		}
 
+		if(Input::has('passeios'))
+		{
+			$passeios = Input::get('passeios');
+			$pacote->passeios()->sync($passeios);
+		}
+
+		if(Input::has('servicosnoturnos'))
+		{
+			$servicosnoturnos = Input::get('servicosnoturnos');
+			$pacote->servicosnoturnos()->sync($servicosnoturnos);
+		}
+
 		if(Input::hasFile('imagens'))
 		{
 			$imagens = Input::file('imagens');
@@ -189,14 +174,18 @@ class ADMPacoteController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		$pacote = Pacote::with('hoteis', 'apartamentos')->find($id);
+		$pacote = Pacote::with('hoteis', 'apartamentos', 'passeios', 'servicosnoturnos')->find($id);
 		$paises = Pais::lists("name", "id");
 
 		$hoteis = Hotel::with('pais')->get();
 
 		$apartamentos = Apartamento::with('pais')->get();
 
-		return View::make('admin.pacote.edit', compact('pacote', 'paises', 'hoteis', 'apartamentos'));
+		$passeios = Passeio::with('pais')->get();
+
+		$servicosnoturnos = ServicoNoturno::with('pais')->get();
+
+		return View::make('admin.pacote.edit', compact('pacote', 'paises', 'hoteis', 'apartamentos', 'passeios', 'servicosnoturnos'));
 	}
 
 	/**
@@ -248,6 +237,18 @@ class ADMPacoteController extends \BaseController {
 		{
 			$apartamentos = Input::get('apartamentos');
 			$pacote->apartamentos()->sync($apartamentos);
+		}
+
+		if(Input::has('passeios'))
+		{
+			$passeios = Input::get('passeios');
+			$pacote->passeios()->sync($passeios);
+		}
+
+		if(Input::has('servicosnoturnos'))
+		{
+			$servicosnoturnos = Input::get('servicosnoturnos');
+			$pacote->servicosnoturnos()->sync($servicosnoturnos);
 		}
 
 		if(Input::hasFile('imagens'))

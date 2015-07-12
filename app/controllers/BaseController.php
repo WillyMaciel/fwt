@@ -28,6 +28,11 @@ class BaseController extends Controller {
 
 	protected function uploadImage($img, $folder)
 	{
+		if(empty($img))
+		{
+			return false;
+		}
+
 		//$destinationPath = public_path() . '/uploads/hoteis/';
         $destinationPath = "uploads/$folder/";
         $filename = $img->getClientOriginalName();

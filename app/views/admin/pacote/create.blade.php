@@ -29,6 +29,8 @@
 		            <li class=""><a href="#third-tab" data-toggle="tab"><i class="soap-icon-suitcase circle"></i>Infos Adicionais</a></li>
 		            <li class=""><a href="#hoteis" data-toggle="tab"><i class="soap-icon-suitcase circle"></i>Hotéis</a></li>
 		            <li class=""><a href="#apartamentos" data-toggle="tab"><i class="soap-icon-suitcase circle"></i>Apartamentos</a></li>
+		            <li class=""><a href="#passeios" data-toggle="tab"><i class="soap-icon-suitcase circle"></i>Passeios</a></li>
+		            <li class=""><a href="#servicosnoturnos" data-toggle="tab"><i class="soap-icon-suitcase circle"></i>Serviços Noturnos</a></li>
 		            <!-- <li class=""><a href="#fourth-tab" data-toggle="tab"><i class="soap-icon-suitcase circle"></i>Caracteristicas</a></li> -->
 		            <!-- <li class=""><a href="#fifth-tab" data-toggle="tab"><i class="soap-icon-suitcase circle"></i>Preços</a></li> -->
 		            <li class=""><a href="#sixth-tab" data-toggle="tab"><i class="soap-icon-suitcase circle"></i>Imagens</a></li>
@@ -76,6 +78,13 @@
 		                    <span id="div_pais_id">
 		                        <label for="pais_id" class="">Cidade</label>
 		                        {{Form::text('cidade', null, array('class' => 'form-control', 'id' => 'cidade'))}}
+		                    </span>
+		                </div>
+
+		                <div class="form-group">
+		                    <span id="div_pais_id">
+		                        <label for="pais_id" class="">Valor</label>
+		                        {{Form::text('valor', null, array('class' => 'form-control', 'id' => 'valor'))}}
 		                    </span>
 		                </div>
 
@@ -163,6 +172,72 @@
                                 @empty
                                     <tr>
                                         <td>Nenhum apartamento encontrado</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+
+		        </div>
+
+		        <div class="tab-pane fade" id="passeios">
+		                <h2 class="tab-content-title">Passeios</h2>
+
+		                <table class="table table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th>Nome PT</th>
+                                <th>Nome EN</th>
+                                <th>Pais</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                @forelse($passeios as $pa)
+                                    <tr>
+                                        <td> <input type="checkbox" name="passeios[]" value="{{$pa->id}}" /> </td>
+                                        <td>{{$pa->nome_br}}</td>
+                                        <td>{{$pa->nome_en}}</td>
+                                        <td>{{$pa->pais->name}}</td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td>Nenhum passeio encontrado</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+
+		        </div>
+
+		        <div class="tab-pane fade" id="servicosnoturnos">
+		                <h2 class="tab-content-title">Serviços Noturnos</h2>
+
+		                <table class="table table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th>Nome PT</th>
+                                <th>Nome EN</th>
+                                <th>Pais</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                @forelse($servicosnoturnos as $sn)
+                                    <tr>
+                                        <td> <input type="checkbox" name="servicosnoturnos[]" value="{{$sn->id}}" /> </td>
+                                        <td>{{$sn->nome_br}}</td>
+                                        <td>{{$sn->nome_en}}</td>
+                                        <td>{{$sn->pais->name}}</td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td>Nenhum Serviço Noturno encontrado</td>
                                         <td></td>
                                         <td></td>
                                         <td></td>

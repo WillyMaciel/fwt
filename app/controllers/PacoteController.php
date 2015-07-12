@@ -160,7 +160,7 @@ class PacoteController extends \BaseController {
 	 */
 	public function getShow($id)
 	{
-		$pacote = Pacote::with('reviews.cliente', 'hoteis.imagens', 'apartamentos.imagens')->find($id);
+		$pacote = Pacote::with('reviews.cliente', 'hoteis.imagens', 'apartamentos.imagens', 'passeios.imagens', 'servicosnoturnos.imagens')->find($id);
 
 		$this->addVisita($pacote);
 
@@ -172,9 +172,13 @@ class PacoteController extends \BaseController {
 
 		$apartamentos = $pacote->apartamentos;
 
-		$passeios = Passeio::with('imagens')->where('pais_id', $pacote->pais_id)->where('cidade', 'LIKE', "%{$pacote->cidade}%")->where('publicado', 1)->get();
+		// $passeios = Passeio::with('imagens')->where('pais_id', $pacote->pais_id)->where('cidade', 'LIKE', "%{$pacote->cidade}%")->where('publicado', 1)->get();
 
-		$snoturnos = ServicoNoturno::with('imagens')->where('pais_id', $pacote->pais_id)->where('cidade', 'LIKE', "%{$pacote->cidade}%")->where('publicado', 1)->get();
+		// $snoturnos = ServicoNoturno::with('imagens')->where('pais_id', $pacote->pais_id)->where('cidade', 'LIKE', "%{$pacote->cidade}%")->where('publicado', 1)->get();
+
+		$passeios = $pacote->passeios;
+
+		$snoturnos = $pacote->servicosnoturnos;
 
 		$similar = Pacote::similares();
 
