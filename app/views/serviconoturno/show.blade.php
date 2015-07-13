@@ -654,7 +654,7 @@ We suggest that you contact the host to confirm availability and rates before su
                             <span class="five-stars" style="width: {{$serviconoturno->estrelas * 20}}%;"></span>
                         </div>
                         <span class="review pull-right">{{$serviconoturno->estrelas or 0}} {{trans('hotel.estrelas')}}</span>
-                    </div>                    
+                    </div>
                         <!-- CARRINHO -->
                         <form action="{{URL::to('carrinho/add')}}" method="POST">
                             <input type="hidden" name="produto" value="{{$serviconoturno->id}}" />
@@ -682,7 +682,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                                 INTEIRA
                                             </td>
                                             <td>
-                                                <input type="text" name="quantidade_masculino" class="form-control" />
+                                                <input type="text" name="quantidade[masculino][inteira]" class="form-control" />
                                             </td>
                                             <td>
                                                 {{$serviconoturno->valor_masculino}}
@@ -693,7 +693,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                                 MEIA
                                             </td>
                                             <td>
-                                                <input type="text" name="quantidade_masculino_meia" class="form-control" />
+                                                <input type="text" name="quantidade[masculino][meia]" class="form-control" />
                                             </td>
                                             <td>
                                                 {{$serviconoturno->valor_masculino_meia}}
@@ -723,7 +723,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                                 INTEIRA
                                             </td>
                                             <td>
-                                                <input type="text" name="quantidade_masculino" class="form-control" />
+                                                <input type="text" name="quantidade[feminino][inteira]" class="form-control" />
                                             </td>
                                             <td>
                                                 {{$serviconoturno->valor_feminino}}
@@ -734,7 +734,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                                 MEIA
                                             </td>
                                             <td>
-                                                <input type="text" name="quantidade_feminino_meia" class="form-control" />
+                                                <input type="text" name="quantidade[feminino][meia]" class="form-control" />
                                             </td>
                                             <td>
                                                 {{$serviconoturno->valor_feminino_meia}}

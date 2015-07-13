@@ -5,16 +5,21 @@
 	"license": "MIT",
 	"type": "project",
 	"require": {
-		"laravel/framework": "4.2.*",
+		"illuminate/support" : "~5.0",
+		"illuminate/html" : "5.0.0",
+		"laravel/framework": "4.2.9",
 		"barryvdh/laravel-debugbar": "1.*",
 		"anahkiasen/former": "3.*",
-		"zizaco/confide": "dev-username-optional",
-		"zofe/rapyd": "dev-master",
+		"Zizaco/confide": "4.3.0",
+		"zofe/rapyd": "2.0.10",
 		"artdarek/oauth-4-laravel": "dev-master",
-		"laravelbook/ardent": "2.*"
+		"laravelbook/ardent": "2.*",
+		"camcima/camcima-soap-client" : "dev-master",
+		"camcima/mundipagg-php-client" : "dev-master"
 	},
 	"require-dev": {
-		"way/generators": "~2.0"
+		"illuminate/support" : "4.1.*",
+		"way/generators": "2.6.1"
 	},
 	"autoload": {
 		"classmap": [

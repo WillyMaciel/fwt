@@ -31,6 +31,53 @@ class CheckoutController extends \BaseController {
 					$pedido->email 				= $user->email;
 					$pedido->pedido_status_id 	= 2;
 
+					foreach($carrinho as $id => $p)
+					{
+						$produto = Produto::find($id);
+
+						if($produto['tipo'] != 'Boate')
+						{
+							$pedido_itens[$id] = array('nome_br' => $produto->nome_br, 'nome_en' => $produto->nome_en, 'preco' => $produto->valor, 'tipo' => $produto['tipo'], 'quantidade' => 1);
+							$pedido->total += $produto->valor;
+						}
+						else
+						{
+							if(isset($p['genero']))
+							{
+								if(isset($p['genero']['masculino']))
+								{
+									if(isset($p['genero']['masculino']['inteira']))
+									{
+										$pedido_itens2['masculino']['inteira'][$id] = array('nome_br' => $produto->nome_br, 'nome_en' => $produto->nome_en, 'preco' => $produto->valor_masculino, 'tipo' => 'Masculino - Inteira', 'quantidade' => $p['genero']['masculino']['inteira']);
+										$pedido->total += $produto->valor_masculino * $p['genero']['masculino']['inteira'];
+									}
+
+									if(isset($p['genero']['masculino']['meia']))
+									{
+										$pedido_itens2['masculino']['meia'][$id] = array('nome_br' => $produto->nome_br, 'nome_en' => $produto->nome_en, 'preco' => $produto->valor_masculino_meia, 'tipo' => 'Masculino - Meia', 'quantidade' => $p['genero']['masculino']['meia']);
+										$pedido->total += $produto->valor_masculino_meia * $p['genero']['masculino']['meia'];
+									}
+								}
+
+								if(isset($p['genero']['feminino']))
+								{
+									if(isset($p['genero']['feminino']['inteira']))
+									{
+										$pedido_itens2['feminino']['inteira'][$id] = array('nome_br' => $produto->nome_br, 'nome_en' => $produto->nome_en, 'preco' => $produto->valor_feminino, 'tipo' => 'Feminino - Inteira', 'quantidade' => $p['genero']['feminino']['inteira']);
+										$pedido->total += $produto->valor_feminino * $p['genero']['feminino']['inteira'];
+									}
+
+									if(isset($p['genero']['feminino']['meia']))
+									{
+										$pedido_itens2['feminino']['meia'][$id] = array('nome_br' => $produto->nome_br, 'nome_en' => $produto->nome_en, 'preco' => $produto->valor_feminino_meia, 'tipo' => 'Feminino - Meia', 'quantidade' => $p['genero']['feminino']['meia']);
+										$pedido->total += $produto->valor_feminino_meia * $p['genero']['feminino']['meia'];
+									}
+								}
+
+							}
+						}
+					}
+
 					$pedido->save();
 
 					$historico = new PedidoHistorico();
@@ -40,15 +87,36 @@ class CheckoutController extends \BaseController {
 
 					$historico->save();
 
-					foreach($carrinho as $id => $produto)
+					if(isset($pedido_itens))
 					{
-						$produto = Produto::find($id);
-						$pedido_itens[$id] = array('nome_br' => $produto->nome_br, 'nome_en' => $produto->nome_en);
+						$pedido->produtos()->sync($pedido_itens);
 					}
 
-					$pedido->produtos()->sync($pedido_itens);
+					if(isset($pedido_itens2))
+					{
+						if(isset($pedido_itens2['masculino']['inteira']))
+						{
+							$pedido->produtos()->attach($pedido_itens2['masculino']['inteira']);
+						}
+						if(isset($pedido_itens2['masculino']['meia']))
+						{
+							$pedido->produtos()->attach($pedido_itens2['masculino']['meia']);
+						}
+						if(isset($pedido_itens2['feminino']['inteira']))
+						{
+							$pedido->produtos()->attach($pedido_itens2['feminino']['inteira']);
+						}
+						if(isset($pedido_itens2['feminino']['meia']))
+						{
+							$pedido->produtos()->attach($pedido_itens2['feminino']['meia']);
+						}
+					}
 
-					Session::forget('carrinho');
+
+				//	Session::forget('carrinho');
+
+
+
 				}
 
 				return Redirect::to('cliente/pedido')->with('success', array('Seu pedido foi feito e esta sendo analizado. Em breve você receberá o valor do seu pedido e poderá pagar online.'));

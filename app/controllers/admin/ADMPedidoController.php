@@ -23,8 +23,8 @@ class ADMPedidoController extends \BaseController {
 		$grid->attributes(array("class"=>"table table-striped table-hover"));
 		$grid->add('id','Id Pedido', true); //field name, label, sortable
 		$grid->add('nome','Nome do Cliente', true); //field name, label, sortable
-		$grid->add('email','Email do Cliente'); //relation.fieldname 
-		$grid->add('status.nome_br','Status do Pedido'); //relation.fieldname 
+		$grid->add('email','Email do Cliente'); //relation.fieldname
+		$grid->add('status.nome_br','Status do Pedido'); //relation.fieldname
 		$grid->add('total', 'Valor do Pedido');
 		$grid->add('created_at', 'Data do Pedido', true);
 		$grid->add('
@@ -105,7 +105,7 @@ class ADMPedidoController extends \BaseController {
 
 		if(Input::has('status'))
 		{
-			$pedido->pedido_status_id = Input::get('status'); 
+			$pedido->pedido_status_id = Input::get('status');
 
 			$pedido->save();
 
@@ -131,7 +131,9 @@ class ADMPedidoController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		Pedido::destroy($id);
+
+		return Redirect::back()->with('success', array('pedido deletado'));
 	}
 
 }
