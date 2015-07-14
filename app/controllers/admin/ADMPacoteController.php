@@ -89,6 +89,8 @@ class ADMPacoteController extends \BaseController {
 		$pacote->nome_en = $data['nome_en'];
 		$pacote->descricao_br = $data['descricao_br'];
 		$pacote->descricao_en = $data['descricao_en'];
+		$pacote->whytravel_br = $data['whytravel_br'];
+		$pacote->whytravel_en = $data['whytravel_en'];
 		$pacote->pais_id = $data['pais_id'];
 		$pacote->cidade = $data['cidade'];
 		$pacote->valor 	= $data['valor'];
@@ -209,6 +211,8 @@ class ADMPacoteController extends \BaseController {
 		$pacote->nome_en = $data['nome_en'];
 		$pacote->descricao_br = $data['descricao_br'];
 		$pacote->descricao_en = $data['descricao_en'];
+		$pacote->whytravel_br = $data['whytravel_br'];
+		$pacote->whytravel_en = $data['whytravel_en'];
 		$pacote->pais_id = $data['pais_id'];
 		$pacote->cidade = $data['cidade'];
 		$pacote->valor 	= $data['valor'];

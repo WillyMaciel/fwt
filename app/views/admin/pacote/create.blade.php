@@ -49,6 +49,11 @@
 		                	{{Form::textarea('descricao_br', null, array('class' => 'form-control', 'id' => 'nome_br', 'cols' => 50, 'rows' => 10))}}
 		                </div>
 
+		                <div class="form-group">
+		                	<span id="div_descricao_en"><label for="descricao_en" class="">Por que viajar?</label>
+		                	{{Form::textarea('whytravel_br', null, array('class' => 'form-control', 'id' => 'nome_en', 'cols' => 50, 'rows' => 10))}}
+		                </div>
+
 		            </div>
 		            <div class="tab-pane fade" id="second-tab">
 		                <h2 class="tab-content-title"><img src="images/icon/flags/en-us.png"> - Inglês</h2>
@@ -61,6 +66,11 @@
 		                <div class="form-group">
 		                	<span id="div_descricao_en"><label for="descricao_en" class="">Descricao EN</label>
 		                	{{Form::textarea('descricao_en', null, array('class' => 'form-control', 'id' => 'nome_en', 'cols' => 50, 'rows' => 10))}}
+		                </div>
+
+		                <div class="form-group">
+		                	<span id="div_descricao_en"><label for="descricao_en" class="">Por que viajar?</label>
+		                	{{Form::textarea('whytravel_en', null, array('class' => 'form-control', 'id' => 'nome_en', 'cols' => 50, 'rows' => 10))}}
 		                </div>
 
 		            </div>
