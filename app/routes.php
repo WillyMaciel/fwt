@@ -136,6 +136,8 @@ Route::controller('serviconoturno', 'ServicoNoturnoController');
 Route::controller('eventoespecial', 'EventoEspecialController');
 Route::controller('mailing', 'MailingController');
 
+//Retorno Gateway Mundipagg
+Route::post('gateway/mundipagg/retorno', 'MundipaggController@postRetorno');
 
 //Linguagem
 Route::get('lang', 'LangController@index');

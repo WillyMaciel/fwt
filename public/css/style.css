@@ -19748,3 +19748,5 @@ margin-left: -19px;}
 #footer .footer-wrapper {
   padding: 38px 0;
 }
+
+.tab-container ul.tabs li a{ padding: 0 17px !important; }
