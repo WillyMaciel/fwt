@@ -153,10 +153,11 @@ class CarrinhoController extends \BaseController {
 
 		$createOrderRequest = new stdClass();
 		$createOrderRequest->createOrderRequest = new stdClass();
-		$createOrderRequest->createOrderRequest->AmountInCents = 105172;
+		//$createOrderRequest->createOrderRequest->AmountInCents = 105172;
+		$createOrderRequest->createOrderRequest->AmountInCents = 10000;
 		$createOrderRequest->createOrderRequest->CurrencyIsoEnum = 'BRL';
 		$createOrderRequest->createOrderRequest->MerchantKey = '0a31c3dc-f2f1-4327-841b-4feaf7db147d';
-		$createOrderRequest->createOrderRequest->OrderReference = 'parcelado';
+		$createOrderRequest->createOrderRequest->OrderReference = 'novoteste2';
 		$createOrderRequest->createOrderRequest->Buyer = new stdClass();
 		$createOrderRequest->createOrderRequest->Buyer->Email = 'comprador@email.com';
 		$createOrderRequest->createOrderRequest->Buyer->HomePhone = '(11) 12345678';
@@ -166,14 +167,15 @@ class CarrinhoController extends \BaseController {
 		$createOrderRequest->createOrderRequest->Buyer->TaxDocumentTypeEnum = 'CPF';
 		$createOrderRequest->createOrderRequest->CreditCardTransactionCollection = [];
 		$createOrderRequest->createOrderRequest->CreditCardTransactionCollection[0] = new stdClass();
-		$createOrderRequest->createOrderRequest->CreditCardTransactionCollection[0]->AmountInCents = 105172;
+		//$createOrderRequest->createOrderRequest->CreditCardTransactionCollection[0]->AmountInCents = 105172;
+		$createOrderRequest->createOrderRequest->CreditCardTransactionCollection[0]->AmountInCents = 10000;
 		$createOrderRequest->createOrderRequest->CreditCardTransactionCollection[0]->CaptureDelayInMinutes = 0;
 		$createOrderRequest->createOrderRequest->CreditCardTransactionCollection[0]->CreditCardBrandEnum = 'Mastercard';
 		$createOrderRequest->createOrderRequest->CreditCardTransactionCollection[0]->CreditCardNumber = '5555666677778884';
 		$createOrderRequest->createOrderRequest->CreditCardTransactionCollection[0]->ExpMonth = '1';
 		$createOrderRequest->createOrderRequest->CreditCardTransactionCollection[0]->ExpYear = '2018';
 		$createOrderRequest->createOrderRequest->CreditCardTransactionCollection[0]->HolderName = 'Fulano de Tal';
-		$createOrderRequest->createOrderRequest->CreditCardTransactionCollection[0]->InstallmentCount = 5;
+		$createOrderRequest->createOrderRequest->CreditCardTransactionCollection[0]->InstallmentCount = 1;
 		$createOrderRequest->createOrderRequest->CreditCardTransactionCollection[0]->PaymentMethodCode = 1;
 		$createOrderRequest->createOrderRequest->CreditCardTransactionCollection[0]->SecurityCode = '123';
 

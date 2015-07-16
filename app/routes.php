@@ -15,6 +15,9 @@
 //Requer Login
 Route::group(array('before' => 'auth'), function()
 {
+
+	Route::controller('checkout', 'CheckoutController');
+
 	//Pedidos
 	//Route::controller('cliente/pedido', 'PedidoController');
 	Route::resource('cliente/pedido', 'PedidoController');
@@ -126,7 +129,6 @@ Route::group(array('before' => 'guest'), function()
 
 Route::controller('pacote-destaque', 'PacoteDestaqueController');
 Route::controller('pacote', 'PacoteController');
-Route::controller('checkout', 'CheckoutController');
 Route::controller('carrinho', 'CarrinhoController');
 Route::controller('price', 'PriceController');
 Route::controller('hotel', 'HotelController');
@@ -138,6 +140,7 @@ Route::controller('mailing', 'MailingController');
 
 //Retorno Gateway Mundipagg
 Route::post('gateway/mundipagg/retorno', 'MundipaggController@postRetorno');
+Route::controller('mundipagg', 'MundipaggController');
 
 //Linguagem
 Route::get('lang', 'LangController@index');
