@@ -1,8 +1,7 @@
 <?php
 
-class MundipaggController extends \BaseController
+class Mundipagg
 {
-
 	private $client;
 
 	const MerchantKey = '0a31c3dc-f2f1-4327-841b-4feaf7db147d';
@@ -15,6 +14,10 @@ class MundipaggController extends \BaseController
 		$this->client = new MundiPaggSoapServiceClient('LOCAL',null,true);
 	}
 
+	public function printTeste()
+	{
+		echo 'PRINT';
+	}
 
 	public function postRetorno()
 	{

@@ -73,6 +73,7 @@
 			                		<th>ID</th>
 			                		<th>Nome (momento da compra)</th>
 			                		<th>Preço (momento da compra)</th>
+			                		<th>Quantidade</th>
 			                	</tr>
 		                	</thead>
 		                	<tbody>
@@ -80,11 +81,16 @@
 			                		<tr>
 			                			<td>{{$produto->id}}</td>
 			                			<td><a href="{{URL::to(strtolower($produto->class_name) . "/show/$produto->id")}}"> {{$produto->pivot->nome_br}} </a></td>
-			                			<td>{{$produto->pivot->preco}}</td>
+			                			<td><input type="text" name="produtos[{{$produto->pivot->id}}][preco]" value="{{$produto->pivot->preco}}" /></td>
+			                			<td><input type="text" name="produtos[{{$produto->pivot->id}}][quantidade]" value="{{$produto->pivot->quantidade}}" /></td>
 			                		</tr>
 			                	@endforeach
 		                	</tbody>
 		                </table>
+
+		                <div id="total">
+		                	<h2> Total: {{$pedido->total}} </h2>
+		                </div>
 
 		            </div>
 

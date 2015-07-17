@@ -32,7 +32,7 @@
                             <a href="#"> {{{Auth::user()->nome}}} </a>
                             <ul class="menu mini">
                                 <li><a href="{{URL::to('cliente/minhaconta')}}"> {{trans('menu.minhaconta')}} </a></li>
-                                <li><a href="{{URL::to('cliente/pedidos')}}"> {{trans('menu.meuspedidos')}}</a></li>
+                                <li><a href="{{URL::to('cliente/pedido')}}"> {{trans('menu.meuspedidos')}}</a></li>
                                 <li><a href="{{URL::to('users/logout')}}"> {{trans('menu.logout')}}</a></li>
                             </ul>
                         </li>
