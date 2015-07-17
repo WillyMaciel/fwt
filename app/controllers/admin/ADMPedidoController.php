@@ -42,39 +42,6 @@ class ADMPedidoController extends \BaseController {
 		return View::make('admin.pedido.index', compact('filter', 'grid'));
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 * GET /admpedido/create
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /admpedido
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
-
-	/**
-	 * Display the specified resource.
-	 * GET /admpedido/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
 
 	/**
 	 * Show the form for editing the specified resource.
@@ -107,6 +74,19 @@ class ADMPedidoController extends \BaseController {
 		{
 			$pedido->pedido_status_id = Input::get('status');
 
+			if(Input::has('produtos'))
+			{
+				$total = 0;
+
+				foreach(Input::get('produtos') as $key => $produto)
+				{
+					$total += $produto['preco'] * $produto['quantidade'];
+
+					DB::table('pedidos_produtos')->where('id', $key)->update(array('preco' => $produto['preco'], 'quantidade' => $produto['quantidade']));
+				}
+
+				$pedido->total = $total;
+			}
 			$pedido->save();
 
 			$historico = new PedidoHistorico();

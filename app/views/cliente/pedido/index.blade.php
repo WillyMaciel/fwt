@@ -28,6 +28,9 @@
                                         <dd>{{date('l, M d, Y', strtotime($pedido->created_at))}}</dd>
                                     </dl>
                                     <button class="btn-mini status">@if(Session::get('lang') == 'pt') {{$pedido->status->nome_br}} @else {{$pedido->status->nome_en}} @endif</button>
+                                    @if($pedido->status->id == 12)
+                                        <a href="{{URL::to("checkout/order/$pedido->id")}}"> <button type="button" class="btn-medium icon-check uppercase full-width">Efetuar Pagamento do pedido {{$pedido->id}}</button> </a>
+                                    @endif
                                 </div>
                                 @endforeach
 

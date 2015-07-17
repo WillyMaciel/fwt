@@ -1,11 +1,3 @@
-# Habilitar o PHP 5.5
-AddHandler application/x-httpd-php55 .php
-
-RewriteEngine On
-RewriteCond %{HTTP_HOST} !^funworldtours\.com$ [NC]
-RewriteRule ^(.*)$ http://funworldtours.com/$1 [R=301,L]
-
-
 # Desabilita listagem
 Options -Indexes
 

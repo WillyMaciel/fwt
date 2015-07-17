@@ -128,6 +128,24 @@ class CheckoutController extends \BaseController {
 		}
 	}
 
+	public function getOrder($id)
+	{
+		$pedido = Pedido::with('produtos')->findOrFail($id);
+
+		if($pedido->cliente_id != Auth::user()->id)
+		{
+			return Redirect::to('cliente/pedido')->with('danger', array('acesso negado'));
+		}
+
+		$parcelas = array();
+		for ($i=1; $i <= 10; $i++) 
+		{ 
+			$parcelas[$i] = $i . ' - ' . number_format($pedido->total / $i, 2, ",", ".");
+		}
+
+		return View::make('checkout.checkout', compact('pedido', 'parcelas'));
+	}
+
 	/**
 	 * Show the form for creating a new resource.
 	 * GET /checkout/create

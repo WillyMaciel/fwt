@@ -9,7 +9,7 @@
                         </a>
                     </h1>
                     <div class="text-center yellow-color box" style="font-size: 4em; font-weight: 300; line-height: 1em;">{{trans('auth.login_welcome')}}</div>
-                    <p class="light-blue-color block" style="font-size: 1.3333em;">{{trans('auth.please_login')}} {{trans('auth.ou')}} <a href="URL::to('users/create')">{{trans('auth.please_register')}}</a></p>
+                    <p class="light-blue-color block" style="font-size: 1.3333em;">{{trans('auth.please_login')}} {{trans('auth.ou')}} <a href="URL::to('users/create')" style="color: #fdb714;" >{{trans('auth.please_register')}}</a></p>
                     <div class="col-sm-8 col-md-6 col-lg-5 no-float no-padding center-block">
                         <form class="login-form" role="form" method="POST" action="{{{ URL::to('/users/login') }}}" accept-charset="UTF-8">
                             <input type="hidden" name="_token" value="{{{ Session::getToken() }}}">

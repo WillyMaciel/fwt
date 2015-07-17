@@ -17,7 +17,7 @@ class Pedido extends \Eloquent
 
 	public function produtos()
 	{
-		return $this->belongsToMany('Produto', 'pedidos_produtos', 'pedido_id', 'produto_id')->withPivot('nome_br', 'nome_en', 'preco');
+		return $this->belongsToMany('Produto', 'pedidos_produtos', 'pedido_id', 'produto_id')->withPivot('id', 'nome_br', 'nome_en', 'preco', 'quantidade');
 	}
 
 	public function historico()
