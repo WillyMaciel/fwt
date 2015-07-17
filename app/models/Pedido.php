@@ -1,6 +1,6 @@
 <?php
 
-class Pedido extends \Eloquent 
+class Pedido extends \Eloquent
 {
 	protected $table = 'pedidos';
 	protected $fillable = [];
@@ -17,7 +17,7 @@ class Pedido extends \Eloquent
 
 	public function produtos()
 	{
-		return $this->belongsToMany('Produto', 'pedidos_produtos', 'pedido_id', 'produto_id')->withPivot('id', 'nome_br', 'nome_en', 'preco', 'quantidade');
+		return $this->belongsToMany('Produto', 'pedidos_produtos', 'pedido_id', 'produto_id')->withPivot('id', 'nome_br', 'nome_en', 'preco', 'quantidade', 'tipo');
 	}
 
 	public function historico()

@@ -22,4 +22,9 @@ class User extends Eloquent implements ConfideUserInterface
     {
     	return $this->hasMany('Pedido', 'cliente_id')->orderBy('created_at', 'DESC');
     }
+
+    public function endereco()
+    {
+        return $this->hasOne('Endereco', 'usuario_id');
+    }
 }

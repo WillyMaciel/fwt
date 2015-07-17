@@ -37,7 +37,7 @@ class CheckoutController extends \BaseController {
 
 						if($produto['tipo'] != 'Boate')
 						{
-							$pedido_itens[$id] = array('nome_br' => $produto->nome_br, 'nome_en' => $produto->nome_en, 'preco' => $produto->valor, 'tipo' => $produto['tipo'], 'quantidade' => 1);
+							$pedido_itens[$id] = array('nome_br' => $produto->nome_br, 'nome_en' => $produto->nome_en, 'preco' => $produto->valor, 'tipo' => '', 'quantidade' => 1);
 							$pedido->total += $produto->valor;
 						}
 						else
@@ -132,18 +132,39 @@ class CheckoutController extends \BaseController {
 	{
 		$pedido = Pedido::with('produtos')->findOrFail($id);
 
-		if($pedido->cliente_id != Auth::user()->id)
+		if($pedido->cliente_id != Auth::user()->id || $pedido->status->id != 12)
 		{
 			return Redirect::to('cliente/pedido')->with('danger', array('acesso negado'));
 		}
 
 		$parcelas = array();
-		for ($i=1; $i <= 10; $i++) 
-		{ 
+		for ($i=1; $i <= 10; $i++)
+		{
 			$parcelas[$i] = $i . ' - ' . number_format($pedido->total / $i, 2, ",", ".");
 		}
 
+		$pedido->produtos->each(function($p)
+		{
+			$p->pivot->preco = 'R$ ' . number_format($p->pivot->preco, 2, ",", ".");
+		});
+
+		$pedido->total = 'R$ ' . number_format($pedido->total, 2, ",", ".");
+
 		return View::make('checkout.checkout', compact('pedido', 'parcelas'));
+	}
+
+	public function postSendOrder()
+	{
+		$pedido = Pedido::findOrFail(Input::get('pedido_id'));
+
+		$mundipagg = new Mundipagg;
+
+		$response = $mundipagg->createOrder(Input::all(), $pedido);
+
+		echo '<pre>';
+		echo var_dump($response);
+		echo var_dump($response->ErrorReport);
+		echo '</pre>';
 	}
 
 	/**

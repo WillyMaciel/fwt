@@ -37,13 +37,17 @@ class Mundipagg
 		return View::make('checkout.checkout');
 	}
 
-	public function getCreateOrder()
+	public function createOrder($input, Pedido $pedido)
 	{
-		$orderRequest = $this->createOrder();
+		$orderRequest = $this->createCreateOrder($input, $pedido);
 		$orderResponse = $this->client->CreateOrder($orderRequest);
-		echo '<pre>';
-		var_dump($orderResponse);
-		echo '</pre>';
+
+		// return $orderRequest;
+
+		return $orderResponse;
+		// echo '<pre>';
+		// var_dump($orderResponse);
+		// echo '</pre>';
 	}
 
 	public function getManageOrder()
@@ -73,126 +77,148 @@ class Mundipagg
 	}
 
 
-	public function createOrder()
+	public function createCreateOrder($input, Pedido $pedido)
 	{
+
+		$tcents = $pedido->total * 100;
+
 		$orderRequest = new CreateOrderRequest();
 		//$orderRequest = new stdClass();
 		// Campos principais do objeto CreateOrderRequest
 	    $orderRequest->CurrencyIsoEnum = "BRL";
-		$orderRequest->AmountInCents = 9;
-		$orderRequest->AmountInCentsToConsiderPaid = 9;
+		$orderRequest->AmountInCents = $tcents;
+		$orderRequest->AmountInCentsToConsiderPaid = $tcents;
 		$orderRequest->Retries = 0;
 		//$orderRequest->OrderReference = "SDK-PHP - Teste de Integracao - Matheus AR " . rand(0, 100000) ;
-		$orderRequest->OrderReference = "";
+		$orderRequest->OrderReference = $pedido->id;
 		//$orderRequest->EmailUpdateToBuyerEnum = "No";
 
+		$cliente = Auth::user();
+
 		$buyer = new Buyer();
-		$buyer->Email = "alguem@algumacoisa.com.br";
-		$buyer->GenderEnum = 'M';
-		$buyer->MobilePhone = '2122465273';
-		$buyer->Name = "Humberto da Silva";
+		$buyer->BuyerReference = $cliente->id;
+		$buyer->Email = $cliente->email;
+		$buyer->GenderEnum = ($cliente->sexo) ? $cliente->sexo : '' ;
+		$buyer->MobilePhone = $input['telefonetitular'];
+		$buyer->Name = $cliente->nome;
 		$buyer->PersonTypeEnum = 'Person';
-		$buyer->TaxDocumentNumber = '21645798514';
+		$buyer->TaxDocumentNumber = $input['cpftitular'];
 		$buyer->TaxDocumentTypeEnum = 'CPF';
 
-		$addr1 = new BuyerAddress();
-		$addr1->AddressTypeEnum = AddressTypeEnum::Residential;
-		$addr1->City = 'Rio de Janeiro';
-		$addr1->Complement = 'Apto 203';
-		$addr1->CountryEnum = CountryEnum::Brazil;
-		$addr1->Number = 223;
-		$addr1->State = 'RJ';
-		$addr1->Street = 'Rua da Quitanda';
-		$addr1->ZipCode = '14345709';
+		if($cliente->endereco)
+		{
+			$endereco = $cliente->endereco;
 
-		$addr2 = new BuyerAddress();
-		$addr2->AddressTypeEnum = AddressTypeEnum::Residential;
-		$addr2->City = 'Sao Paulo';
-		$addr2->Complement = 'Apto 501';
-		$addr2->CountryEnum = CountryEnum::Brazil;
-		$addr2->Number = 348;
-		$addr2->State = 'SP';
-		$addr2->Street = 'Rua da Qualquer Coisa';
+			$addr1 = new BuyerAddress();
+			$addr1->AddressTypeEnum = AddressTypeEnum::Residential;
+			$addr1->City = $endereco->cidade;
+			$addr1->Complement = $endereco->complemento;
+			$addr1->CountryEnum = CountryEnum::Brazil;
+			$addr1->Number = $endereco->numero;
+			$addr1->State = $endereco->estado;
+			$addr1->Street = $endereco->rua;
+			$addr1->ZipCode = $endereco->cep;
+		}
 
-		$buyer->BuyerAddressCollection = array( $addr1, $addr2 );
+		// $addr2 = new BuyerAddress();
+		// $addr2->AddressTypeEnum = AddressTypeEnum::Residential;
+		// $addr2->City = 'Sao Paulo';
+		// $addr2->Complement = 'Apto 501';
+		// $addr2->CountryEnum = CountryEnum::Brazil;
+		// $addr2->Number = 348;
+		// $addr2->State = 'SP';
+		// $addr2->Street = 'Rua da Qualquer Coisa';
+		if(isset($addr1))
+		{
+			$buyer->BuyerAddressCollection = array($addr1);
+		}
 
 		$orderRequest->Buyer = $buyer;
 
 		//// CARTÃO 1
 		// Criação de uma transação de cartão de crédito
-		$ccTransaction1 = new CreditCardTransaction();
-		$ccTransaction1->AmountInCents = 9;
-		$ccTransaction1->CreditCardNumber = "518294741544019";
-		// Número do cartão de crédito
-		$ccTransaction1->HolderName = "Maria do Carmo";
-		$ccTransaction1->SecurityCode = 197;
-		$ccTransaction1->ExpMonth = 10;
-		$ccTransaction1->ExpYear = 17;
-		$ccTransaction1->CreditCardBrandEnum = 'Visa';
-		$ccTransaction1->PaymentMethodCode = 1;
-		// Define o tipo da autorização
-		$ccTransaction1->CreditCardOperationEnum = "AuthOnly";
+		// $ccTransaction1 = new CreditCardTransaction();
+		// $ccTransaction1->AmountInCents = 9;
+		// $ccTransaction1->CreditCardNumber = "518294741544019";
+		// // Número do cartão de crédito
+		// $ccTransaction1->HolderName = "Maria do Carmo";
+		// $ccTransaction1->SecurityCode = 197;
+		// $ccTransaction1->ExpMonth = 10;
+		// $ccTransaction1->ExpYear = 17;
+		// $ccTransaction1->CreditCardBrandEnum = 'Visa';
+		// $ccTransaction1->PaymentMethodCode = 1;
+		// // Define o tipo da autorização
+		// $ccTransaction1->CreditCardOperationEnum = "AuthOnly";
 
-		//// CARTÃO 2
-		// Criação de uma transação de cartão de crédito
-		$ccTransaction2 = new CreditCardTransaction();
-		$ccTransaction2->AmountInCents = 20;
-		$ccTransaction2->CreditCardNumber = "65444454544112";
-		// Número do cartão de crédito
-		$ccTransaction2->HolderName = "Jose Farias";
-		$ccTransaction2->SecurityCode = 546;
-		$ccTransaction2->ExpMonth = 8;
-		$ccTransaction2->ExpYear = 19;
-		$ccTransaction2->CreditCardBrandEnum = 'Mastercard';
-		$ccTransaction2->PaymentMethodCode = 1;
-		// Define o tipo da autorização
-		$ccTransaction1->CreditCardOperationEnum = "AuthOnly";
+		// //// CARTÃO 2
+		// // Criação de uma transação de cartão de crédito
+		// $ccTransaction2 = new CreditCardTransaction();
+		// $ccTransaction2->AmountInCents = 20;
+		// $ccTransaction2->CreditCardNumber = "65444454544112";
+		// // Número do cartão de crédito
+		// $ccTransaction2->HolderName = "Jose Farias";
+		// $ccTransaction2->SecurityCode = 546;
+		// $ccTransaction2->ExpMonth = 8;
+		// $ccTransaction2->ExpYear = 19;
+		// $ccTransaction2->CreditCardBrandEnum = 'Mastercard';
+		// $ccTransaction2->PaymentMethodCode = 1;
+		// // Define o tipo da autorização
+		// $ccTransaction1->CreditCardOperationEnum = "AuthOnly";
 
 		//// CARTÃO 3
 		// Criação de uma transação de cartão de crédito
 		$ccTransaction3 = new CreditCardTransaction();
-		$ccTransaction3->AmountInCents = 15;
-		$ccTransaction3->CreditCardNumber = "331211415454441";
+		$ccTransaction3->AmountInCents = $tcents;
+		$ccTransaction3->CreditCardNumber = $input['card_number'];
 		// Número do cartão de crédito
-		$ccTransaction3->HolderName = "Somebody da Silva";
-		$ccTransaction3->SecurityCode = 523;
-		$ccTransaction3->ExpMonth = 11;
-		$ccTransaction3->ExpYear = 17;
-		$ccTransaction3->CreditCardBrandEnum = 'Elo';
+		$ccTransaction3->HolderName = $input['nometitular'];
+		$ccTransaction3->SecurityCode = $input['cvv'];
+		$ccTransaction3->ExpMonth = $input['mes_cartao'];
+		$ccTransaction3->ExpYear = $input['ano_cartao'];
+		$ccTransaction3->CreditCardBrandEnum = $input['card_brand'];
+		$ccTransaction3->InstallmentCount = $input['parcelas'];
 		$ccTransaction3->PaymentMethodCode = 1;
 		// Define o tipo da autorização
 		$ccTransaction3->CreditCardOperationEnum = "AuthAndCapture";
 
-		/// BOLETO 1
-		// Criação de uma transação por boleto
-		$boletoTransaction1 = new BoletoTransaction();
-		$boletoTransaction1->AmountInCents = 3000;
-		$boletoTransaction1->BankNumber = 789;
-		$boletoTransaction1->Instructions = "Nao receber apos vencimento.";
-		$boletoTransaction1->NossoNumero = 47826;
-		$boletoTransaction1->DaysToAddInBoletoExpirationDate = 5;
+		// /// BOLETO 1
+		// // Criação de uma transação por boleto
+		// $boletoTransaction1 = new BoletoTransaction();
+		// $boletoTransaction1->AmountInCents = 3000;
+		// $boletoTransaction1->BankNumber = 789;
+		// $boletoTransaction1->Instructions = "Nao receber apos vencimento.";
+		// $boletoTransaction1->NossoNumero = 47826;
+		// $boletoTransaction1->DaysToAddInBoletoExpirationDate = 5;
 
-		/// BOLETO 2
-		// Criação de uma transação por boleto
-		$boletoTransaction2 = new BoletoTransaction();
-		$boletoTransaction2->AmountInCents = 5000;
-		$boletoTransaction2->BankNumber = 641;
-		$boletoTransaction2->Instructions = "Nao receber apos vencimento.";
-		$boletoTransaction2->NossoNumero = 55411;
-		$boletoTransaction2->DaysToAddInBoletoExpirationDate = 9;
+		// /// BOLETO 2
+		// // Criação de uma transação por boleto
+		// $boletoTransaction2 = new BoletoTransaction();
+		// $boletoTransaction2->AmountInCents = 5000;
+		// $boletoTransaction2->BankNumber = 641;
+		// $boletoTransaction2->Instructions = "Nao receber apos vencimento.";
+		// $boletoTransaction2->NossoNumero = 55411;
+		// $boletoTransaction2->DaysToAddInBoletoExpirationDate = 9;
 		// Adiciona as transações no OrderRequest
-		$orderRequest->CreditCardTransactionCollection = array ( $ccTransaction1, $ccTransaction2, $ccTransaction3 );
+		$orderRequest->CreditCardTransactionCollection = array ($ccTransaction3);
 		//$orderRequest->BoletoTransactionCollection = array ( $boletoTransaction1/*, $boletoTransaction2*/ );
 		$shopCart = new ShoppingCart();
-		$shopCart->FreighCostInCents = 1000;
-		$shopCartItem = new ShoppingCartItem();
-		$shopCartItem->Description = "Teste";
-		$shopCartItem->Name = "Teste";
-		$shopCartItem->Quantity = 3;
-		$shopCartItem->TotalCostInCents = 300;
-		$shopCartItem->UnitCostInCents = 100;
-		$shopCartItem->ItemReference = "Teste";
-		$shopCart->ShoppingCartItemCollection = array ( $shopCartItem );
+		$shopCart->FreighCostInCents = $tcents;
+
+		$itens_carrinho = array();
+
+		foreach($pedido->produtos as $p)
+		{
+			$shopCartItem = new ShoppingCartItem();
+			$shopCartItem->Name = $p->nome_br;
+			$shopCartItem->Quantity = $p->pivot->quantidade;
+			$shopCartItem->TotalCostInCents = $p->pivot->quantidade * $p->pivot->preco;
+			$shopCartItem->UnitCostInCents = $p->pivot->preco * 100;
+			$shopCartItem->ItemReference = $p->id;
+
+			$itens_carrinho[] = $shopCartItem;
+		}
+
+		$shopCart->ShoppingCartItemCollection = $itens_carrinho;
 
 		$orderRequest->ShoppingCartCollection = array ( $shopCart );
 

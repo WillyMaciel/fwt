@@ -11,9 +11,24 @@
 
         tjq("#card_number").blur(function()
         {
-            var card = tjq("#card_number").validateCreditCard({ accept: ['visa', 'mastercard'] });
+            validate();
+        });
 
-            console.log(card);
+        tjq('form').submit(function(event)
+        {
+            var submit = validate();
+            if(!submit || tjq("#card_brand_input").val() == '')
+            {
+                alert('There is a problem with your credit card number, please correct!');
+                return false;
+            }
+        });
+
+    });
+
+    function validate()
+    {
+        var card = tjq("#card_number").validateCreditCard({ accept: ['visa', 'mastercard'] });
 
             if(card.valid)
             {
@@ -21,35 +36,30 @@
                 {
                     tjq("#cartaoflag").html('<img src="images/card/visa.png">');
                     submit = true;
+                    tjq("#card_brand_input").val('Visa');
                 }
                 else if(card.card_type.name == 'mastercard')
                 {
                     tjq("#cartaoflag").html('<img src="images/card/mastercard.png">');
                     submit = true;
+                    tjq("#card_brand_input").val('Mastercard');
                 }
                 else
                 {
                     tjq("#cartaoflag").html('');
                     submit = false;
+                    tjq("#card_brand_input").val('');
                 }
             }
             else
             {
                 tjq("#cartaoflag").html('');
                 submit = false;
+                tjq("#card_brand_input").val('');
             }
-        });
 
-        tjq('form').submit(function(event)
-        {
-            if(!submit)
-            {
-                alert('There is a problem with your credit card number, please correct!');
-                return false;
-            }
-        });
-        
-    });
+            return submit
+    }
 
     </script>
 @stop
@@ -73,19 +83,19 @@
                     <div class="panel style1 arrow-right">
 
                     </div>
-                    
+
                     <div class="panel style1 arrow-right">
 
                     </div>
 
                                 <div class="panel style1 arrow-right">
-                                    <form action="{{URL::to('mundipagg/order')}}" method="POST">
+                                    <form action="{{URL::to('checkout/send-order')}}" method="POST">
                                         <h2>Payment details</h2>
                                         <ul>
                                             <li>
                                                 <label for="card_number">Card number </label>
                                                 <input type="text" name="card_number" id="card_number" placeholder="1234 5678 9012 3456">
-                                                <span id="cartaoflag"></span>
+                                                <span id="cartaoflag"></span><br />
                                                 <small class="help">Aceitamos Visa ou Mastercard</small>
                                             </li>
                                             <li class="vertical">
@@ -104,7 +114,7 @@
                                                     </li>
                                                     <li>
                                                         <label for="expiry_date">Expiry date</label>
-                                                        <select id="mes_cartao">
+                                                        <select name="mes_cartao" id="mes_cartao">
                                                             <option value="">MM</option>
                                                             <option value="01">01</option>
                                                             <option value="02">02</option>
@@ -120,7 +130,7 @@
                                                             <option value="12">12</option>
                                                         </select>
                                                         /
-                                                        <select style="width:70px !important;" id="ano_cartao">
+                                                        <select name="ano_cartao" style="width:70px !important;" id="ano_cartao">
                                                             <option value="">AAAA</option>
                                                             <option value="2015">2015</option>
                                                             <option value="2016">2016</option>
@@ -157,10 +167,8 @@
                                                     <li>
                                                         <label for="cvv">Parcelas</label>
                                                         {{Form::select('parcelas', $parcelas)}}
-                                                        <!-- <select name="parcelas">
-                                                            <option>1</option>
-                                                            <option>2</option>
-                                                        </select> -->
+                                                        <input type="hidden" name="pedido_id" value="{{$pedido->id}}" />
+                                                        <input type="hidden" id="card_brand_input" name="card_brand" value="" />
                                                     </li>
                                                     <li style="padding-top: 20px;">
                                                         <button type="submit" class="btn-medium icon-check uppercase full-width">Efetuar Pagamento</button>
@@ -170,60 +178,49 @@
                                         </ul>
                                     </form>
                                 </div>
-                    
+
                 </div>
 
             </div>
-            <div class="col-sm-8 col-md-9">
+            <div class="col-sm-8 col-md-9 hotel-list listing-style3 hotel">
 
-            @foreach($pedido->produtos as $produto)
-                    {{$produto->pivot->preco}}
+                <article class="box">
+                        <h2 class="tab-content-title"> Produtos</h2>
 
-                @endforeach
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Preço Unitário</th>
+                                    <th>Quantidade</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse($pedido->produtos as $produto)
+                                    <tr>
+                                        <td>{{$produto->pivot->nome_br}} {{$produto->pivot->tipo or ''}} </td>
+                                        <td>{{$produto->pivot->preco}}</td>
+                                        <td>{{$produto->pivot->quantidade}}</td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td>Nenhum produto encontrado</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
 
-                <div class="hotel-list listing-style3 hotel">
-                @if(isset($produtos))
+                        <div id="total">
+                            <h2> Total: {{$pedido->total}} </h2>
+                        </div>
 
-                    @foreach($produtos as $p)
-                        <article class="box">
-                            <figure class="col-sm-5 col-md-4">
-                                <a title="" href="{{URL::to("hotel/show/{$p->id}")}}" class="hover-effect"><img width="270" height="160" alt="" src="@if(isset($p->imagem)) uploads/hoteis/270x160_{{$p->imagem}} @else http://placehold.it/270x160 @endif"></a>
-                            </figure>
-                            <div class="details col-sm-7 col-md-8">
-                                <div>
-                                    <div>
-                                        <h4 class="box-title"><a href="{{URL::to("hotel/show/{$p->id}")}}"> @if(Session::get('lang') == 'pt') {{$p->nome_br}} @else {{$p->nome_en}} @endif </a><small><i class="soap-icon-departure yellow-color"></i> {{$p->pais->name}} - {{$p->estado}} </small></h4>
-                                        <div class="amenities">
-                                            @foreach($p->caracteristicas as $c)
-                                                <i class="{{$c->icone}} circle"></i>
-                                            @endforeach
+                </article>
 
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div title="" class="five-stars-container" data-toggle="tooltip" data-placement="bottom" data-original-title="{{$p->estrelas or 0}} Estrelas">
-                                                <span class="five-stars" style="width: {{$p->estrelas * 20}}%;"></span>
-                                        </div>
-                                        <span class="review">{{$p->estrelas or 0}} {{trans('hotel.estrelas')}}</span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p>@if(Session::get('lang') == 'pt') {{substr($p->descricao_br, 0, 150) . ' ...'}} @else {{substr($p->descricao_en, 0, 150) . ' ...'}} @endif</p>
-                                    <div>
-                                        <span class="price"><small>{{trans('hotel.preco_noite')}}</small>{{$p->valor}}</span>
-                                        <a class="button btn-small full-width text-center" title="" href="{{URL::to("hotel/show/{$p->id}")}}">{{trans('hotel.selecionar')}}</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-                    @endforeach                    
-                    </div>
 
-                @else
-                    <article class="box">
-                        <h2> Nenhum registro encontrado para esta busca</h2>
-                    </article>
-                @endif
+
+
             </div>
         </div>
     </div>
