@@ -19750,3 +19750,8 @@ margin-left: -19px;}
 }
 
 .tab-container ul.tabs li a{ padding: 0 17px !important; }
+
+.entry-title
+{
+  font-size: 0.6667em;
+}

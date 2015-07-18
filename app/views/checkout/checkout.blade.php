@@ -89,7 +89,7 @@
                     </div>
 
                                 <div class="panel style1 arrow-right">
-                                    <form action="{{URL::to('checkout/send-order')}}" method="POST">
+                                    <form action="{{URL::to('checkout/send-order')}}" method="POST" style="padding-left:4.6em;">
                                         <h2>Payment details</h2>
                                         <ul>
                                             <li>
@@ -170,8 +170,10 @@
                                                         <input type="hidden" name="pedido_id" value="{{$pedido->id}}" />
                                                         <input type="hidden" id="card_brand_input" name="card_brand" value="" />
                                                     </li>
-                                                    <li style="padding-top: 20px;">
-                                                        <button type="submit" class="btn-medium icon-check uppercase full-width">Efetuar Pagamento</button>
+                                                    <li style="padding-top: 20px;" style="">
+                                                        <div style="padding-top: 1.6em;padding-right: 2.6em;">
+                                                            <button type="submit" class="btn-medium icon-check uppercase full-width">Efetuar Pagamento</button>
+                                                        </div>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -184,7 +186,8 @@
             </div>
             <div class="col-sm-8 col-md-9 hotel-list listing-style3 hotel">
 
-                <article class="box">
+                <article class="box" style="padding-left: 2.6em;
+padding-top: 1.6em;">
                         <h2 class="tab-content-title"> Produtos</h2>
 
                         <table class="table table-striped table-hover">

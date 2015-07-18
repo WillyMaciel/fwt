@@ -138,7 +138,7 @@ class CheckoutController extends \BaseController {
 		}
 
 		$parcelas = array();
-		for ($i=1; $i <= 10; $i++)
+		for ($i=1; $i <= 6; $i++)
 		{
 			$parcelas[$i] = $i . ' - ' . number_format($pedido->total / $i, 2, ",", ".");
 		}
