@@ -98,7 +98,10 @@ class Mundipagg
 		$buyer = new Buyer();
 		$buyer->BuyerReference = $cliente->id;
 		$buyer->Email = $cliente->email;
-		$buyer->GenderEnum = ($cliente->sexo) ? $cliente->sexo : '' ;
+		if($cliente->sexo)
+		{
+			$buyer->GenderEnum = $cliente->sexo;
+		}
 		$buyer->MobilePhone = $input['telefonetitular'];
 		$buyer->Name = $cliente->nome;
 		$buyer->PersonTypeEnum = 'Person';

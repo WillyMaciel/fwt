@@ -84,6 +84,9 @@ Route::group(array('before' => 'auth'), function()
 		Route::get('admin/pedido/delete/{id}', 'ADMPedidoController@destroy');
 		Route::resource('admin/pedido', 'ADMPedidoController');
 
+		//Produtos Personalizados
+		Route::resource('admin/produto-personalizado', 'ADMProdutoPersonalizadoController');
+
 		//Pacotes
 		Route::get('admin/pacote/delete/{id}', 'ADMPacoteController@destroy');
 		Route::resource('admin/pacote', 'ADMPacoteController');
