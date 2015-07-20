@@ -113,10 +113,9 @@ class CarrinhoController extends \BaseController {
 	public function getRemove($id)
 	{
 		$carrinho = Session::get('carrinho');
-		$key = array_search($id, $carrinho);
-		if($key !== false)
+		if(array_key_exists($id, $carrinho))
 		{
-			unset($carrinho[$key]);
+			unset($carrinho[$id]);
 
 			Session::forget('carrinho');
 			Session::put('carrinho', $carrinho);
