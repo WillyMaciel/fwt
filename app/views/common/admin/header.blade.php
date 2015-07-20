@@ -97,6 +97,7 @@
                                 <a> {{trans('menu.vendas')}} </a>
                                 <ul>
                                     <li><a href="{{URL::to('admin/pedido')}}">{{trans('menu.pedidos')}}</a></li>
+                                    <li><a href="{{URL::to('admin/produto-personalizado')}}">Produtos Personalizados</a></li>
                                     <li><a href="{{URL::to('admin/usuario')}}">{{trans('menu.usuarios')}}</a></li>
                                 </ul>
                             </li>
