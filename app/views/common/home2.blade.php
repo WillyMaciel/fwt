@@ -376,7 +376,7 @@
                                 <article class="box">
                                     <figure>
                                         <a href="{{URL::to(strtolower($produto->class_name) . "/show/$produto->id")}}" title="" class="hover-effect yellow">
-                                        	<img src="{{$produto->imagens->first()->caminho or 'images/'}}{{$produto->imagens->first()->nome or 'no-img.png'}}" alt="" style="width: 220px; height: 180px;" />
+                                        	<img src="@if($produto->imagem) uploads/pacotes/{{$produto->imagem}} @else images/no-img.png @endif" alt="" style="width: 220px; height: 180px;" />
                                         </a>
                                     </figure>
                                     <div class="details">

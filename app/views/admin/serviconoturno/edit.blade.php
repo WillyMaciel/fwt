@@ -288,7 +288,7 @@
 
 	function togglePreco(tipo)
 	{
-		if(tipo == 'Boate')
+		if(tipo == 'Boate' || tipo == 'Evento')
 		{
 			$("#outros").hide();
 			$("#boate").show('slow');

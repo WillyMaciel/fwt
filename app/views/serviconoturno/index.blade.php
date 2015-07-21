@@ -188,7 +188,7 @@
                                     <p>@if(Session::get('lang') == 'pt') {{substr($serviconoturno->descricao_br, 0, 150) . ' ...'}} @else {{substr($serviconoturno->descricao_en, 0, 150) . ' ...'}} @endif</p>
                                     <div>
                                         {{$serviconoturno->tipo}}
-                                        @if($serviconoturno->tipo != 'Boate')
+                                        @if($serviconoturno->tipo == 'Restaurante')
                                             <span class="price"><small>{{trans('carrinho.preco')}}</small>{{$serviconoturno->valor or '--'}}</span>
                                         @else
                                             <span class="price"><small>{{trans('carrinho.preco')}} Masculino</small>{{$serviconoturno->valor_masculino or '--'}}</span>

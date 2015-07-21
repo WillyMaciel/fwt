@@ -659,7 +659,7 @@ We suggest that you contact the host to confirm availability and rates before su
                         <form action="{{URL::to('carrinho/add')}}" method="POST">
                             <input type="hidden" name="produto" value="{{$serviconoturno->id}}" />
 
-                            @if($serviconoturno->tipo == 'Boate')
+                            @if($serviconoturno->tipo == 'Boate' || $serviconoturno->tipo == 'Evento')
 
                                 <h3> Ingresso Masculino </h3>
                                 <table class="preco_m">

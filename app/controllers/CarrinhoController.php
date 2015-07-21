@@ -83,9 +83,9 @@ class CarrinhoController extends \BaseController {
 
 				$carrinho[Input::get('produto')]['quantidade'] = 1;
 
-				if($produto->tipo == 'Boate')
+				if($produto->tipo)
 				{
-					$carrinho[Input::get('produto')]['tipo'] = 'Boate';
+					$carrinho[Input::get('produto')]['tipo'] = $produto->tipo;
 				}
 
 
