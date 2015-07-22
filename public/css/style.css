@@ -11440,7 +11440,9 @@ ul.menu.mini {
 
   border: 2px solid #01b7f2;
 
-  background: #fff; }
+  /*background: #fff; */
+
+  background: #0098CA; }
 
   ul.menu.mini li {
 
