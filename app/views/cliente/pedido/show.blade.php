@@ -22,12 +22,12 @@
                                         <label class="day">SAT</label>
                                     </div>
                                     <h4 class="box-title"><i class="icon soap-icon-hotel blue-color circle"></i><a href="{{URL::to(strtolower($produto->class_name) . "/show/$produto->id")}}"> @if(Session::get('lang') == 'pt') {{$produto->pivot->nome_br}} @else {{$produto->pivot->nome_en}} @endif </a><small>{{$produto->tipo}}</small></h4>
-                                    <dl class="info">
+                                    <!-- <dl class="info">
                                         <dt>TRIP ID</dt>
                                         <dd>5754-8dk8-8ee</dd>
                                         <dt>booked on</dt>
                                         <dd>saturday, nov 23, 2013</dd>
-                                    </dl>
+                                    </dl> -->
                                     <!-- <button class="btn-mini status">UPCOMMING</button> -->
                                 </div>
                                 @endforeach

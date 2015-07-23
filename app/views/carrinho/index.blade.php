@@ -28,9 +28,7 @@
                                     <h4 class="box-title"><i class="icon soap-icon-hotel blue-color circle"></i><a href="{{URL::to(strtolower($produto['produto']->class_name) . "/show/{$produto['produto']->id}")}}"> {{$produto['produto']->nome_br}} </a><small> {{preg_replace('/(?<!\ )[A-Z]/', ' $0', $produto['produto']->class_name)}} @if ($produto['produto']->tipo) >> {{$produto['produto']->tipo}}  @endif</small></h4>
                                     <dl class="info">
                                         <dt>Valor</dt>
-                                        <dd>{{$produto['valor']}}</dd>
-                                        <dt>booked on</dt>
-                                        <dd>saturday, nov 23, 2013</dd>
+                                        <dd>R$ {{number_format($produto['valor'], 2, ",", ".")}}</dd>
                                     </dl>
                                     <a href='{{URL::to("carrinho/remove/{$produto['produto']->id}")}}'> <button class="btn-mini status"> X Remover </button> </a>
                                 </div>

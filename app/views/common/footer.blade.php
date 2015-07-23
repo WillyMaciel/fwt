@@ -2,8 +2,8 @@
             <div class="footer-wrapper">
                 <div class="container">
                     <div class="row">
-                        <div class="row" id="wraper">
-                            <div class="col-sm-6 col-md-3 footer1">
+
+                            <div class="col-sm-6 col-md-4">
                                 <h2>{{trans('footer.menu_rapido')}}</h2>
                                 <ul class="discover triangle hover row">
                                     <li class="col-xs-6"><a href="{{URL::to('price')}}">{{trans('menu.orcar')}}</a></li>
@@ -13,33 +13,26 @@
                                     <li class="col-xs-6"><a href="{{URL::to('serviconoturno')}}">{{trans('menu.servicos_noturnos')}}</a></li>
                                     <li class="col-xs-6"><a href="{{URL::to('eventoespecial')}}">{{trans('menu.eventos_especiais')}}</a></li>
                                     <li class="col-xs-6"><a href="{{URL::to('pacote-destaque')}}">{{trans('menu.pacote_destaque')}}</a></li>
-                                    <!-- <li class="col-xs-6"><a href="#">Blog Posts</a></li>
-                                    <li class="col-xs-6"><a href="#">Social Connect</a></li>
-                                    <li class="col-xs-6"><a href="#">Help Topics</a></li>
-                                    <li class="col-xs-6"><a href="#">Site Map</a></li>
-                                    <li class="col-xs-6"><a href="#">Policies</a></li> -->
                                 </ul>
                             </div>
-                            <div class="col-sm-6 col-md-3 footer2">
+                            <div class="col-sm-6 col-md-2">
                                 <h2>{{trans('menu.cambio')}}</h2>
                                 <ul class="travel-news">
                                     <li>
                                         <div class="description" style="padding-left: 0px;">
                                             <h5 class="s-title">{{trans('menu.cotacao_dollar')}}</h5>
                                                 <input type="text" disabled="disabled" value="{{Configuracao::where('param', 'cotacao_dolar')->first()->valor}}" class="form-control" style="width: 70%;">
-                                            <!-- <span class="date">25 Sep, 2013</span> -->
                                         </div>
                                     </li>
                                     <li>
                                         <div class="description" style="padding-left: 0px;">
                                             <h5 class="s-title">{{trans('menu.cotacao_euro')}}</h5>
                                                 <input type="text" disabled="disabled" value="{{Configuracao::where('param', 'cotacao_euro')->first()->valor}}" class="form-control" style="width: 70%;">
-                                            <!-- <span class="date">24 Sep, 2013</span> -->
                                         </div>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="col-sm-6 col-md-3 footer3">
+                            <div class="col-sm-6 col-md-3">
                                 <h2>Request a Callback</h2>
                                 <p>Interested in our services? Let us get in touch to offer customized services!</p>
                                 <br />
@@ -61,7 +54,7 @@
                                 </form>
                                 <br />
                             </div>
-                            <div class="col-sm-6 col-md-3 footer4">
+                            <div class="col-sm-6 col-md-3">
                                 <h2>About FunWorldTours</h2>
                                 <p>Fun World Tours was founded to help tourists in reaching and having access to the best events in South America & etc</p>
                                 <br />
@@ -76,7 +69,7 @@
                                     <li class="linkedin"><a title="linkedin" href="#" data-toggle="tooltip"><i class="soap-icon-linkedin"></i></a></li>
                                 </ul>
                             </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
