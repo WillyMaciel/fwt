@@ -4,7 +4,7 @@ $successes = Session::get('success');
 ?>
 <div class="alert alert-success">
 	<a class="close" data-dismiss="alert">×</a>
-	<h4 class="alert-heading"> Sucesso! </h4>
+	<h4 class="alert-heading"> {{trans('alertas.sucesso')}} </h4>
 	<ul>
 		@foreach($successes as $sucesso)
 			<li>{{$sucesso}}</li>
@@ -18,7 +18,7 @@ $infos = Session::get('info');
 ?>
 <div class="alert alert-info">
 	<a class="close" data-dismiss="alert">×</a>
-	<h4 class="alert-heading"> Informações: </h4>
+	<h4 class="alert-heading"> {{trans('alertas.informacoes')}} </h4>
 	<ul>
 		@foreach($infos as $info)
 			<li>{{$info}}</li>
@@ -32,7 +32,7 @@ $warnings = Session::get('warning');
 ?>
 <div class="alert alert-warning">
 	<a class="close" data-dismiss="alert">×</a>
-	<h4 class="alert-heading"> Atenção! </h4>
+	<h4 class="alert-heading"> {{trans('alertas.atencao')}} </h4>
 	<ul>
 		@foreach($warnings as $warning)
 			<li>{{$warning}}</li>
@@ -46,7 +46,7 @@ $dangers = Session::get('danger');
 ?>
 <div class="alert alert-danger">
 	<a class="close" data-dismiss="alert">×</a>
-	<h4 class="alert-heading"> Os seguintes erros foram encontrados: </h4>
+	<h4 class="alert-heading"> {{trans('alertas.perigo')}} </h4>
 	<ul>
 		@foreach($dangers as $danger)
 			@if (is_array($danger))

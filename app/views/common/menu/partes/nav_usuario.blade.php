@@ -17,4 +17,4 @@
     </li>
 @endif
 
-<li><a href="{{URL::to('carrinho')}}" >CARRINHO @if(Session::has('carrinho')) ({{count(Session::get('carrinho'))}}) @else (0)  @endif</a></li>
+<li><a href="{{URL::to('carrinho')}}" >{{trans('menu.carrinho')}} @if(Session::has('carrinho')) ({{count(Session::get('carrinho'))}}) @else (0)  @endif</a></li>

@@ -9,8 +9,6 @@
             {
                 $query->Where('publicado', '=', 1);
             })->get();
-
-            debug($continentes);
         ?>
         @foreach($continentes as $cont)
             <li><a href="{{URL::to("pacote/paises/?continente={$cont->name_pt}")}}">@if(Session::get('lang') == 'pt') {{$cont->name_pt}} @else {{$cont->name_en}} @endif</a></li>

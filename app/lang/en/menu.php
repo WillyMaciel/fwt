@@ -46,5 +46,6 @@ return array(
 	'esportes'			=> 'Sports',
 	'trilhas'			=> 'Tracks',
 	'pacote_destaque'	=> 'Featured Packages',
-	'cambio'			=> 'Exchange'
+	'cambio'			=> 'Exchange',
+	'carrinho'			=> 'Cart'
 	);

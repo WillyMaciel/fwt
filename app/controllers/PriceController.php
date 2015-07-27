@@ -1,6 +1,21 @@
 <?php
 
-class PriceController extends \BaseController {
+class PriceController extends \BaseController 
+{
+
+	private $rules;
+
+	public function __construct()
+	{
+		$this->rules = array(
+								'firstname'			=>	'required',
+								'lastname'			=>	'required',
+								'email'				=>	'email|required',
+								'telefone'			=>	'required',
+								'departure_city'	=>	'required',
+								'departure_date'	=>	'required'
+							);
+	}
 
 	/**
 	 * Display a listing of destinos
@@ -16,6 +31,13 @@ class PriceController extends \BaseController {
 
 	public function postIndex()
 	{
+		$validator = Validator::make(Input::all(), $this->rules);
+
+		if($validator->fails())
+		{
+			return Redirect::back()->with('danger', $validator->messages()->toArray());
+		}
+		
 
 		Mail::send('emails.price', Input::all(), function($message)
 		{
