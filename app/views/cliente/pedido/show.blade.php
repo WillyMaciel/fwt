@@ -17,9 +17,7 @@
                                 @foreach($pedido->produtos as $produto)
                                 <div class="booking-info clearfix">
                                     <div class="date">
-                                        <label class="month">NOV</label>
-                                        <label class="date">23</label>
-                                        <label class="day">SAT</label>
+                                        <img src="{{URL::to('images/logo_icon.png')}}" class="img-responsive">
                                     </div>
                                     <h4 class="box-title"><i class="icon soap-icon-hotel blue-color circle"></i><a href="{{URL::to(strtolower($produto->class_name) . "/show/$produto->id")}}"> @if(Session::get('lang') == 'pt') {{$produto->pivot->nome_br}} @else {{$produto->pivot->nome_en}} @endif </a><small>{{$produto->tipo}}</small></h4>
                                     <!-- <dl class="info">

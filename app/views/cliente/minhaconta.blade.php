@@ -17,7 +17,7 @@
                 <ul class="tabs">
                     <li class="active"><a data-toggle="tab" href="#dashboard"><i class="soap-icon-anchor circle"></i>Dashboard</a></li>
                     <li class=""><a data-toggle="tab" href="#profile"><i class="soap-icon-user circle"></i>{{trans('minhaconta.profile')}}</a></li>
-                    <li class=""><a data-toggle="tab" href="#travel-stories"><i class="soap-icon-conference circle"></i>Reviews</a></li>
+                    <!-- <li class=""><a data-toggle="tab" href="#travel-stories"><i class="soap-icon-conference circle"></i>Reviews</a></li> -->
                     <li class=""><a data-toggle="tab" href="#settings"><i class="soap-icon-settings circle"></i>{{trans('minhaconta.settings')}}</a></li>
                 </ul>
                 <div class="tab-content">
@@ -26,7 +26,7 @@
                         <p>{{trans('minhaconta.alltrips')}}</p>
                         <br />
                         <div class="row block">
-                            <div class="col-sm-6 col-md-3">
+                            <!-- <div class="col-sm-6 col-md-3">
                                 <a href="{{URL::to('hotel')}}">
                                     <div class="fact blue">
                                         <div class="numbers counters-box">
@@ -42,8 +42,8 @@
                                         </div>
                                     </div>
                                 </a>
-                            </div>
-                            <div class="col-sm-6 col-md-3">
+                            </div> -->
+                            <div class="col-sm-6 col-md-4">
                                 <a href="{{URL::to('passeio')}}">
                                     <div class="fact yellow">
                                         <div class="numbers counters-box">
@@ -60,7 +60,7 @@
                                     </div>
                                 </a>
                             </div>
-                            <div class="col-sm-6 col-md-3">
+                            <div class="col-sm-6 col-md-4">
                                 <a href="{{URL::to('translado')}}">
                                     <div class="fact red">
                                         <div class="numbers counters-box">
@@ -77,7 +77,7 @@
                                     </div>
                                 </a>
                             </div>
-                            <div class="col-sm-6 col-md-3">
+                            <div class="col-sm-6 col-md-4">
                                 <a href="{{URL::to('eventoespecial')}}">
                                     <div class="fact green">
                                         <div class="numbers counters-box">
@@ -244,7 +244,7 @@
                                     <a title="" href="#"><img width="270" height="263" alt="" src="http://placehold.it/270x263"></a>
                                 </figure>
                                 <div class="details">
-                                    <a href="#" class="button btn-mini pull-right edit-profile-btn">{{trans('minhaconta.edit_profile')}}</a>
+                                    <!-- <a href="#" class="button btn-mini pull-right edit-profile-btn">{{trans('minhaconta.edit_profile')}}</a> -->
                                     <h2 class="box-title fullname">{{Auth::user()->nome}}</h2>
                                     <dl class="term-description">
                                         <dt>{{trans('minhaconta.user_name')}}</dt><dd>{{Auth::user()->email}}</dd>

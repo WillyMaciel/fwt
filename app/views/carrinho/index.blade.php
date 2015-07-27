@@ -21,7 +21,7 @@
                                 @foreach($carrinho as $produto)
                                 <div class="booking-info clearfix">
                                     <div class="date">
-                                        <img src="{{URL::to('images/logo_icon.png')}}" class="img-responsive img-rounded">
+                                        <img src="{{URL::to('images/logo_icon.png')}}" class="img-responsive">
                                     </div>
                                     <h4 class="box-title"><i class="icon soap-icon-hotel blue-color circle"></i><a href="{{URL::to(strtolower($produto['produto']->class_name) . "/show/{$produto['produto']->id}")}}"> {{$produto['produto']->nome_br}} </a><small> {{preg_replace('/(?<!\ )[A-Z]/', ' $0', $produto['produto']->class_name)}} @if ($produto['produto']->tipo) >> {{$produto['produto']->tipo}}  @endif</small></h4>
                                     <dl class="info">
