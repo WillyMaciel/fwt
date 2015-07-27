@@ -27,8 +27,6 @@ class CarrinhoController extends \BaseController {
 			$carrinho = false;
 		}
 
-		debug($carrinho);
-
 		return View::make('carrinho.index', compact('carrinho'));
 	}
 
@@ -122,9 +120,6 @@ class CarrinhoController extends \BaseController {
 
 			return Redirect::back()->with('success', array('Item removido do carrinho.'));
 		}
-		// debug($carrinho);
-		// debug($id);
-		// debug($key);
 
 		// return View::make('hello');
 
