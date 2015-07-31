@@ -28,7 +28,7 @@ return array(
 
 	'title' 	=> 'Fun World Tours',
 
-	'url' 		=> 'http://fwt.dev',
+	'url' 		=> '/',
 
 	'copyright' => '&copy; Fun World Tours'
 
