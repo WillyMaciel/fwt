@@ -644,7 +644,7 @@ We suggest that you contact the host to confirm availability and rates before su
                     <h2 class="box-title">@if(Session::get('lang') == 'pt') {{$eventoespecial->nome_br}} @else {{$eventoespecial->nome_en}} @endif<small><i class="soap-icon-departure yellow-color"></i><span class="fourty-space">@if(Session::get('lang') == 'pt') {{$eventoespecial->pais->name}} @else {{$eventoespecial->pais->name}} @endif</span></small></h2>
                     <span class="price clearfix">
                         <small class="pull-left">{{trans('carrinho.preco')}}</small>
-                        <span class="pull-right">{{$evento->valor or '--'}}</span>
+                        <span class="pull-right">{{Session::get('moeda')->simbolo}} {{$eventoespecial->valor or '--'}}</span>
                     </span>
                     <div class="feedback clearfix">
                         <div title="" class="five-stars-container" data-toggle="tooltip" data-placement="bottom" data-original-title="{{$eventoespecial->estrelas or 0}} {{trans('hotel.estrelas')}}">

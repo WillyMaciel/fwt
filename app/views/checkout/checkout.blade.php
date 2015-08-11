@@ -108,10 +108,17 @@
                                                         <label for="nometitular">Telefone</label>
                                                         <input type="text" name="telefonetitular" id="telefonetitular" value="">
                                                     </li>
+                                                    @if(Session::get('lang') == 'pt')
                                                     <li>
                                                         <label for="nometitular">CPF</label>
                                                         <input type="text" name="cpftitular" id="cpftitular" value="">
                                                     </li>
+                                                    @else
+                                                    <li>
+                                                        <label for="nometitular">Passaport</label>
+                                                        <input type="text" name="passaportetitular" id="passaportetitular" value="">
+                                                    </li>
+                                                    @endif
                                                     <li>
                                                         <label for="expiry_date">Expiry date</label>
                                                         <select name="mes_cartao" id="mes_cartao">
@@ -164,12 +171,14 @@
                                                         <label for="cvv">CVV (Código de segurança)</label>
                                                         <input type="text" name="cvv" id="cvv" maxlength="3" placeholder="123">
                                                     </li>
+                                                    @if(Session::get('lang') == 'pt')
                                                     <li>
                                                         <label for="cvv">Parcelas</label>
                                                         {{Form::select('parcelas', $parcelas)}}
                                                         <input type="hidden" name="pedido_id" value="{{$pedido->id}}" />
                                                         <input type="hidden" id="card_brand_input" name="card_brand" value="" />
                                                     </li>
+                                                    @endif
                                                     <li style="padding-top: 20px;" style="">
                                                         <div style="padding-top: 1.6em;padding-right: 2.6em;">
                                                             <button type="submit" class="btn-medium icon-check uppercase full-width">Efetuar Pagamento</button>

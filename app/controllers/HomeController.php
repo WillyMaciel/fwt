@@ -22,7 +22,6 @@ class HomeController extends BaseController {
 		// 	debug(Auth::user()->toArray());
 		// }
 
-
 		$destinos = Destino::all();
 
 		$populares = Pacote::where('publicado', 1)->orderBy('visitas', 'DESC')->take(10)->get();

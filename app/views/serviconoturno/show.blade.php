@@ -661,25 +661,25 @@ We suggest that you contact the host to confirm availability and rates before su
 
                             @if($serviconoturno->tipo == 'Boate' || $serviconoturno->tipo == 'Evento')
 
-                                <h3> Ingresso Masculino </h3>
+                                <h3> {{trans('ingresso.masculino')}} </h3>
                                 <table class="preco_m">
                                     <thead>
                                         <tr>
                                             <th>
-                                                Tipo
+                                                {{trans('ingresso.tipo')}}
                                             </th>
                                             <th>
-                                                Quantidade
+                                                {{trans('ingresso.quantidade')}}
                                             </th>
                                             <th>
-                                                Preço
+                                                {{trans('ingresso.preco')}}
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>
-                                                INTEIRA
+                                                {{trans('ingresso.inteira')}}
                                             </td>
                                             <td>
                                                 <input type="text" name="quantidade[masculino][inteira]" class="form-control" />
@@ -688,9 +688,10 @@ We suggest that you contact the host to confirm availability and rates before su
                                                 {{$serviconoturno->valor_masculino}}
                                             </td>
                                         </tr>
+                                        @if(Session::get('lang') == 'pt')
                                         <tr>
                                             <td>
-                                                MEIA
+                                                {{trans('ingresso.meia')}}
                                             </td>
                                             <td>
                                                 <input type="text" name="quantidade[masculino][meia]" class="form-control" />
@@ -699,28 +700,29 @@ We suggest that you contact the host to confirm availability and rates before su
                                                 {{$serviconoturno->valor_masculino_meia}}
                                             </td>
                                         </tr>
+                                        @endif
                                     </tbody>
                                 </table>
 
-                                <h3> Ingresso Feminino </h3>
+                                <h3> {{trans('ingresso.feminino')}} </h3>
                                 <table class="preco_f">
                                     <thead>
                                         <tr>
                                             <th>
-                                                Tipo
+                                                {{trans('ingresso.tipo')}}
                                             </th>
                                             <th>
-                                                Quantidade
+                                                {{trans('ingresso.quantidade')}}
                                             </th>
                                             <th>
-                                                Preço
+                                                {{trans('ingresso.preco')}}
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>
-                                                INTEIRA
+                                                {{trans('ingresso.inteira')}}
                                             </td>
                                             <td>
                                                 <input type="text" name="quantidade[feminino][inteira]" class="form-control" />
@@ -729,9 +731,10 @@ We suggest that you contact the host to confirm availability and rates before su
                                                 {{$serviconoturno->valor_feminino}}
                                             </td>
                                         </tr>
+                                        @if(Session::get('lang') == 'pt')
                                         <tr>
                                             <td>
-                                                MEIA
+                                                {{trans('ingresso.meia')}}
                                             </td>
                                             <td>
                                                 <input type="text" name="quantidade[feminino][meia]" class="form-control" />
@@ -740,6 +743,7 @@ We suggest that you contact the host to confirm availability and rates before su
                                                 {{$serviconoturno->valor_feminino_meia}}
                                             </td>
                                         </tr>
+                                        @endif
                                     </tbody>
                                 </table>
 

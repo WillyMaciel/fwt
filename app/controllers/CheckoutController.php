@@ -78,6 +78,8 @@ class CheckoutController extends \BaseController {
 						}
 					}
 
+					$pedido->moeda = Session::get('moeda')->moeda;
+
 					$pedido->save();
 
 					$historico = new PedidoHistorico();
@@ -113,7 +115,7 @@ class CheckoutController extends \BaseController {
 					}
 
 
-				//	Session::forget('carrinho');
+					Session::forget('carrinho');
 
 
 
@@ -143,12 +145,12 @@ class CheckoutController extends \BaseController {
 			$parcelas[$i] = $i . ' - ' . number_format($pedido->total / $i, 2, ",", ".");
 		}
 
-		$pedido->produtos->each(function($p)
+		$pedido->produtos->each(function($p) use($pedido)
 		{
-			$p->pivot->preco = 'R$ ' . number_format($p->pivot->preco, 2, ",", ".");
+			$p->pivot->preco = $pedido->moeda . ' ' . number_format($p->pivot->preco, 2, ",", ".");
 		});
 
-		$pedido->total = 'R$ ' . number_format($pedido->total, 2, ",", ".");
+		$pedido->total = $pedido->moeda . ' ' . number_format($pedido->total, 2, ",", ".");
 
 		return View::make('checkout.checkout', compact('pedido', 'parcelas'));
 	}
@@ -157,9 +159,17 @@ class CheckoutController extends \BaseController {
 	{
 		$pedido = Pedido::findOrFail(Input::get('pedido_id'));
 
+		$input = Input::all();
+
 		$mundipagg = new Mundipagg;
 
-		$response = $mundipagg->createOrder(Input::all(), $pedido);
+		$response = $mundipagg->createOrder($input, $pedido);
+
+		if(isset($input['cpftitular']) && !empty($input['cpftitular']))
+		{
+			$pedido->titular_cpf = $input['cpftitular'];
+			$pedido->save();
+		}
 
 		echo '<pre>';
 		echo var_dump($response);

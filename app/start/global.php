@@ -96,3 +96,7 @@ else
 {
 	Session::put('lang', 'pt');
 }
+
+//Adiciona a moeda na session
+Session::put('moeda', new App\Helpers\Moeda);
+

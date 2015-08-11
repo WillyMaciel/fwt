@@ -131,6 +131,7 @@ Route::group(array('before' => 'guest'), function()
 //Requer Guest END
 
 Route::controller('pacote-destaque', 'PacoteDestaqueController');
+Route::controller('pacotedestaque', 'PacoteDestaqueController');
 Route::controller('pacote', 'PacoteController');
 Route::controller('carrinho', 'CarrinhoController');
 Route::controller('price', 'PriceController');

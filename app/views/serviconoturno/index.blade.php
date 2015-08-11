@@ -191,8 +191,8 @@
                                         @if($serviconoturno->tipo == 'Restaurante')
                                             <span class="price"><small>{{trans('carrinho.preco')}}</small>{{$serviconoturno->valor or '--'}}</span>
                                         @else
-                                            <span class="price"><small>{{trans('carrinho.preco')}} Masculino</small>{{$serviconoturno->valor_masculino or '--'}}</span>
-                                            <span class="price"><small>{{trans('carrinho.preco')}} Feminino</small>{{$serviconoturno->valor_feminino or '--'}}</span>
+                                            <span class="price"><small>{{trans('ingresso.masculino')}}</small>{{$serviconoturno->valor_masculino or '--'}}</span>
+                                            <span class="price"><small>{{trans('ingresso.feminino')}}</small>{{$serviconoturno->valor_feminino or '--'}}</span>
                                         @endif
                                         <a class="button btn-small full-width text-center" title="" href="{{URL::to("serviconoturno/show/{$serviconoturno->id}")}}">{{trans('hotel.selecionar')}}</a>
                                     </div>

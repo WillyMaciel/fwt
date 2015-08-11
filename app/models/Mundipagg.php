@@ -85,7 +85,7 @@ class Mundipagg
 		$orderRequest = new CreateOrderRequest();
 		//$orderRequest = new stdClass();
 		// Campos principais do objeto CreateOrderRequest
-	    $orderRequest->CurrencyIsoEnum = "BRL";
+	    $orderRequest->CurrencyIsoEnum = $pedido->moeda;
 		$orderRequest->AmountInCents = $tcents;
 		$orderRequest->AmountInCentsToConsiderPaid = $tcents;
 		$orderRequest->Retries = 0;
@@ -105,8 +105,11 @@ class Mundipagg
 		$buyer->MobilePhone = $input['telefonetitular'];
 		$buyer->Name = $cliente->nome;
 		$buyer->PersonTypeEnum = 'Person';
-		$buyer->TaxDocumentNumber = $input['cpftitular'];
-		$buyer->TaxDocumentTypeEnum = 'CPF';
+		if(isset($input['cpftitular']) && !empty($input['cpftitular']))
+		{
+			$buyer->TaxDocumentNumber = $input['cpftitular'];
+			$buyer->TaxDocumentTypeEnum = 'CPF';
+		}
 
 		if($cliente->endereco)
 		{
@@ -179,7 +182,7 @@ class Mundipagg
 		$ccTransaction3->ExpMonth = $input['mes_cartao'];
 		$ccTransaction3->ExpYear = $input['ano_cartao'];
 		$ccTransaction3->CreditCardBrandEnum = $input['card_brand'];
-		$ccTransaction3->InstallmentCount = $input['parcelas'];
+		$ccTransaction3->InstallmentCount = (isset($input['parcelas'])) ? $input['parcelas'] : 1;
 		$ccTransaction3->PaymentMethodCode = 1;
 		// Define o tipo da autorização
 		$ccTransaction3->CreditCardOperationEnum = "AuthAndCapture";
