@@ -167,7 +167,7 @@
                                                 <a href="{{URL::to("pacote/?continente={$p->continente->name_pt}")}}" title="" class="hover-effect"><img src="{{$p->imagem or 'http://placehold.it/270x160'}}" alt="" width="270" height="160" /></a>
                                             </figure>
                                             <div class="details">
-                                                <a title="View all" href="{{URL::to("pacote/?continente={$p->continente->name_pt}")}}" class="pull-right button uppercase">select</a>
+                                                <a title="View all" href="{{URL::to("pacote/?continente={$p->continente->name_pt}&pais={$p->id}")}}" class="pull-right button uppercase">select</a>
                                                 <h4 class="box-title">{{$p->name}} {{trans('pacotes.destinos')}}</h4>
                                                 <label class="price-wrapper">
                                                     <span class="price-per-unit">{{$p->valor}}</span>avg/night

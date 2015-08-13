@@ -19,12 +19,15 @@ class PacoteController extends \BaseController {
 
 			$string = urldecode($string);
 
-			$pacotes = Pacote::whereHas('pais', function($q) use($string)
+			$pais = (Input::has('pais')) ? Input::get('pais') : false;
+
+			$pacotes = Pacote::whereHas('pais', function($q) use($string, $pais)
 			{
 				$q->whereHas('continente', function($q) use($string)
 				{
 					$q->where('name_pt', 'LIKE', "%$string%");
-				});
+				})
+				->where('pais_id', $pais);
 			})->where('publicado', '=', 1);
 		}
 		else
