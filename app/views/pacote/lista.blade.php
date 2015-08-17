@@ -164,7 +164,7 @@
                                     <div class="col-sms-6 col-sm-6 col-md-4">
                                         <article class="box">
                                             <figure>
-                                                <a href="{{URL::to("pacote/?continente={$p->continente->name_pt}")}}" title="" class="hover-effect"><img src="{{$p->imagem or 'http://placehold.it/270x160'}}" alt="" width="270" height="160" /></a>
+                                                <a href="{{URL::to("pacote/?continente={$p->continente->name_pt}&pais={$p->id}")}}" title="" class="hover-effect"><img src="{{$p->imagem or 'http://placehold.it/270x160'}}" alt="" width="270" height="160" /></a>
                                             </figure>
                                             <div class="details">
                                                 <a title="View all" href="{{URL::to("pacote/?continente={$p->continente->name_pt}&pais={$p->id}")}}" class="pull-right button uppercase">select</a>
