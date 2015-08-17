@@ -156,9 +156,9 @@ return array(
 
 			'database'  => 'willy846_funworldtours',
 
-			'username'  => 'willy846_admin',
+			'username'  => 'willy846_fwt',
 
-			'password'  => 'willy2011',
+			'password'  => 'fwt6066',
 
 			'charset'   => 'utf8',
 

@@ -514,10 +514,10 @@ We suggest that you contact the host to confirm availability and rates before su
                         <span class="review pull-right">{{$hotel->estrelas or 0}} {{trans('hotel.estrelas')}}</span>
                     </div>                    
                         <!-- CARRINHO -->
-                        <form action="{{URL::to('carrinho/add')}}" method="POST">
+                        <!-- <form action="{{URL::to('carrinho/add')}}" method="POST">
                             <input type="hidden" name="produto" value="{{$hotel->id}}" />
                             <button type="submit" class="button yellow full-width uppercase btn-small">{{trans('hotel.comprar')}}</button>
-                        </form>
+                        </form> -->
                 </div>
             </article>
             <div class="travelo-box contact-box">
