@@ -181,7 +181,7 @@
                                 <div>
                                     <p>@if(Session::get('lang') == 'pt') {{substr(strip_tags($pacote->descricao_br), 0, 150) . ' ...'}} @else {{substr(strip_tags($pacote->descricao_en), 0, 150) . ' ...'}} @endif</p>
                                     <div>
-                                        <span class="price"><small>{{trans('hotel.preco_noite')}}</small>{{$pacote->valor}}</span>
+                                        <span class="price"><small>{{trans('carrinho.preco')}}</small>{{$pacote->valor}}</span>
                                         <a class="button btn-small full-width text-center" title="" href="{{URL::to("pacote/show/{$pacote->id}")}}">{{trans('hotel.selecionar')}}</a>
                                     </div>
                                 </div>
