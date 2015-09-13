@@ -142,6 +142,7 @@ Route::controller('translado', 'TransladoController');
 Route::controller('serviconoturno', 'ServicoNoturnoController');
 Route::controller('eventoespecial', 'EventoEspecialController');
 Route::controller('mailing', 'MailingController');
+Route::controller('pages', 'PaginaController');
 
 //Retorno Gateway Mundipagg
 Route::post('gateway/mundipagg/retorno', 'MundipaggController@postRetorno');
