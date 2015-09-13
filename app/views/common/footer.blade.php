@@ -13,6 +13,8 @@
                                     <li class="col-xs-6"><a href="{{URL::to('serviconoturno')}}">{{trans('menu.servicos_noturnos')}}</a></li>
                                     <li class="col-xs-6"><a href="{{URL::to('eventoespecial')}}">{{trans('menu.eventos_especiais')}}</a></li>
                                     <li class="col-xs-6"><a href="{{URL::to('pacote-destaque')}}">{{trans('menu.pacote_destaque')}}</a></li>
+                                    <li class="col-xs-6"><a href="{{URL::to('pages/about-us')}}">{{trans('paginas.sobre_nos')}}</a></li>
+                                    <li class="col-xs-6"><a href="{{URL::to('pages/terms-of-service')}}">{{trans('paginas.termos_de_servico')}}</a></li>
                                 </ul>
                             </div>
                             <div class="col-sm-6 col-md-2">
