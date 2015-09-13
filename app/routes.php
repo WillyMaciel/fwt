@@ -136,6 +136,7 @@ Route::controller('pacote', 'PacoteController');
 Route::controller('carrinho', 'CarrinhoController');
 Route::controller('price', 'PriceController');
 Route::controller('hotel', 'HotelController');
+Route::controller('apartamento', 'ApartamentoController');
 Route::controller('passeio', 'PasseioController');
 Route::controller('translado', 'TransladoController');
 Route::controller('serviconoturno', 'ServicoNoturnoController');

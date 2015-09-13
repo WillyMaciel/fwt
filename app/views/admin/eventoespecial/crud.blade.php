@@ -3,7 +3,7 @@
 <div class="page-title-container">
     <div class="container">
         <div class="page-title pull-left">
-            <h2 class="entry-title">Passeios - Criar</h2>
+            <h2 class="entry-title">Pacotes - Criar</h2>
         </div>
     </div>
 </div>

@@ -12,7 +12,13 @@ return array(
 	| as the size rules. Feel free to tweak each of these messages here.
 	|
 	*/
-	"preco"				=> "Preço",
-	"finalizar_compra"	=> 'Finalizar Compra'
+	"itens_pacote"			=> 'Itens no seu pacote',
+	'limpar_carrinho'		=> 'Limpar Carrinho',
+	'remover'				=> 'Remover do carrinho',
+	"preco"					=> "Preço",
+	"finalizar_compra"		=> 'Finalizar Compra',
+	'item_existente'		=> 'Este evento/serviço ja se encontra no carrinho.',
+	'item_adicionado'		=> 'item adicionado ao carrinho!.',
+	'item_nao_encontrado' 	=> 'Id do produto não encontrado.'
 
 );

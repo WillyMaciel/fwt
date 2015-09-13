@@ -20,4 +20,24 @@ class EventoEspecial extends Produto {
         return $this->morphMany('Imagem', 'imagemMorph');
     }
 
+    public function apartamentos()
+    {
+    	return $this->morphedByMany('Apartamento', 'pacote_relacoes', 'pacote_relacoes', 'pacote_id', 'produto_id');
+    }
+
+    public function hoteis()
+    {
+    	return $this->morphedByMany('Hotel', 'pacote_relacoes', 'pacote_relacoes', 'pacote_id', 'produto_id');
+    }
+
+    public function passeios()
+    {
+    	return $this->morphedByMany('Passeio', 'pacote_relacoes', 'pacote_relacoes', 'pacote_id', 'produto_id');
+    }
+
+    public function servicosnoturnos()
+    {
+    	return $this->morphedByMany('ServicoNoturno', 'pacote_relacoes', 'pacote_relacoes', 'pacote_id', 'produto_id');
+    }
+
 }

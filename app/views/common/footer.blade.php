@@ -39,16 +39,16 @@
                                 <form method="POST" action="{{URL::to('mailing/')}}">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <input name="nome" type="text" class="input-text full-width" placeholder="your name" />
+                                            <input name="nome" type="text" class="input-text full-width" placeholder="{{trans('contato.seu_nome')}}" />
                                         </div>
                                         <div class="form-group">
-                                            <input name="email" type="text" class="input-text full-width" placeholder="your email" />
+                                            <input name="email" type="text" class="input-text full-width" placeholder="{{trans('contato.seu_email')}}" />
                                         </div>
                                         <div class="form-group">
-                                            <input name="phone" type="text" class="input-text full-width" placeholder="your phone" />
+                                            <input name="phone" type="text" class="input-text full-width" placeholder="{{trans('contato.seu_telefone')}}" />
                                         </div>
                                         <div class="form-group">
-                                            <button type="submit" class="btn-success"> Enviar </button>
+                                            <button type="submit" class="btn-success"> {{trans('contato.enviar')}} </button>
                                         </div>
                                     </div>
                                 </form>
@@ -59,7 +59,7 @@
                                 <p>Fun World Tours was founded to help tourists in reaching and having access to the best events in South America & etc</p>
                                 <br />
                                 <address class="contact-details">
-                                    <span class="contact-phone"><i class="soap-icon-phone"></i> 1-800-123-HELLO</span>
+                                    <span class="contact-phone"><i class="soap-icon-phone"></i> 617 938 3717</span>
                                     <br />
                                     <a href="#" class="contact-email">leads@funworldtours.com</a>
                                 </address>

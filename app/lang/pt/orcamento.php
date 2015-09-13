@@ -15,6 +15,7 @@ return array(
 
 	'titulo'			=> 'Faça um Orçamento Abaixo!',
 	'desc'				=> 'Estamos trazendo-lhe uma experiência de viagem confortável, moderna e conectada.',
+	'desc2'				=> 'Faça um orçamento no formulario abaixo ou navegue por nossos pacotes no menu principal',
 	'info_pessoal'		=> 'Sua informação pessoal',
 	'primeiro_nome'		=> 'Primeiro nome',
 	'ultimo_nome'		=> 'Ultimo nome',

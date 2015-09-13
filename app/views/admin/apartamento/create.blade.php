@@ -78,7 +78,7 @@
 	                </div>
 	                <div class="form-group">
 	                    <span id="div_estrelas">
-	                        <label for="estrelas" class="">Tipo de Hotel (Estrelas)</label>
+	                        <label for="estrelas" class="">Tipo de Apartamento (Estrelas)</label>
 	                        <select class="form-control" type="select" id="estrelas" name="estrelas">
 	                            <option value="1" selected="selected">1</option>
 	                            <option value="2">2</option>

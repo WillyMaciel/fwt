@@ -44,7 +44,7 @@ class CarrinhoController extends \BaseController {
 		{
 			if(array_key_exists(Input::get('produto'), $carrinho))
 			{
-				return Redirect::back()->with('warning', array('Este evento/serviço ja se encontra no carrinho.'));
+				return Redirect::back()->with('warning', array(trans('carrinho.item_existente')));
 			}
 			else
 			{
@@ -99,12 +99,12 @@ class CarrinhoController extends \BaseController {
 
 				Session::put('carrinho', $carrinho);
 
-				return Redirect::back()->with('success', array('item adicionado ao carrinho!.'));
+				return Redirect::back()->with('success', array(trans('carrinho.item_adicionado')));
 			}
 		}
 		else
 		{
-			return Redirect::back()->with('danger', array('Id do produto não encontrado.'));
+			return Redirect::back()->with('danger', array(trans('carrinho.item_nao_encontrado')));
 		}
 	}
 

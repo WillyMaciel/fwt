@@ -15,6 +15,7 @@ return array(
 
 	'titulo'			=> 'Get Prices below!',
 	'desc'				=> 'We\'re bringing you a modern, comfortable and connected travel experience.',
+	'desc2'				=> 'Request quote in the following form or browse our packages in the main menu',
 	'info_pessoal'		=> 'Your personal information',
 	'primeiro_nome'		=> 'First name',
 	'ultimo_nome'		=> 'Last name',

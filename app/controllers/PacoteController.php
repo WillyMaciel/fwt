@@ -110,11 +110,18 @@ class PacoteController extends \BaseController {
 	public function getContinentes()
 	{
 
-		$continentes = Continente::has('pacotes')->get();
+		$continentes = Continente::has('pacotes');
+
+		if(Input::has('continente'))
+		{
+			$continentes->where('name_en', 'LIKE', '%'.Input::get('continente').'%')->orWhere('name_pt', 'LIKE', '%'.Input::get('continente').'%')->has('pacotes');
+		}
+
+		$continentes = $continentes->get();
 
 		$count =  $continentes->count();
 
-
+		$json = [];
 		foreach($continentes as $cont)
 		{
 			$json[] = $cont->name_pt;
@@ -126,34 +133,6 @@ class PacoteController extends \BaseController {
 		return View::make('pacote.lista_continente', compact('continentes', 'count', 'json'));
 	}
 
-	/**
-	 * Show the form for creating a new pacote
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		return View::make('pacote.create');
-	}
-
-	/**
-	 * Store a newly created pacote in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		$validator = Validator::make($data = Input::all(), Pacote::$rules);
-
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
-
-		Pacote::create($data);
-
-		return Redirect::route('pacote.index');
-	}
 
 	/**
 	 * Display the specified pacote.
@@ -171,70 +150,22 @@ class PacoteController extends \BaseController {
 
 		// $apartamentos = Apartamento::with('imagens')->where('pais_id', $pacote->pais_id)->where('cidade', 'LIKE', "%{$pacote->cidade}%")->where('publicado', 1)->get();
 
-		$hoteis = $pacote->hoteis;
+		$hoteis = $this->removeHtmlDescricao($pacote->hoteis);
 
-		$apartamentos = $pacote->apartamentos;
+		$apartamentos = $this->removeHtmlDescricao($pacote->apartamentos);
 
 		// $passeios = Passeio::with('imagens')->where('pais_id', $pacote->pais_id)->where('cidade', 'LIKE', "%{$pacote->cidade}%")->where('publicado', 1)->get();
 
 		// $snoturnos = ServicoNoturno::with('imagens')->where('pais_id', $pacote->pais_id)->where('cidade', 'LIKE', "%{$pacote->cidade}%")->where('publicado', 1)->get();
 
-		$passeios = $pacote->passeios;
+		$passeios = $this->removeHtmlDescricao($pacote->passeios);
 
-		$snoturnos = $pacote->servicosnoturnos;
+		$snoturnos = $this->removeHtmlDescricao($pacote->servicosnoturnos);
 
 		$similar = Pacote::similares();
 
 
 		return View::make('pacote.show', compact('pacote', 'hoteis', 'apartamentos', 'passeios', 'snoturnos'))->nest('similar_listing', 'widgets.similar_listing', array('data' => $similar, 'caminho' => 'uploads/pacotes/'));
-	}
-
-	/**
-	 * Show the form for editing the specified pacote.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		$pacote = Pacote::find($id);
-
-		return View::make('pacote.edit', compact('pacote'));
-	}
-
-	/**
-	 * Update the specified pacote in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		$pacote = Pacote::findOrFail($id);
-
-		$validator = Validator::make($data = Input::all(), Pacote::$rules);
-
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
-
-		$pacote->update($data);
-
-		return Redirect::route('pacote.index');
-	}
-
-	/**
-	 * Remove the specified pacote from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		Pacote::destroy($id);
-
-		return Redirect::route('pacote.index');
 	}
 
 }

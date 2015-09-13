@@ -78,11 +78,12 @@ We suggest that you contact the host to confirm availability and rates before su
             <div id="hotel-features" class="tab-container">
                 <ul class="tabs">
                     <li class="active"><a href="#hotel-description" data-toggle="tab">Description</a></li>
-                    <!-- <li><a href="#hotel-availability" data-toggle="tab">Availability</a></li> -->
-                    <!--li><a href="#hotel-amenities" data-toggle="tab">Amenities</a></li-->
+                    <li><a href="#whytravel" data-toggle="tab">Why Travel?</a></li>
+                    <li><a href="#hotels" data-toggle="tab">Hotels</a></li>
+                    <li><a href="#apartamentos" data-toggle="tab">Apts</a></li>
                     <li><a href="#hotel-reviews" data-toggle="tab">Reviews</a></li>
-                    <!--li><a href="#hotel-faqs" data-toggle="tab">FAQs</a></li-->
-                    <!--li><a href="#hotel-things-todo" data-toggle="tab">Things to Do</a></li-->
+                    <li><a href="#hotel-things-todo" data-toggle="tab">Things to Do</a></li>
+                    <li><a href="#nightlife" data-toggle="tab">Nightlife</a></li>
                     <li><a href="#hotel-write-review" data-toggle="tab">Write a Review</a></li>
                 </ul>
                 <div class="tab-content">
@@ -92,369 +93,70 @@ We suggest that you contact the host to confirm availability and rates before su
                             <p>@if(Session::get('lang') == 'pt') {{$eventoespecial->descricao_br}} @else {{$eventoespecial->descricao_en}} @endif</p>
                         </div>
                     </div>
-                    <!-- <div class="tab-pane fade" id="hotel-availability">
-                        <div class="update-search clearfix">
-                            <div class="col-md-5">
-                                <h4 class="title">When</h4>
-                                <div class="row">
-                                    <div class="col-xs-6">
-                                        <label>CHECK IN</label>
-                                        <div class="datepicker-wrap">
-                                            <input type="text" placeholder="mm/dd/yy" class="input-text full-width" />
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <label>CHECK OUT</label>
-                                        <div class="datepicker-wrap">
-                                            <input type="text" placeholder="mm/dd/yy" class="input-text full-width" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="col-md-4">
-                                <h4 class="title">Who</h4>
-                                <div class="row">
-                                    <div class="col-xs-4">
-                                        <label>ROOMS</label>
-                                        <div class="selector">
-                                            <select class="full-width">
-                                                <option value="1">01</option>
-                                                <option value="2">02</option>
-                                                <option value="3">03</option>
-                                                <option value="4">04</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-4">
-                                        <label>ADULTS</label>
-                                        <div class="selector">
-                                            <select class="full-width">
-                                                <option value="1">01</option>
-                                                <option value="2">02</option>
-                                                <option value="3">03</option>
-                                                <option value="4">04</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-4">
-                                        <label>KIDS</label>
-                                        <div class="selector">
-                                            <select class="full-width">
-                                                <option value="1">01</option>
-                                                <option value="2">02</option>
-                                                <option value="3">03</option>
-                                                <option value="4">04</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <h4 class="visible-md visible-lg">&nbsp;</h4>
-                                <label class="visible-md visible-lg">&nbsp;</label>
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <button data-animation-duration="1" data-animation-type="bounce" class="full-width icon-check animated" type="submit">SEARCH NOW</button>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="tab-pane fade" id="whytravel">
+                        <div class="long-description">
+                            <h2>Why Travel?</h2>
+                            <p>@if(Session::get('lang') == 'pt') {{$eventoespecial->whytravel_br}} @else {{$eventoespecial->whytravel_en}} @endif</p>
                         </div>
-                        <h2>Available Rooms</h2>
-                        <div class="room-list listing-style3 hotel">
-                            <article class="box">
-                                <figure class="col-sm-4 col-md-3">
-                                    <a class="hover-effect popup-gallery" href="ajax/slideshow-popup.html" title=""><img width="230" height="160" src="http://placehold.it/230x160" alt=""></a>
-                                </figure>
-                                <div class="details col-xs-12 col-sm-8 col-md-9">
-                                    <div>
-                                        <div>
-                                            <div class="box-title">
-                                                <h4 class="title">Standard Family Room</h4>
-                                                <dl class="description">
-                                                    <dt>Max Guests:</dt>
-                                                    <dd>3 persons</dd>
-                                                </dl>
+                    </div>
+
+                    <div class="tab-pane fade" id="hotels">
+                        <h2>Hotels</h2>
+                        <p>All of the accommodations offered on our site have been personally inspected by us to uphold the utmost quality standards of our travelers. We base our selection on Service, Cleanliness, and Location. FunWorldTours offers 5 star, 4 star, & 3 star accommodations.The hotels below are based on our picks of hotels, we work with most if not all hotels in {{$eventoespecial->cidade}}.</p>
+                        <div class="activities image-box style2 innerstyle">
+                            @forelse($hoteis as $h)
+                                <article class="box">
+                                    <figure>
+                                        <a title="" href="{{URL::to("hotel/show/{$h->id}")}}" class="hover-effect"><img width="270" height="160" alt="" src="@if(isset($h->imagem)) uploads/hoteis/270x160_{{$h->imagem}} @else http://placehold.it/270x160 @endif"></a>
+                                    </figure>
+                                    <div class="details">
+                                        <div class="details-header">
+                                            <div>
+                                                <div title="" class="five-stars-container" data-toggle="tooltip" data-placement="bottom" data-original-title="{{$h->estrelas or 0}} Estrelas">
+                                                        <span class="five-stars" style="width: {{$h->estrelas * 20}}%;"></span>
+                                                </div>
+                                                <span class="review">{{$h->estrelas or 0}} {{trans('hotel.estrelas')}}</span>
                                             </div>
-                                            <div class="amenities">
-                                                <i class="soap-icon-wifi circle"></i>
-                                                <i class="soap-icon-fitnessfacility circle"></i>
-                                                <i class="soap-icon-fork circle"></i>
-                                                <i class="soap-icon-television circle"></i>
-                                            </div>
+                                            <h4 class="box-title">@if(Session::get('lang') == 'pt') {{$h->nome_br}} @else {{$h->nome_en}} @endif</h4>
                                         </div>
-                                        <div class="price-section">
-                                            <span class="price"><small>PER/NIGHT</small>$121</span>
-                                        </div>
+                                        <p>@if(Session::get('lang') == 'pt') {{substr($h->descricao_br, 0, 150) . ' ...'}} @else {{substr($h->descricao_en, 0, 150) . ' ...'}} @endif</p>
+                                        <a class="button" title="" href="{{URL::to("hotel/show/{$h->id}")}}">MORE</a>
                                     </div>
-                                    <div>
-                                        <p>Nunc cursus libero purus ac congue ar lorem cursus ut sed vitae pulvinar massa idend porta nequetiam elerisque mi id, consectetur adipi deese cing elit maus fringilla bibe endum.</p>
-                                        <div class="action-section">
-                                            <a href="hotel-booking.html" title="" class="button btn-small full-width text-center">BOOK NOW</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="box">
-                                <figure class="col-sm-4 col-md-3">
-                                    <a class="hover-effect popup-gallery" href="ajax/slideshow-popup.html" title=""><img width="230" height="160" src="http://placehold.it/230x160" alt=""></a>
-                                </figure>
-                                <div class="details col-xs-12 col-sm-8 col-md-9">
-                                    <div>
-                                        <div>
-                                            <div class="box-title">
-                                                <h4 class="title">Superior Double Room</h4>
-                                                <dl class="description">
-                                                    <dt>Max Guests:</dt>
-                                                    <dd>5 persons</dd>
-                                                </dl>
-                                            </div>
-                                            <div class="amenities">
-                                                <i class="soap-icon-wifi circle"></i>
-                                                <i class="soap-icon-fitnessfacility circle"></i>
-                                                <i class="soap-icon-fork circle"></i>
-                                                <i class="soap-icon-television circle"></i>
-                                            </div>
-                                        </div>
-                                        <div class="price-section">
-                                            <span class="price"><small>PER/NIGHT</small>$241</span>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <p>Nunc cursus libero purus ac congue ar lorem cursus ut sed vitae pulvinar massa idend porta nequetiam elerisque mi id, consectetur adipi deese cing elit maus fringilla bibe endum.</p>
-                                        <div class="action-section">
-                                            <a href="hotel-booking.html" title="" class="button btn-small full-width text-center">BOOK NOW</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="box">
-                                <figure class="col-sm-4 col-md-3">
-                                    <a class="hover-effect popup-gallery" href="ajax/slideshow-popup.html" title=""><img width="230" height="160" src="http://placehold.it/230x160" alt=""></a>
-                                </figure>
-                                <div class="details col-xs-12 col-sm-8 col-md-9">
-                                    <div>
-                                        <div>
-                                            <div class="box-title">
-                                                <h4 class="title">Deluxe Single Room</h4>
-                                                <dl class="description">
-                                                    <dt>Max Guests:</dt>
-                                                    <dd>4 persons</dd>
-                                                </dl>
-                                            </div>
-                                            <div class="amenities">
-                                                <i class="soap-icon-wifi circle"></i>
-                                                <i class="soap-icon-fitnessfacility circle"></i>
-                                                <i class="soap-icon-fork circle"></i>
-                                                <i class="soap-icon-television circle"></i>
-                                            </div>
-                                        </div>
-                                        <div class="price-section">
-                                            <span class="price"><small>PER/NIGHT</small>$137</span>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <p>Nunc cursus libero purus ac congue ar lorem cursus ut sed vitae pulvinar massa idend porta nequetiam elerisque mi id, consectetur adipi deese cing elit maus fringilla bibe endum.</p>
-                                        <div class="action-section">
-                                            <a href="hotel-booking.html" title="" class="button btn-small full-width text-center">BOOK NOW</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="box">
-                                <figure class="col-sm-4 col-md-3">
-                                    <a class="hover-effect popup-gallery" href="ajax/slideshow-popup.html" title=""><img width="230" height="160" src="http://placehold.it/230x160" alt=""></a>
-                                </figure>
-                                <div class="details col-xs-12 col-sm-8 col-md-9">
-                                    <div>
-                                        <div>
-                                            <div class="box-title">
-                                                <h4 class="title">Single Bed Room</h4>
-                                                <dl class="description">
-                                                    <dt>Max Guests:</dt>
-                                                    <dd>2 persons</dd>
-                                                </dl>
-                                            </div>
-                                            <div class="amenities">
-                                                <i class="soap-icon-wifi circle"></i>
-                                                <i class="soap-icon-fitnessfacility circle"></i>
-                                                <i class="soap-icon-fork circle"></i>
-                                                <i class="soap-icon-television circle"></i>
-                                            </div>
-                                        </div>
-                                        <div class="price-section">
-                                            <span class="price"><small>PER/NIGHT</small>$55</span>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <p>Nunc cursus libero purus ac congue ar lorem cursus ut sed vitae pulvinar massa idend porta nequetiam elerisque mi id, consectetur adipi deese cing elit maus fringilla bibe endum.</p>
-                                        <div class="action-section">
-                                            <a href="hotel-booking.html" title="" class="button btn-small full-width text-center">BOOK NOW</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                            <a href="#" class="load-more button full-width btn-large fourty-space">LOAD MORE ROOMS</a>
+                                </article>
+                            @empty
+                                <p> There is no Hotels in this package </p>
+                            @endforelse
                         </div>
+                    </div>
+                    <div class="tab-pane fade" id="apartamentos">
+                        <h2>Apts</h2>
+                        <p>All of the apartments offered on our site have been personally inspected by us to uphold the utmost quality standards of our travelers. We base our selection on Service, Cleanliness, and Location. FunWorldTours offers luxury penthouses as well as moderate accommodations.</p>
+                        <div class="activities image-box style2 innerstyle">
+                            @forelse($apartamentos as $p)
+                                <article class="box">
+                                    <figure>
+                                        <a title="" href="{{URL::to("apartamento/show/{$p->id}")}}" class="hover-effect"><img width="270" height="160" alt="" src="@if(isset($p->imagem)) uploads/apartamentos/270x160_{{$p->imagem}} @else http://placehold.it/270x160 @endif"></a>
+                                    </figure>
+                                    <div class="details">
+                                        <div class="details-header">
+                                            <div>
+                                                <div title="" class="five-stars-container" data-toggle="tooltip" data-placement="bottom" data-original-title="{{$p->estrelas or 0}} Estrelas">
+                                                        <span class="five-stars" style="width: {{$p->estrelas * 20}}%;"></span>
+                                                </div>
+                                                <span class="review">{{$p->estrelas or 0}} {{trans('hotel.estrelas')}}</span>
+                                            </div>
+                                            <h4 class="box-title">@if(Session::get('lang') == 'pt') {{$p->nome_br}} @else {{$p->nome_en}} @endif</h4>
+                                        </div>
+                                        <p>@if(Session::get('lang') == 'pt') {{substr($p->descricao_br, 0, 150) . ' ...'}} @else {{substr($p->descricao_en, 0, 150) . ' ...'}} @endif</p>
+                                        <a class="button" title="" href="{{URL::to("apartamento/show/{$p->id}")}}">MORE</a>
+                                    </div>
+                                </article>
 
-                    </div> -->
-                    <div class="tab-pane fade" id="hotel-amenities">
-                        <h2>Amenities Style 01</h2>
-
-                        <p>Maecenas vitae turpis condimentum metus tincidunt semper bibendum ut orci. Donec eget accumsan est. Duis laoreet sagittis elit et vehicula. Cras viverra posuere condimentum. Donec urna arcu, venenatis quis augue sit amet, mattis gravida nunc. Integer faucibus, tortor a tristique adipiscing, arcu metus luctus libero, nec vulputate risus elit id nibh.</p>
-                        <ul class="amenities clearfix style1">
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style1"><i class="soap-icon-wifi"></i>WI_FI</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style1"><i class="soap-icon-swimming"></i>swimming pool</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style1"><i class="soap-icon-television"></i>television</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style1"><i class="soap-icon-coffee"></i>coffee</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style1"><i class="soap-icon-aircon"></i>air conditioning</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style1"><i class="soap-icon-fitnessfacility"></i>fitness facility</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style1"><i class="soap-icon-fridge"></i>fridge</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style1"><i class="soap-icon-winebar"></i>wine bar</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style1"><i class="soap-icon-smoking"></i>smoking allowed</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style1"><i class="soap-icon-entertainment"></i>entertainment</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style1"><i class="soap-icon-securevault"></i>secure vault</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style1"><i class="soap-icon-pickanddrop"></i>pick and drop</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style1"><i class="soap-icon-phone"></i>room service</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style1"><i class="soap-icon-pets"></i>pets allowed</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style1"><i class="soap-icon-playplace"></i>play place</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style1"><i class="soap-icon-breakfast"></i>complimentary breakfast</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style1"><i class="soap-icon-parking"></i>Free parking</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style1"><i class="soap-icon-conference"></i>conference room</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style1"><i class="soap-icon-fireplace"></i>fire place</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style1"><i class="soap-icon-handicapaccessiable"></i>Handicap Accessible</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style1"><i class="soap-icon-doorman"></i>Doorman</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style1"><i class="soap-icon-tub"></i>Hot Tub</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style1"><i class="soap-icon-elevator"></i>Elevator in Building</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style1"><i class="soap-icon-star"></i>Suitable for Events</div>
-                            </li>
-                        </ul>
-                        <br />
-
-                        <h2>Amenities Style 02</h2>
-                        <p>Maecenas vitae turpis condimentum metus tincidunt semper bibendum ut orci. Donec eget accumsan est. Duis laoreet sagittis elit et vehicula. Cras viverra posuere condimentum. Donec urna arcu, venenatis quis augue sit amet, mattis gravida nunc. Integer faucibus, tortor a tristique adipiscing, arcu metus luctus libero, nec vulputate risus elit id nibh.</p>
-                        <ul class="amenities clearfix style2">
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style2"><i class="soap-icon-wifi circle"></i>WI_FI</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style2"><i class="soap-icon-swimming circle"></i>swimming pool</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style2"><i class="soap-icon-television circle"></i>television</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style2"><i class="soap-icon-coffee circle"></i>coffee</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style2"><i class="soap-icon-aircon circle"></i>air conditioning</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style2"><i class="soap-icon-fitnessfacility circle"></i>fitness facility</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style2"><i class="soap-icon-fridge circle"></i>fridge</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style2"><i class="soap-icon-winebar circle"></i>wine bar</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style2"><i class="soap-icon-smoking circle"></i>smoking allowed</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style2"><i class="soap-icon-entertainment circle"></i>entertainment</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style2"><i class="soap-icon-securevault circle"></i>secure vault</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style2"><i class="soap-icon-pickanddrop circle"></i>pick and drop</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style2"><i class="soap-icon-phone circle"></i>room service</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style2"><i class="soap-icon-pets circle"></i>pets allowed</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style2"><i class="soap-icon-playplace circle"></i>play place</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style2"><i class="soap-icon-breakfast circle"></i>complimentary breakfast</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style2"><i class="soap-icon-parking circle"></i>Free parking</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style2"><i class="soap-icon-conference circle"></i>conference room</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style2"><i class="soap-icon-fireplace circle"></i>fire place</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style2"><i class="soap-icon-handicapaccessiable circle"></i>Handicap Accessible</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style2"><i class="soap-icon-doorman circle"></i>Doorman</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style2"><i class="soap-icon-tub circle"></i>Hot Tub</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style2"><i class="soap-icon-elevator circle"></i>Elevator in Building</div>
-                            </li>
-                            <li class="col-md-4 col-sm-6">
-                                <div class="icon-box style2"><i class="soap-icon-star circle"></i>Suitable for Events</div>
-                            </li>
-                        </ul>
+                            @empty
+                                <p> There is no apartments for this package </p>
+                            @endforelse
+                        </div>
                     </div>
                     <div class="tab-pane fade" id="hotel-reviews">
                         @if(!$eventoespecial->reviews->isEmpty())
@@ -487,145 +189,56 @@ We suggest that you contact the host to confirm availability and rates before su
                         @endif
                         <!-- <a href="#" class="button full-width btn-large">LOAD MORE REVIEWS</a> -->
                     </div>
-                    <div class="tab-pane fade" id="hotel-faqs">
-                        <h2>Frquently Asked Questions</h2>
-                        <div class="topics">
-                            <ul class="check-square clearfix">
-                                <li class="col-sm-6 col-md-4"><a href="#">address &amp; map</a></li>
-                                <li class="col-sm-6 col-md-4"><a href="#">messaging</a></li>
-                                <li class="col-sm-6 col-md-4"><a href="#">refunds</a></li>
-                                <li class="col-sm-6 col-md-4"><a href="#">pricing</a></li>
-                                <li class="col-sm-6 col-md-4 active"><a href="#">reservation requests</a></li>
-                                <li class="col-sm-6 col-md-4"><a href="#">your reservation</a></li>
-                            </ul>
-                        </div>
-                        <p>Maecenas vitae turpis condimentum metus tincidunt semper bibendum ut orci. Donec eget accumsan est. Duis laoreet sagittis elit et vehicula. Cras viverra posuere condimentum. Donec urna arcu, venenatis quis augue sit amet, mattis gravida nunc. Integer faucibus, tortor a tristique adipiscing, arcu metus luctus libero, nec vulputate risus elit id nibh.</p>
-                        <div class="toggle-container">
-                            <div class="panel style1 arrow-right">
-                                <h4 class="panel-title">
-                                    <a class="collapsed" href="#question1" data-toggle="collapse">How do I know a reservation is accepted or confirmed?</a>
-                                </h4>
-                                <div class="panel-collapse collapse" id="question1">
-                                    <div class="panel-content">
-
+                    <div class="tab-pane fade" id="hotel-things-todo">
+                        <h2>Things to do</h2>
+                        <p>All of the apartments offered on our site have been personally inspected by us to uphold the utmost quality standards of our travelers. We base our selection on Service, Cleanliness, and Location. FunWorldTours offers luxury penthouses as well as moderate accommodations.</p>
+                        <div class="activities image-box style2 innerstyle">
+                            @foreach($passeios as $p)
+                                <article class="box">
+                                    <figure>
+                                        <a title="" href="{{URL::to("passeio/show/{$p->id}")}}" class="hover-effect"><img width="270" height="160" alt="" src="@if(isset($p->imagem)) uploads/passeios/270x160_{{$p->imagem}} @else http://placehold.it/270x160 @endif"></a>
+                                    </figure>
+                                    <div class="details">
+                                        <div class="details-header">
+                                            <!-- <div>
+                                                <div title="" class="five-stars-container" data-toggle="tooltip" data-placement="bottom" data-original-title="{{$p->estrelas or 0}} Estrelas">
+                                                        <span class="five-stars" style="width: {{$p->estrelas * 20}}%;"></span>
+                                                </div>
+                                                <span class="review">{{$p->estrelas or 0}} {{trans('hotel.estrelas')}}</span>
+                                            </div> -->
+                                            <h4 class="box-title">@if(Session::get('lang') == 'pt') {{$p->nome_br}} @else {{$p->nome_en}} @endif</h4>
+                                        </div>
+                                        <p>@if(Session::get('lang') == 'pt') {{substr($p->descricao_br, 0, 150) . ' ...'}} @else {{substr($p->descricao_en, 0, 150) . ' ...'}} @endif</p>
+                                        <a class="button" title="" href="{{URL::to("passeio/show/{$p->id}")}}">MORE</a>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="panel style1 arrow-right">
-                                <h4 class="panel-title">
-                                    <a class="collapsed" href="#question2" data-toggle="collapse">What do I do after I receive a reservation request from a guest?</a>
-                                </h4>
-                                <div class="panel-collapse collapse" id="question2">
-                                    <div class="panel-content">
-                                        <p>Sed a justo enim. Vivamus volutpat ipsum ultrices augue porta lacinia. Proin in elementum enim. <span class="skin-color">Duis suscipit justo</span> non purus consequat molestie. Etiam pharetra ipsum sagittis sollicitudin ultricies. Praesent luctus, diam ut tempus aliquam, diam ante euismod risus, euismod viverra quam quam eget turpis. Nam <span class="skin-color">tristique congue</span> arcu, id bibendum diam. Ut hendrerit, leo a pellentesque porttitor, purus arcu tristique erat, in faucibus elit leo in turpis vitae luctus enim, a mollis nulla.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel style1 arrow-right">
-                                <h4 class="panel-title">
-                                    <a class="" href="#question3" data-toggle="collapse">How much time do I have to respond to a reservation request?</a>
-                                </h4>
-                                <div class="panel-collapse collapse in" id="question3">
-                                    <div class="panel-content">
-                                        <p>Sed a justo enim. Vivamus volutpat ipsum ultrices augue porta lacinia. Proin in elementum enim. <span class="skin-color">Duis suscipit justo</span> non purus consequat molestie. Etiam pharetra ipsum sagittis sollicitudin ultricies. Praesent luctus, diam ut tempus aliquam, diam ante euismod risus, euismod viverra quam quam eget turpis. Nam <span class="skin-color">tristique congue</span> arcu, id bibendum diam. Ut hendrerit, leo a pellentesque porttitor, purus arcu tristique erat, in faucibus elit leo in turpis vitae luctus enim, a mollis nulla.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel style1 arrow-right">
-                                <h4 class="panel-title">
-                                    <a class="collapsed" href="#question4" data-toggle="collapse">Why can’t I call or email hotel or host before booking?</a>
-                                </h4>
-                                <div class="panel-collapse collapse" id="question4">
-                                    <div class="panel-content">
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel style1 arrow-right">
-                                <h4 class="panel-title">
-                                    <a class="collapsed" href="#question5" data-toggle="collapse">Am I allowed to decline reservation requests?</a>
-                                </h4>
-                                <div class="panel-collapse collapse" id="question5">
-                                    <div class="panel-content">
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel style1 arrow-right">
-                                <h4 class="panel-title">
-                                    <a class="collapsed" href="#question6" data-toggle="collapse">What happens if I let a reservation request expire?</a>
-                                </h4>
-                                <div class="panel-collapse collapse" id="question6">
-                                    <div class="panel-content">
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel style1 arrow-right">
-                                <h4 class="panel-title">
-                                    <a class="collapsed" href="#question7" data-toggle="collapse">How do I set reservation requirements?</a>
-                                </h4>
-                                <div class="panel-collapse collapse" id="question7">
-                                    <div class="panel-content">
-
-                                    </div>
-                                </div>
-                            </div>
-
+                                </article>
+                            @endforeach
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="hotel-things-todo">
-                        <h2>Things to Do</h2>
-                        <p>Maecenas vitae turpis condimentum metus tincidunt semper bibendum ut orci. Donec eget accumsan est. Duis laoreet sagittis elit et vehicula. Cras viverra posuere condimentum. Donec urna arcu, venenatis quis augue sit amet, mattis gravida nunc. Integer faucibus, tortor a tristique adipiscing, arcu metus luctus libero, nec vulputate risus elit id nibh.</p>
+                    <div class="tab-pane fade" id="nightlife">
+                        <h2>NightLife</h2>
+                        <p></p>
                         <div class="activities image-box style2 innerstyle">
-                            <article class="box">
-                                <figure>
-                                    <a title="" href="#"><img width="250" height="161" alt="" src="http://placehold.it/250x160"></a>
-                                </figure>
-                                <div class="details">
-                                    <div class="details-header">
-                                        <div class="review-score">
-                                            <div class="five-stars-container"><div style="width: 60%;" class="five-stars"></div></div>
-                                            <span class="reviews">25 reviews</span>
+                            @foreach($snoturnos as $s)
+                                <article class="box">
+                                    <figure>
+                                        <a title="" href="{{URL::to("serviconoturno/show/{$s->id}")}}" class="hover-effect"><img width="270" height="160" alt="" src="@if(isset($s->imagem)) uploads/servicosnoturnos/270x160_{{$s->imagem}} @else http://placehold.it/270x160 @endif"></a>
+                                    </figure>
+                                    <div class="details">
+                                        <div class="details-header">
+                                           <!--  <div>
+                                                <div title="" class="five-stars-container" data-toggle="tooltip" data-placement="bottom" data-original-title="{{$s->estrelas or 0}} Estrelas">
+                                                        <span class="five-stars" style="width: {{$s->estrelas * 20}}%;"></span>
+                                                </div>
+                                                <span class="review">{{$s->estrelas or 0}} {{trans('hotel.estrelas')}}</span>
+                                            </div> -->
+                                            <h4 class="box-title">@if(Session::get('lang') == 'pt') {{$s->nome_br}} @else {{$s->nome_en}} @endif</h4>
                                         </div>
-                                        <h4 class="box-title">Central Park Walking Tour</h4>
+                                        <p>@if(Session::get('lang') == 'pt') {{substr($s->descricao_br, 0, 150) . ' ...'}} @else {{substr($s->descricao_en, 0, 150) . ' ...'}} @endif</p>
+                                        <a class="button" title="" href="{{URL::to("serviconoturno/show/{$s->id}")}}">MORE</a>
                                     </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat wisi enim don't look even slightly believable.</p>
-                                    <a class="button" title="" href="#">MORE</a>
-                                </div>
-                            </article>
-                            <article class="box">
-                                <figure>
-                                    <a title="" href="#"><img width="250" height="161" alt="" src="http://placehold.it/250x160"></a>
-                                </figure>
-                                <div class="details">
-                                    <div class="details-header">
-                                        <div class="review-score">
-                                            <div class="five-stars-container"><div style="width: 60%;" class="five-stars"></div></div>
-                                            <span class="reviews">25 reviews</span>
-                                        </div>
-                                        <h4 class="box-title">Museum of Modern Art</h4>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat wisi enim don't look even slightly believable.</p>
-                                    <a class="button" title="" href="#">MORE</a>
-                                </div>
-                            </article>
-                            <article class="box">
-                                <figure>
-                                    <a title="" href="#"><img width="250" height="161" alt="" src="http://placehold.it/250x160"></a>
-                                </figure>
-                                <div class="details">
-                                    <div class="details-header">
-                                        <div class="review-score">
-                                            <div class="five-stars-container"><div style="width: 60%;" class="five-stars"></div></div>
-                                            <span class="reviews">25 reviews</span>
-                                        </div>
-                                        <h4 class="box-title">Crazy Horse Cabaret Show</h4>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat wisi enim don't look even slightly believable.</p>
-                                    <a class="button" title="" href="#">MORE</a>
-                                </div>
-                            </article>
+                                </article>
+                            @endforeach
                         </div>
                     </div>
                     <div class="tab-pane fade" id="hotel-write-review">
@@ -638,13 +251,13 @@ We suggest that you contact the host to confirm availability and rates before su
         <div class="sidebar col-md-3">
             <article class="detailed-logo">
                 <figure>
-                    <img width="114" height="85" src=" @if($eventoespecial->imagem) uploads/eventosespeciais/114x85_{{$eventoespecial->imagem}} @else http://placehold.it/114x85 @endif" alt="">
+                    <img width="114" height="85" src="@if($eventoespecial->imagem) uploads/eventosespeciais/114x85_{{$eventoespecial->imagem}} @else http://placehold.it/114x85 @endif" alt="">
                 </figure>
                 <div class="details">
                     <h2 class="box-title">@if(Session::get('lang') == 'pt') {{$eventoespecial->nome_br}} @else {{$eventoespecial->nome_en}} @endif<small><i class="soap-icon-departure yellow-color"></i><span class="fourty-space">@if(Session::get('lang') == 'pt') {{$eventoespecial->pais->name}} @else {{$eventoespecial->pais->name}} @endif</span></small></h2>
                     <span class="price clearfix">
-                        <small class="pull-left">{{trans('carrinho.preco')}}</small>
-                        <span class="pull-right">{{$eventoespecial->valor or '--'}}</span>
+                        <small class="pull-left">avg/night</small>
+                        <span class="pull-right">{{$eventoespecial->valor}}</span>
                     </span>
                     <div class="feedback clearfix">
                         <div title="" class="five-stars-container" data-toggle="tooltip" data-placement="bottom" data-original-title="{{$eventoespecial->estrelas or 0}} {{trans('hotel.estrelas')}}">
@@ -668,7 +281,6 @@ We suggest that you contact the host to confirm availability and rates before su
                     <a class="contact-email" href="#">contato@funworldtours.com</a>
                 </address>
             </div>
-
 
             <!-- SIMILAR LISTING -->
                 {{$similar_listing}}

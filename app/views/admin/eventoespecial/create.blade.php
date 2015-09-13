@@ -3,7 +3,7 @@
 <div class="page-title-container">
     <div class="container">
         <div class="page-title pull-left">
-            <h2 class="entry-title">Eventos Especiais - Criar</h2>
+            <h2 class="entry-title">Pacote - Criar</h2>
         </div>
     </div>
 </div>
@@ -16,7 +16,7 @@
 		    	<h2></h2>
 			</div>
 		    <div class="pull-right">
-			    <a href="http://funworldtours.dev/admin/eventoespecial" class="btn btn-default">Voltar para listagem</a>
+			    <a href="{{URL::to('admin/eventoespecial')}}" class="btn btn-default">Voltar para listagem</a>
 			    <button type="submit" class="btn btn-success">Salvar</button>
 		    </div>
 	    </div>
@@ -27,8 +27,12 @@
 		            <li class="active"><a href="#first-tab" data-toggle="tab"><i class="circle"><img src="images/icon/flags/pt-br.png"></i>Português</a></li>
 		            <li class=""><a href="#second-tab" data-toggle="tab"><i class="circle"><img src="images/icon/flags/en-us.png"></i>Inglês</a></li>
 		            <li class=""><a href="#third-tab" data-toggle="tab"><i class="soap-icon-suitcase circle"></i>Infos Adicionais</a></li>
+		            <li class=""><a href="#hoteis" data-toggle="tab"><i class="soap-icon-suitcase circle"></i>Hotéis</a></li>
+		            <li class=""><a href="#apartamentos" data-toggle="tab"><i class="soap-icon-suitcase circle"></i>Apartamentos</a></li>
+		            <li class=""><a href="#passeios" data-toggle="tab"><i class="soap-icon-suitcase circle"></i>Passeios</a></li>
+		            <li class=""><a href="#servicosnoturnos" data-toggle="tab"><i class="soap-icon-suitcase circle"></i>Serviços Noturnos</a></li>
 		            <!-- <li class=""><a href="#fourth-tab" data-toggle="tab"><i class="soap-icon-suitcase circle"></i>Caracteristicas</a></li> -->
-		            <li class=""><a href="#fifth-tab" data-toggle="tab"><i class="soap-icon-suitcase circle"></i>Preços</a></li>
+		            <!-- <li class=""><a href="#fifth-tab" data-toggle="tab"><i class="soap-icon-suitcase circle"></i>Preços</a></li> -->
 		            <li class=""><a href="#sixth-tab" data-toggle="tab"><i class="soap-icon-suitcase circle"></i>Imagens</a></li>
 		        </ul>
 		        <div class="tab-content">
@@ -45,6 +49,11 @@
 		                	{{Form::textarea('descricao_br', null, array('class' => 'form-control', 'id' => 'nome_br', 'cols' => 50, 'rows' => 10))}}
 		                </div>
 
+		                <div class="form-group">
+		                	<span id="div_descricao_en"><label for="descricao_en" class="">Por que viajar?</label>
+		                	{{Form::textarea('whytravel_br', null, array('class' => 'form-control', 'id' => 'nome_en', 'cols' => 50, 'rows' => 10))}}
+		                </div>
+
 		            </div>
 		            <div class="tab-pane fade" id="second-tab">
 		                <h2 class="tab-content-title"><img src="images/icon/flags/en-us.png"> - Inglês</h2>
@@ -59,6 +68,11 @@
 		                	{{Form::textarea('descricao_en', null, array('class' => 'form-control', 'id' => 'nome_en', 'cols' => 50, 'rows' => 10))}}
 		                </div>
 
+		                <div class="form-group">
+		                	<span id="div_descricao_en"><label for="descricao_en" class="">Por que viajar?</label>
+		                	{{Form::textarea('whytravel_en', null, array('class' => 'form-control', 'id' => 'nome_en', 'cols' => 50, 'rows' => 10))}}
+		                </div>
+
 		            </div>
 		            <div class="tab-pane fade" id="third-tab">
 		                <h2 class="tab-content-title">Informações Adicionais</h2>
@@ -70,10 +84,24 @@
 		                    </span>
 		                </div>
 
+		                <div class="form-group">
+		                    <span id="div_pais_id">
+		                        <label for="pais_id" class="">Cidade</label>
+		                        {{Form::text('cidade', null, array('class' => 'form-control', 'id' => 'cidade'))}}
+		                    </span>
+		                </div>
+
+		                <div class="form-group">
+		                    <span id="div_pais_id">
+		                        <label for="pais_id" class="">Valor</label>
+		                        {{Form::text('valor', null, array('class' => 'form-control', 'id' => 'valor'))}}
+		                    </span>
+		                </div>
+
 		                <!-- <div class="form-group">
 		                    <span id="div_pais_id">
 		                        <label for="pais_id" class="">Tipo</label>
-		                        {{Form::select('tipo', array('GayFriendly' => 'Gay Friendly', 'Bachelor' => 'Bachelor\'s', 'Honeymoon' => 'Honeymoon'), null, array('class' => 'form-control', 'id' => 'tipo'))}}
+		                        {{Form::select('tipo', array('Restaurante' => 'Restaurante', 'Evento' => 'Evento', 'Boate' => 'Boate'), null, array('class' => 'form-control', 'id' => 'tipo'))}}
 		                    </span>
 		                </div> -->
 
@@ -85,16 +113,151 @@
 		            </div>
 		            <!-- <div class="tab-pane fade" id="fourth-tab">
 		                <h2 class="tab-content-title">Fourth Tab</h2>
-		            </div -->
+		            </div>
 		            <div class="tab-pane fade" id="fifth-tab">
 		                <h2 class="tab-content-title">Preços</h2>
 
 		                <div class="form-group">
-		                	<span id="div_nome_en"><label for="nome_en" class=" required">Valor</label>
-		                	{{Form::text('valor', null, array('class' => 'form-control', 'id' => 'valor_masculino'))}}
+		                	{{--$form->render('valor_diaria')--}}
 		                </div>
 
-		            </div>
+		                <div class="form-group">
+		                	{{--$form->render('deposito')--}}
+		                </div>
+
+		            </div> -->
+		        <div class="tab-pane fade" id="hoteis">
+		                <h2 class="tab-content-title">Hotéis</h2>
+
+		                <table class="table table-striped table-hover">
+						    <thead>
+						    <tr>
+						        <th></th>
+						        <th>Nome PT</th>
+						        <th>Nome EN</th>
+						        <th>Pais</th>
+						    </tr>
+						    </thead>
+						    <tbody>
+					        	@forelse($hoteis as $h)
+						            <tr>
+						                <td> <input type="checkbox" name="hoteis[]" value="{{$h->id}}" /> </td>
+						                <td>{{$h->nome_br}}</td>
+						                <td>{{$h->nome_en}}</td>
+						                <td>{{$h->pais->name}}</td>
+						            </tr>
+					            @empty
+						            <tr>
+						                <td>Nenhum hotel encontrado</td>
+						                <td></td>
+						                <td></td>
+						                <td></td>
+						            </tr>
+					            @endforelse
+					        </tbody>
+						</table>
+
+		        </div>
+
+		        <div class="tab-pane fade" id="apartamentos">
+		                <h2 class="tab-content-title">Apartamentos</h2>
+
+		                <table class="table table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th>Nome PT</th>
+                                <th>Nome EN</th>
+                                <th>Pais</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                @forelse($apartamentos as $ap)
+                                    <tr>
+                                        <td> <input type="checkbox" name="apartamentos[]" value="{{$ap->id}}" /> </td>
+                                        <td>{{$ap->nome_br}}</td>
+                                        <td>{{$ap->nome_en}}</td>
+                                        <td>{{$ap->pais->name}}</td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td>Nenhum apartamento encontrado</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+
+		        </div>
+
+		        <div class="tab-pane fade" id="passeios">
+		                <h2 class="tab-content-title">Passeios</h2>
+
+		                <table class="table table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th>Nome PT</th>
+                                <th>Nome EN</th>
+                                <th>Pais</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                @forelse($passeios as $pa)
+                                    <tr>
+                                        <td> <input type="checkbox" name="passeios[]" value="{{$pa->id}}" /> </td>
+                                        <td>{{$pa->nome_br}}</td>
+                                        <td>{{$pa->nome_en}}</td>
+                                        <td>{{$pa->pais->name}}</td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td>Nenhum passeio encontrado</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+
+		        </div>
+
+		        <div class="tab-pane fade" id="servicosnoturnos">
+		                <h2 class="tab-content-title">Serviços Noturnos</h2>
+
+		                <table class="table table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th>Nome PT</th>
+                                <th>Nome EN</th>
+                                <th>Pais</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                @forelse($servicosnoturnos as $sn)
+                                    <tr>
+                                        <td> <input type="checkbox" name="servicosnoturnos[]" value="{{$sn->id}}" /> </td>
+                                        <td>{{$sn->nome_br}}</td>
+                                        <td>{{$sn->nome_en}}</td>
+                                        <td>{{$sn->pais->name}}</td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td>Nenhum Serviço Noturno encontrado</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+
+		        </div>
+
 	            <div class="tab-pane fade" id="sixth-tab">
 	                <h2 class="tab-content-title">Imagens</h2>
 

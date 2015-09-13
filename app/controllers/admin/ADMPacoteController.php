@@ -108,30 +108,17 @@ class ADMPacoteController extends \BaseController {
 
 		$pacote->save();
 
-		if(Input::has('hoteis'))
-		{
-			$hoteis = Input::get('hoteis');
-			$pacote->hoteis()->sync($hoteis);
+		$hoteis = (Input::get('hoteis'))? Input::get('hoteis') : [];
+		$evento->hoteis()->sync($hoteis);
 
-		}
+		$apartamentos = (Input::get('apartamentos')) ? Input::get('apartamentos') : [];
+		$evento->apartamentos()->sync($apartamentos);
 
-		if(Input::has('apartamentos'))
-		{
-			$apartamentos = Input::get('apartamentos');
-			$pacote->apartamentos()->sync($apartamentos);
-		}
-
-		if(Input::has('passeios'))
-		{
-			$passeios = Input::get('passeios');
-			$pacote->passeios()->sync($passeios);
-		}
-
-		if(Input::has('servicosnoturnos'))
-		{
-			$servicosnoturnos = Input::get('servicosnoturnos');
-			$pacote->servicosnoturnos()->sync($servicosnoturnos);
-		}
+		$passeios = (Input::get('passeios')) ? Input::get('passeios') : [];
+		$evento->passeios()->sync($passeios);
+		
+		$servicosnoturnos = (Input::get('servicosnoturnos')) ? Input::get('servicosnoturnos') : [];
+		$evento->servicosnoturnos()->sync($servicosnoturnos);
 
 		if(Input::hasFile('imagens'))
 		{
@@ -230,30 +217,17 @@ class ADMPacoteController extends \BaseController {
 
 		$pacote->save();
 
-		if(Input::has('hoteis'))
-		{
-			$hoteis = Input::get('hoteis');
-			$pacote->hoteis()->sync($hoteis);
+		$hoteis = (Input::get('hoteis'))? Input::get('hoteis') : [];
+		$evento->hoteis()->sync($hoteis);
 
-		}
+		$apartamentos = (Input::get('apartamentos')) ? Input::get('apartamentos') : [];
+		$evento->apartamentos()->sync($apartamentos);
 
-		if(Input::has('apartamentos'))
-		{
-			$apartamentos = Input::get('apartamentos');
-			$pacote->apartamentos()->sync($apartamentos);
-		}
-
-		if(Input::has('passeios'))
-		{
-			$passeios = Input::get('passeios');
-			$pacote->passeios()->sync($passeios);
-		}
-
-		if(Input::has('servicosnoturnos'))
-		{
-			$servicosnoturnos = Input::get('servicosnoturnos');
-			$pacote->servicosnoturnos()->sync($servicosnoturnos);
-		}
+		$passeios = (Input::get('passeios')) ? Input::get('passeios') : [];
+		$evento->passeios()->sync($passeios);
+		
+		$servicosnoturnos = (Input::get('servicosnoturnos')) ? Input::get('servicosnoturnos') : [];
+		$evento->servicosnoturnos()->sync($servicosnoturnos);
 
 		if(Input::hasFile('imagens'))
 		{

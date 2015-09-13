@@ -45,34 +45,6 @@ class EventoEspecialController extends \BaseController {
 		return View::make('eventoespecial.index', compact('eventos', 'count', 'json'));
 	}
 
-	/**
-	 * Show the form for creating a new eventoespecial
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		return View::make('eventoespecial.create');
-	}
-
-	/**
-	 * Store a newly created eventoespecial in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		$validator = Validator::make($data = Input::all(), EventoEspecial::$rules);
-
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
-
-		EventoEspecial::create($data);
-
-		return Redirect::route('eventoespecial.index');
-	}
 
 	/**
 	 * Display the specified eventoespecial.
@@ -82,61 +54,21 @@ class EventoEspecialController extends \BaseController {
 	 */
 	public function getShow($id)
 	{
-		$eventoespecial = EventoEspecial::find($id);
+		$eventoespecial = EventoEspecial::findOrFail($id);
+
+		$hoteis = $this->removeHtmlDescricao($eventoespecial->hoteis);
+
+		$apartamentos = $this->removeHtmlDescricao($eventoespecial->apartamentos);
+
+		$passeios = $this->removeHtmlDescricao($eventoespecial->passeios);
+
+		$snoturnos = $this->removeHtmlDescricao($eventoespecial->servicosnoturnos);
 
 		$this->addVisita($eventoespecial);
 
 		$similar = EventoEspecial::similares();
 
-		return View::make('eventoespecial.show', compact('eventoespecial'))->nest('similar_listing', 'widgets.similar_listing', array('data' => $similar, 'caminho' => 'uploads/eventosespeciais/'));
-	}
-
-	/**
-	 * Show the form for editing the specified eventoespecial.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		$eventoespecial = EventoEspecial::find($id);
-
-		return View::make('eventoespecial.edit', compact('eventoespecial'));
-	}
-
-	/**
-	 * Update the specified eventoespecial in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		$eventoespecial = EventoEspecial::findOrFail($id);
-
-		$validator = Validator::make($data = Input::all(), EventoEspecial::$rules);
-
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
-
-		$eventoespecial->update($data);
-
-		return Redirect::route('eventoespecial.index');
-	}
-
-	/**
-	 * Remove the specified eventoespecial from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		EventoEspecial::destroy($id);
-
-		return Redirect::route('eventoespecial.index');
+		return View::make('eventoespecial.show', compact('eventoespecial', 'hoteis', 'apartamentos', 'passeios', 'snoturnos'))->nest('similar_listing', 'widgets.similar_listing', array('data' => $similar, 'caminho' => 'uploads/eventosespeciais/'));
 	}
 
 }

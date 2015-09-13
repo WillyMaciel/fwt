@@ -13,6 +13,12 @@ return array(
 	|
 	*/
 
-	"preco"				=> "Price",
-	"finalizar_compra"	=> 'Checkout'
+	"itens_pacote"			=> 'Itens in your package',
+	'limpar_carrinho'		=> 'Clear cart',
+	'remover'				=> 'Remove from cart',
+	"preco"					=> 'Price',
+	"finalizar_compra"		=> 'Checkout',
+	'item_existente' 		=> 'This iten is already in your cart',
+	'item_adicionado'		=> 'Item added to your cart!',
+	'item_nao_encontrado' 	=> 'Product ID not found'
 );

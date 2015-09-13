@@ -20,7 +20,7 @@
 	<div class="container">
 	    <div id="main">
 	        <h1 class="page-title">{{trans('orcamento.titulo')}}</h1>
-	        <h2 class="page-description col-md-6 no-float no-padding">{{trans('orcamento.desc')}}</h2>
+	        <h2 class="page-description col-md-6 no-float no-padding">{{trans('orcamento.desc2')}}</h2>
 	        <div class="search-box-wrapper style2">
 	        <form method="POST" action="{{URL::to('price')}}" style="width: 100%;">
 	            <div class="search-box">

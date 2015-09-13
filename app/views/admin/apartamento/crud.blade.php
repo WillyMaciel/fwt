@@ -3,7 +3,7 @@
 <div class="page-title-container">
     <div class="container">
         <div class="page-title pull-left">
-            <h2 class="entry-title">Hoteis - Criar</h2>
+            <h2 class="entry-title">Apartamentos - Criar</h2>
         </div>
     </div>
 </div>
@@ -17,7 +17,7 @@
     @if(!$form->message)
 
 		<div class="block">
-			<img id="img" src="uploads/hoteis/{{$form->field('imagem')->value or 'no-img.png'}}" alt="" width="570" height="300" style="width: 100%; cursor: pointer;">
+			<img id="img" src="uploads/apartamentos/{{$form->field('imagem')->value or 'no-img.png'}}" alt="" width="570" height="300" style="width: 100%; cursor: pointer;">
 		    <div class="tab-container trans-style box">
 		        <ul class="tabs full-width">
 		            <li class="active"><a href="#first-tab" data-toggle="tab"><i class="circle"><img src="images/icon/flags/pt-br.png"></i>Português</a></li>
