@@ -19,6 +19,9 @@ return array(
 	"finalizar_compra"		=> 'Finalizar Compra',
 	'item_existente'		=> 'Este evento/serviço ja se encontra no carrinho.',
 	'item_adicionado'		=> 'item adicionado ao carrinho!.',
-	'item_nao_encontrado' 	=> 'Id do produto não encontrado.'
+	'item_nao_encontrado' 	=> 'Id do produto não encontrado.',
+	'carrinho_esvaziado'	=> 'Seu carrinho foi esvaziado.',
+	'item_removido'			=> 'Item Removido',
+	'pacote_vazio'			=> 'Seu carrinho esta vazio.'
 
 );

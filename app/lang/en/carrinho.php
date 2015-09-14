@@ -20,5 +20,8 @@ return array(
 	"finalizar_compra"		=> 'Checkout',
 	'item_existente' 		=> 'This iten is already in your cart',
 	'item_adicionado'		=> 'Item added to your cart!',
-	'item_nao_encontrado' 	=> 'Product ID not found'
+	'item_nao_encontrado' 	=> 'Product ID not found',
+	'carrinho_esvaziado'	=> 'Your cart is empty now.',
+	'item_removido'			=> 'Item Removed',
+	'pacote_vazio'			=> 'Your package is empty'
 );

@@ -41,7 +41,7 @@
                         @else
 
                             <div class="booking-info clearfix">
-                                    <h2> Seu pacote esta vazio! </h2>
+                                    <h2> {{trans('carrinho.pacote_vazio')}} </h2>
                             </div>
 
                         @endif

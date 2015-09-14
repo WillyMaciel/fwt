@@ -99,7 +99,7 @@ class CarrinhoController extends \BaseController {
 
 				Session::put('carrinho', $carrinho);
 
-				return Redirect::back()->with('success', array(trans('carrinho.item_adicionado')));
+				return Redirect::to('carrinho')->with('success', array(trans('carrinho.item_adicionado')));
 			}
 		}
 		else
@@ -118,12 +118,12 @@ class CarrinhoController extends \BaseController {
 			Session::forget('carrinho');
 			Session::put('carrinho', $carrinho);
 
-			return Redirect::back()->with('success', array('Item removido do carrinho.'));
+			return Redirect::back()->with('success', array(trans('carrinho.item_removido')));
 		}
 
 		// return View::make('hello');
 
-		return Redirect::back()->with('warning', array('Item não encontrado.'));
+		return Redirect::back()->with('warning', array(trans('carrinho.item_nao_encontrado')));
 	}
 
 	public function getLimpar()
@@ -133,7 +133,7 @@ class CarrinhoController extends \BaseController {
 			Session::forget('carrinho');
 		}
 
-		return Redirect::back()->with('success', array('Seu carrinho foi esvaziado.'));
+		return Redirect::back()->with('success', array(trans('carrinho.carrinho_esvaziado')));
 	}
 
 	public function getPag()
