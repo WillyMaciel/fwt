@@ -172,10 +172,10 @@
 
                                     </div>
                                     <div>
-                                        <div title="" class="five-stars-container" data-toggle="tooltip" data-placement="bottom" data-original-title="{{$pacote->estrelas or 0}} Estrelas">
+                                        <!-- <div title="" class="five-stars-container" data-toggle="tooltip" data-placement="bottom" data-original-title="{{$pacote->estrelas or 0}} Estrelas">
                                                 <span class="five-stars" style="width: {{$pacote->estrelas * 20}}%;"></span>
                                         </div>
-                                        <span class="review">{{$pacote->estrelas or 0}} {{trans('hotel.estrelas')}}</span>
+                                        <span class="review">{{$pacote->estrelas or 0}} {{trans('hotel.estrelas')}}</span> -->
                                     </div>
                                 </div>
                                 <div>

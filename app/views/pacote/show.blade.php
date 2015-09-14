@@ -112,12 +112,12 @@ We suggest that you contact the host to confirm availability and rates before su
                                     </figure>
                                     <div class="details">
                                         <div class="details-header">
-                                            <div>
+                                            <!-- <div>
                                                 <div title="" class="five-stars-container" data-toggle="tooltip" data-placement="bottom" data-original-title="{{$h->estrelas or 0}} Estrelas">
                                                         <span class="five-stars" style="width: {{$h->estrelas * 20}}%;"></span>
                                                 </div>
                                                 <span class="review">{{$h->estrelas or 0}} {{trans('hotel.estrelas')}}</span>
-                                            </div>
+                                            </div> -->
                                             <h4 class="box-title">@if(Session::get('lang') == 'pt') {{$h->nome_br}} @else {{$h->nome_en}} @endif</h4>
                                         </div>
                                         <p>@if(Session::get('lang') == 'pt') {{substr($h->descricao_br, 0, 150) . ' ...'}} @else {{substr($h->descricao_en, 0, 150) . ' ...'}} @endif</p>
@@ -140,12 +140,12 @@ We suggest that you contact the host to confirm availability and rates before su
                                     </figure>
                                     <div class="details">
                                         <div class="details-header">
-                                            <div>
+                                            <!-- <div>
                                                 <div title="" class="five-stars-container" data-toggle="tooltip" data-placement="bottom" data-original-title="{{$p->estrelas or 0}} Estrelas">
                                                         <span class="five-stars" style="width: {{$p->estrelas * 20}}%;"></span>
                                                 </div>
                                                 <span class="review">{{$p->estrelas or 0}} {{trans('hotel.estrelas')}}</span>
-                                            </div>
+                                            </div> -->
                                             <h4 class="box-title">@if(Session::get('lang') == 'pt') {{$p->nome_br}} @else {{$p->nome_en}} @endif</h4>
                                         </div>
                                         <p>@if(Session::get('lang') == 'pt') {{substr($p->descricao_br, 0, 150) . ' ...'}} @else {{substr($p->descricao_en, 0, 150) . ' ...'}} @endif</p>
@@ -347,10 +347,10 @@ We suggest that you contact the host to confirm availability and rates before su
                         <span class="pull-right">{{$pacote->valor}}</span>
                     </span>
                     <div class="feedback clearfix">
-                        <div title="" class="five-stars-container" data-toggle="tooltip" data-placement="bottom" data-original-title="{{$pacote->estrelas or 0}} {{trans('hotel.estrelas')}}">
+                        <!-- <div title="" class="five-stars-container" data-toggle="tooltip" data-placement="bottom" data-original-title="{{$pacote->estrelas or 0}} {{trans('hotel.estrelas')}}">
                             <span class="five-stars" style="width: {{$pacote->estrelas * 20}}%;"></span>
                         </div>
-                        <span class="review pull-right">{{$pacote->estrelas or 0}} {{trans('hotel.estrelas')}}</span>
+                        <span class="review pull-right">{{$pacote->estrelas or 0}} {{trans('hotel.estrelas')}}</span> -->
                     </div>
                         <!-- CARRINHO -->
                         <form action="{{URL::to('carrinho/add')}}" method="POST">

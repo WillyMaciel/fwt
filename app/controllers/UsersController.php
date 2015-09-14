@@ -1,7 +1,5 @@
 <?php
 
-
-
 /**
  * UsersController Class
  *
@@ -80,7 +78,7 @@ class UsersController extends Controller
         $input = Input::all();
 
         if ($repo->login($input)) {
-            return Redirect::intended('/');
+            return Redirect::back();
         } else {
             if ($repo->isThrottled($input)) {
                 $err_msg = Lang::get('confide::confide.alerts.too_many_attempts');

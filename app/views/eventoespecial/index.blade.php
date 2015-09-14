@@ -177,10 +177,10 @@
                                         <h4 class="box-title"><a href="{{URL::to("eventoespecial/show/{$evento->id}")}}"> @if(Session::get('lang') == 'pt') {{$evento->nome_br}} @else {{$evento->nome_en}} @endif </a><small><i class="soap-icon-departure yellow-color"></i> {{$evento->pais->name}} - {{$evento->estado}} </small></h4>
                                     </div>
                                     <div>
-                                        <div title="" class="five-stars-container" data-toggle="tooltip" data-placement="bottom" data-original-title="{{$evento->estrelas or 0}} Estrelas">
+                                        <!-- <div title="" class="five-stars-container" data-toggle="tooltip" data-placement="bottom" data-original-title="{{$evento->estrelas or 0}} Estrelas">
                                                 <span class="five-stars" style="width: {{$evento->estrelas * 20}}%;"></span>
                                         </div>
-                                        <span class="review">{{$evento->estrelas or 0}} {{trans('hotel.estrelas')}}</span>
+                                        <span class="review">{{$evento->estrelas or 0}} {{trans('hotel.estrelas')}}</span> -->
                                     </div>
                                 </div>
                                 <div>

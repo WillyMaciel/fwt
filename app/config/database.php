@@ -158,7 +158,7 @@ return array(
 
 			'username'  => 'willy846_fwt',
 
-			'password'  => 'fwt6066',
+			'password'  => 'mandrake6066',
 
 			'charset'   => 'utf8',
 
