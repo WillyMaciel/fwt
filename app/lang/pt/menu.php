@@ -36,6 +36,7 @@ return array(
 	'despedida_solteiro'=> 'Despedida de solteiro',
 	'lua_de_mel'		=> 'Lua de mel',
 	'gay_friendly'		=> 'Gay Friendly',
+	'gayfriendly'		=> 'Gay Friendly',
 	'pacotes'			=> 'Pacotes',
 	'conveniencias'		=> 'Conveniências',
 	'ver'				=> 'Ver',

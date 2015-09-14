@@ -44,6 +44,7 @@ return array(
 	'despedida_solteiro'=> 'Bachelor\'s',
 	'lua_de_mel'		=> 'Honeymoon',
 	'gay_friendly'		=> 'Gay friendly',
+	'gayfriendly'		=> 'Gay friendly',
 	'pacotes'			=> 'Packages',
 	'pacote'			=> 'Package',
 	'conveniencias'		=> 'Amenities',
