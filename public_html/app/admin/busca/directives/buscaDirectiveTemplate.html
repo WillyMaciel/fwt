@@ -1,0 +1,48 @@
+<div class="row">
+	<label>Filtro {{buscaCtrl.model}}</label>
+	<input type="text" data-ng-model="buscaCtrl.filter" class="form-control" />
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+
+        <table class="table table-striped table-hover">
+		    <thead>
+		    <tr>
+		        <th></th>
+		        <th>Nome PT</th>
+		        <th>Pais</th>
+		    </tr>
+		    </thead>
+		    <tbody>
+	            <tr data-ng-repeat="objeto in buscaCtrl.selectedObjects" data-ng-click="buscaCtrl.checkboxClick(objeto)">
+	                <td> <input type="checkbox" data-ng-model="objeto.selected" name="hoteis[]" value="{{objeto.id}}" /> </td>
+	                <td>{{objeto.nome_br}}</td>
+	                <td>{{objeto.pais.name}}</td>
+	            </tr>
+	        </tbody>
+		</table>
+
+	</div>
+
+	<div class="col-md-6">
+
+		<table class="table table-striped table-hover">
+		    <thead>
+		    <tr>
+		        <th></th>
+		        <th>Nome PT</th>
+		        <th>Pais</th>
+		    </tr>
+		    </thead>
+		    <tbody>
+	            <tr data-ng-repeat="objeto in buscaCtrl.objectList | filter:{nome_br:buscaCtrl.filter}" data-ng-click="buscaCtrl.checkboxClick(objeto)" data-ng-hide="objeto.selected">
+	                <td> <input type="checkbox" data-ng-model="objeto.selected"/> </td>
+	                <td>{{objeto.nome_br}}</td>
+	                <td>{{objeto.pais.name}}</td>
+	            </tr>
+	        </tbody>
+		</table>
+
+	</div>
+</div>

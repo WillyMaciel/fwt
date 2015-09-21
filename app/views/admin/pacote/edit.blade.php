@@ -129,34 +129,8 @@
 
 		        <div class="tab-pane fade" id="hoteis">
 		                <h2 class="tab-content-title">Hotéis</h2>
-
-		                <table class="table table-striped table-hover">
-						    <thead>
-						    <tr>
-						        <th></th>
-						        <th>Nome PT</th>
-						        <th>Nome EN</th>
-						        <th>Pais</th>
-						    </tr>
-						    </thead>
-						    <tbody>
-					        	@forelse($hoteis as $h)
-						            <tr>
-						                <td> <input type="checkbox" name="hoteis[]" value="{{$h->id}}" @forelse($pacote->hoteis as $ph) @if($h->id == $ph->id) checked="checked" @endif @empty @endforelse /> </td>
-						                <td>{{$h->nome_br}}</td>
-						                <td>{{$h->nome_en}}</td>
-						                <td>{{$h->pais->name}}</td>
-						            </tr>
-					            @empty
-						            <tr>
-						                <td>Nenhum hotel encontrado</td>
-						                <td></td>
-						                <td></td>
-						                <td></td>
-						            </tr>
-					            @endforelse
-					        </tbody>
-						</table>
+		                
+		                <busca-directive data-scope-model="hotel" data-scope-object-list-selected="{{htmlspecialchars($pacote->hoteis)}}"></busca-directive>
 
 		        </div>
 

@@ -32,6 +32,19 @@ Route::group(array('before' => 'auth'), function()
 	//Requer Admin
 	Route::group(array('before' => 'admin'), function()
 	{
+
+		//API DO ADMIN PARA ANGULAR
+		Route::get('admin/api/hotel', function()
+		{
+			return Hotel::select('id', 'pais_id', 'nome_br', 'class_name')->with('pais')->get();
+		});
+		Route::get('admin/api/apartamento', function()
+		{
+			return Apartamento::select('id', 'pais_id', 'nome_br', 'class_name')->with('pais')->get();
+		});
+
+		//API DO ADMIN PARA ANGULAR END
+
 		//Hoteis
 		//Route::any('admin/hotel/crud', 'ADMHotelController@Crud');
 		Route::get('admin/hotel/delete/{id}', 'ADMHotelController@destroy');

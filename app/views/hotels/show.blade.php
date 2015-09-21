@@ -507,12 +507,12 @@ We suggest that you contact the host to confirm availability and rates before su
                         <small class="pull-left">avg/night</small>
                         <span class="pull-right">{{$hotel->valor}}</span>
                     </span>
-                    <div class="feedback clearfix">
+                    <!-- <div class="feedback clearfix">
                         <div title="" class="five-stars-container" data-toggle="tooltip" data-placement="bottom" data-original-title="{{$hotel->estrelas or 0}} {{trans('hotel.estrelas')}}">
                             <span class="five-stars" style="width: {{$hotel->estrelas * 20}}%;"></span>
                         </div>
                         <span class="review pull-right">{{$hotel->estrelas or 0}} {{trans('hotel.estrelas')}}</span>
-                    </div>                    
+                    </div>   -->                  
                         <!-- CARRINHO -->
                         <!-- <form action="{{URL::to('carrinho/add')}}" method="POST">
                             <input type="hidden" name="produto" value="{{$hotel->id}}" />

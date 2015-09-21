@@ -127,36 +127,57 @@
 
 		            </div> -->
 
-		        <div class="tab-pane fade" id="hoteis">
+		        <div class="tab-pane fade" id="hoteis" data-ng-controller="buscaController as buscaCtrl" data-ng-init="buscaCtrl.objectListSelected = {{htmlspecialchars($evento->hoteis)}}; buscaCtrl.model = 'hotel';">
 		                <h2 class="tab-content-title">Hotéis</h2>
+		                
+		                <div class="row">
+		                	<label>Filtro</label>
+		                	<input type="text" data-ng-model="buscaCtrl.filter" class="form-control" />
+		                </div>
 
-		                <table class="table table-striped table-hover">
-						    <thead>
-						    <tr>
-						        <th></th>
-						        <th>Nome PT</th>
-						        <th>Nome EN</th>
-						        <th>Pais</th>
-						    </tr>
-						    </thead>
-						    <tbody>
-					        	@forelse($hoteis as $h)
-						            <tr>
-						                <td> <input type="checkbox" name="hoteis[]" value="{{$h->id}}" @forelse($evento->hoteis as $ph) @if($h->id == $ph->id) checked="checked" @endif @empty @endforelse /> </td>
-						                <td>{{$h->nome_br}}</td>
-						                <td>{{$h->nome_en}}</td>
-						                <td>{{$h->pais->name}}</td>
-						            </tr>
-					            @empty
-						            <tr>
-						                <td>Nenhum hotel encontrado</td>
-						                <td></td>
-						                <td></td>
-						                <td></td>
-						            </tr>
-					            @endforelse
-					        </tbody>
-						</table>
+		                <div class="row">
+			                <div class="col-md-6">
+
+				                <table class="table table-striped table-hover">
+								    <thead>
+								    <tr>
+								        <th></th>
+								        <th>Nome PT</th>
+								        <th>Pais</th>
+								    </tr>
+								    </thead>
+								    <tbody>
+							            <tr data-ng-repeat="hotel in buscaCtrl.selectedObjects" data-ng-click="buscaCtrl.checkboxClick(hotel)">
+							                <td> <input type="checkbox" data-ng-model="hotel.selected" name="hoteis[]" value="@{{hotel.id}}" /> </td>
+							                <td>@{{hotel.nome_br}}</td>
+							                <td>@{{hotel.pais.name}}</td>
+							            </tr>
+							        </tbody>
+								</table>
+
+							</div>
+
+							<div class="col-md-6">
+
+								<table class="table table-striped table-hover">
+								    <thead>
+								    <tr>
+								        <th></th>
+								        <th>Nome PT</th>
+								        <th>Pais</th>
+								    </tr>
+								    </thead>
+								    <tbody>
+							            <tr data-ng-repeat="hotel in buscaCtrl.objectList | filter:{nome_br:buscaCtrl.filter}" data-ng-click="buscaCtrl.checkboxClick(hotel)" data-ng-hide="hotel.selected">
+							                <td> <input type="checkbox" data-ng-model="hotel.selected"/> </td>
+							                <td>@{{hotel.nome_br}}</td>
+							                <td>@{{hotel.pais.name}}</td>
+							            </tr>
+							        </tbody>
+								</table>
+
+							</div>
+						</div>
 
 		        </div>
 

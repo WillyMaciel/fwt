@@ -7,10 +7,6 @@
             <div class="tab-container style1" id="hotel-main-content">
                 <ul class="tabs">
                     <li class="active"><a data-toggle="tab" href="#photos-tab">photos</a></li>
-                    <!-- <li><a data-toggle="tab" href="#map-tab">map</a></li>
-                    <li><a data-toggle="tab" href="#steet-view-tab">street view</a></li>
-                    <li><a data-toggle="tab" href="#calendar-tab">calendar</a></li>
-                    <li class="pull-right"><a class="button btn-small yellow-bg white-color" href="#">TRAVEL GUIDE</a></li> -->
                 </ul>
                 <div class="tab-content">
                     <div id="photos-tab" class="tab-pane fade in active">
@@ -78,11 +74,8 @@ We suggest that you contact the host to confirm availability and rates before su
             <div id="hotel-features" class="tab-container">
                 <ul class="tabs">
                     <li class="active"><a href="#hotel-description" data-toggle="tab">Description</a></li>
-                    <!-- <li><a href="#hotel-availability" data-toggle="tab">Availability</a></li> -->
                     <li><a href="#hotel-amenities" data-toggle="tab">Amenities</a></li>
                     <li><a href="#hotel-reviews" data-toggle="tab">Reviews</a></li>
-                    <!--li><a href="#hotel-faqs" data-toggle="tab">FAQs</a></li-->
-                    <!--li><a href="#hotel-things-todo" data-toggle="tab">Things to Do</a></li-->
                     <li><a href="#hotel-write-review" data-toggle="tab">Write a Review</a></li>
                 </ul>
                 <div class="tab-content">
@@ -91,214 +84,7 @@ We suggest that you contact the host to confirm availability and rates before su
                             <h2>@if(Session::get('lang') == 'pt') Sobre {{$apartamento->nome_br}} @else About {{$apartamento->nome_en}} @endif</h2>
                             <p>@if(Session::get('lang') == 'pt') {{$apartamento->descricao_br}} @else {{$apartamento->descricao_en}} @endif</p>
                         </div>
-                    </div>
-                    <!-- <div class="tab-pane fade" id="hotel-availability">
-                        <div class="update-search clearfix">
-                            <div class="col-md-5">
-                                <h4 class="title">When</h4>
-                                <div class="row">
-                                    <div class="col-xs-6">
-                                        <label>CHECK IN</label>
-                                        <div class="datepicker-wrap">
-                                            <input type="text" placeholder="mm/dd/yy" class="input-text full-width" />
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <label>CHECK OUT</label>
-                                        <div class="datepicker-wrap">
-                                            <input type="text" placeholder="mm/dd/yy" class="input-text full-width" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <h4 class="title">Who</h4>
-                                <div class="row">
-                                    <div class="col-xs-4">
-                                        <label>ROOMS</label>
-                                        <div class="selector">
-                                            <select class="full-width">
-                                                <option value="1">01</option>
-                                                <option value="2">02</option>
-                                                <option value="3">03</option>
-                                                <option value="4">04</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-4">
-                                        <label>ADULTS</label>
-                                        <div class="selector">
-                                            <select class="full-width">
-                                                <option value="1">01</option>
-                                                <option value="2">02</option>
-                                                <option value="3">03</option>
-                                                <option value="4">04</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-4">
-                                        <label>KIDS</label>
-                                        <div class="selector">
-                                            <select class="full-width">
-                                                <option value="1">01</option>
-                                                <option value="2">02</option>
-                                                <option value="3">03</option>
-                                                <option value="4">04</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <h4 class="visible-md visible-lg">&nbsp;</h4>
-                                <label class="visible-md visible-lg">&nbsp;</label>
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <button data-animation-duration="1" data-animation-type="bounce" class="full-width icon-check animated" type="submit">SEARCH NOW</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <h2>Available Rooms</h2>
-                        <div class="room-list listing-style3 hotel">
-                            <article class="box">
-                                <figure class="col-sm-4 col-md-3">
-                                    <a class="hover-effect popup-gallery" href="ajax/slideshow-popup.html" title=""><img width="230" height="160" src="http://placehold.it/230x160" alt=""></a>
-                                </figure>
-                                <div class="details col-xs-12 col-sm-8 col-md-9">
-                                    <div>
-                                        <div>
-                                            <div class="box-title">
-                                                <h4 class="title">Standard Family Room</h4>
-                                                <dl class="description">
-                                                    <dt>Max Guests:</dt>
-                                                    <dd>3 persons</dd>
-                                                </dl>
-                                            </div>
-                                            <div class="amenities">
-                                                <i class="soap-icon-wifi circle"></i>
-                                                <i class="soap-icon-fitnessfacility circle"></i>
-                                                <i class="soap-icon-fork circle"></i>
-                                                <i class="soap-icon-television circle"></i>
-                                            </div>
-                                        </div>
-                                        <div class="price-section">
-                                            <span class="price"><small>PER/NIGHT</small>$121</span>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <p>Nunc cursus libero purus ac congue ar lorem cursus ut sed vitae pulvinar massa idend porta nequetiam elerisque mi id, consectetur adipi deese cing elit maus fringilla bibe endum.</p>
-                                        <div class="action-section">
-                                            <a href="hotel-booking.html" title="" class="button btn-small full-width text-center">BOOK NOW</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="box">
-                                <figure class="col-sm-4 col-md-3">
-                                    <a class="hover-effect popup-gallery" href="ajax/slideshow-popup.html" title=""><img width="230" height="160" src="http://placehold.it/230x160" alt=""></a>
-                                </figure>
-                                <div class="details col-xs-12 col-sm-8 col-md-9">
-                                    <div>
-                                        <div>
-                                            <div class="box-title">
-                                                <h4 class="title">Superior Double Room</h4>
-                                                <dl class="description">
-                                                    <dt>Max Guests:</dt>
-                                                    <dd>5 persons</dd>
-                                                </dl>
-                                            </div>
-                                            <div class="amenities">
-                                                <i class="soap-icon-wifi circle"></i>
-                                                <i class="soap-icon-fitnessfacility circle"></i>
-                                                <i class="soap-icon-fork circle"></i>
-                                                <i class="soap-icon-television circle"></i>
-                                            </div>
-                                        </div>
-                                        <div class="price-section">
-                                            <span class="price"><small>PER/NIGHT</small>$241</span>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <p>Nunc cursus libero purus ac congue ar lorem cursus ut sed vitae pulvinar massa idend porta nequetiam elerisque mi id, consectetur adipi deese cing elit maus fringilla bibe endum.</p>
-                                        <div class="action-section">
-                                            <a href="hotel-booking.html" title="" class="button btn-small full-width text-center">BOOK NOW</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="box">
-                                <figure class="col-sm-4 col-md-3">
-                                    <a class="hover-effect popup-gallery" href="ajax/slideshow-popup.html" title=""><img width="230" height="160" src="http://placehold.it/230x160" alt=""></a>
-                                </figure>
-                                <div class="details col-xs-12 col-sm-8 col-md-9">
-                                    <div>
-                                        <div>
-                                            <div class="box-title">
-                                                <h4 class="title">Deluxe Single Room</h4>
-                                                <dl class="description">
-                                                    <dt>Max Guests:</dt>
-                                                    <dd>4 persons</dd>
-                                                </dl>
-                                            </div>
-                                            <div class="amenities">
-                                                <i class="soap-icon-wifi circle"></i>
-                                                <i class="soap-icon-fitnessfacility circle"></i>
-                                                <i class="soap-icon-fork circle"></i>
-                                                <i class="soap-icon-television circle"></i>
-                                            </div>
-                                        </div>
-                                        <div class="price-section">
-                                            <span class="price"><small>PER/NIGHT</small>$137</span>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <p>Nunc cursus libero purus ac congue ar lorem cursus ut sed vitae pulvinar massa idend porta nequetiam elerisque mi id, consectetur adipi deese cing elit maus fringilla bibe endum.</p>
-                                        <div class="action-section">
-                                            <a href="hotel-booking.html" title="" class="button btn-small full-width text-center">BOOK NOW</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="box">
-                                <figure class="col-sm-4 col-md-3">
-                                    <a class="hover-effect popup-gallery" href="ajax/slideshow-popup.html" title=""><img width="230" height="160" src="http://placehold.it/230x160" alt=""></a>
-                                </figure>
-                                <div class="details col-xs-12 col-sm-8 col-md-9">
-                                    <div>
-                                        <div>
-                                            <div class="box-title">
-                                                <h4 class="title">Single Bed Room</h4>
-                                                <dl class="description">
-                                                    <dt>Max Guests:</dt>
-                                                    <dd>2 persons</dd>
-                                                </dl>
-                                            </div>
-                                            <div class="amenities">
-                                                <i class="soap-icon-wifi circle"></i>
-                                                <i class="soap-icon-fitnessfacility circle"></i>
-                                                <i class="soap-icon-fork circle"></i>
-                                                <i class="soap-icon-television circle"></i>
-                                            </div>
-                                        </div>
-                                        <div class="price-section">
-                                            <span class="price"><small>PER/NIGHT</small>$55</span>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <p>Nunc cursus libero purus ac congue ar lorem cursus ut sed vitae pulvinar massa idend porta nequetiam elerisque mi id, consectetur adipi deese cing elit maus fringilla bibe endum.</p>
-                                        <div class="action-section">
-                                            <a href="hotel-booking.html" title="" class="button btn-small full-width text-center">BOOK NOW</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                            <a href="#" class="load-more button full-width btn-large fourty-space">LOAD MORE ROOMS</a>
-                        </div>
-
-                    </div> -->
+                    </div>                    
                     <div class="tab-pane fade" id="hotel-amenities">
                         <h2>{{trans('menu.conveniencias')}}</h2>
 
@@ -346,7 +132,6 @@ We suggest that you contact the host to confirm availability and rates before su
                         @else
                             <p> Este produto ainda não recebeu nenhuma avaliação! </p>
                         @endif
-                        <!-- <a href="#" class="button full-width btn-large">LOAD MORE REVIEWS</a> -->
                     </div>
                     <div class="tab-pane fade" id="hotel-faqs">
                         <h2>Frquently Asked Questions</h2>
@@ -507,12 +292,12 @@ We suggest that you contact the host to confirm availability and rates before su
                         <small class="pull-left">avg/night</small>
                         <span class="pull-right">{{$apartamento->valor}}</span>
                     </span>
-                    <div class="feedback clearfix">
+                    <!-- <div class="feedback clearfix">
                         <div title="" class="five-stars-container" data-toggle="tooltip" data-placement="bottom" data-original-title="{{$apartamento->estrelas or 0}} {{trans('hotel.estrelas')}}">
                             <span class="five-stars" style="width: {{$apartamento->estrelas * 20}}%;"></span>
                         </div>
                         <span class="review pull-right">{{$apartamento->estrelas or 0}} {{trans('hotel.estrelas')}}</span>
-                    </div>                    
+                    </div>    -->                 
                         <!-- CARRINHO -->
                         <!-- <form action="{{URL::to('carrinho/add')}}" method="POST">
                             <input type="hidden" name="produto" value="{{$apartamento->id}}" />

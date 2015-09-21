@@ -647,12 +647,12 @@ We suggest that you contact the host to confirm availability and rates before su
                         <small class="pull-left">{{trans('carrinho.preco')}}</small>
                         <span class="pull-right">{{$translado->valor or '--'}}</span>
                     </span>
-                    <div class="feedback clearfix">
+                    <!-- <div class="feedback clearfix">
                         <div title="" class="five-stars-container" data-toggle="tooltip" data-placement="bottom" data-original-title="{{$translado->estrelas or 0}} {{trans('hotel.estrelas')}}">
                             <span class="five-stars" style="width: {{$translado->estrelas * 20}}%;"></span>
                         </div>
                         <span class="review pull-right">{{$translado->estrelas or 0}} {{trans('hotel.estrelas')}}</span>
-                    </div>                    
+                    </div> -->           
                         <!-- CARRINHO -->
                         <form action="{{URL::to('carrinho/add')}}" method="POST">
                             <input type="hidden" name="produto" value="{{$translado->id}}" />
