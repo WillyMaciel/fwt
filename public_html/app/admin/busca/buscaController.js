@@ -1,4 +1,4 @@
-adminModule.controller('buscaController', ['hotelModel', function(hotelModel)
+adminModule.controller('buscaController', ['hotelModel', 'apartamentoModel', '$scope', '$log', function(hotelModel, apartamentoModel, $scope, $log)
 {
 	vm = this;
 
@@ -9,12 +9,38 @@ adminModule.controller('buscaController', ['hotelModel', function(hotelModel)
 	vm.mergeSelectedWithListed = mergeSelectedWithListed;
 	vm.objectListSelected = [];
 
-	hotelModel.getAll().then(function(response)
-	{
-		vm.objectList = response.data;
+	$scope.$watch('vm.model', function() {
+       console.log(vm.model);
+		switch(vm.model)
+		{
+			case vm.model = 'hotel':
+			hotelModel.getAll().then(function(response)
+			{
+				vm.objectList = response.data;
+				console.log(vm.objectList);
 
-		vm.mergeSelectedWithListed(vm.objectListSelected);
-	});
+				vm.mergeSelectedWithListed(vm.objectListSelected);
+			});
+			break;
+			case vm.model = 'apartamento':
+			apartamentoModel.getAll().then(function(response)
+			{
+				vm.objectList = response.data;
+				console.log(vm.objectList);
+
+				vm.mergeSelectedWithListed(vm.objectListSelected);
+			});
+			break;
+		}
+
+   	});
+
+	// hotelModel.getAll().then(function(response)
+	// {
+	// 	vm.objectList = response.data;
+
+	// 	vm.mergeSelectedWithListed(vm.objectListSelected);
+	// });
 
 	function checkboxClick(object)
 	{
@@ -47,7 +73,6 @@ adminModule.controller('buscaController', ['hotelModel', function(hotelModel)
 	{
 		for (var i = vm.objectList.length - 1; i >= 0; i--) 
 		{
-			console.log(vm.objectList[i]);
 			for (var i2 = collection.length - 1; i2 >= 0; i2--) 
 			{
 				if(vm.objectList[i].id == collection[i2].id)

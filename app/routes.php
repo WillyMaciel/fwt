@@ -38,6 +38,10 @@ Route::group(array('before' => 'auth'), function()
 		{
 			return Hotel::select('id', 'pais_id', 'nome_br', 'class_name')->with('pais')->get();
 		});
+		Route::get('admin/api/apartamento', function()
+		{
+			return Apartamento::select('id', 'pais_id', 'nome_br', 'class_name')->with('pais')->get();
+		});
 
 		//API DO ADMIN PARA ANGULAR END
 

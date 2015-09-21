@@ -53,6 +53,8 @@
     <script type="text/javascript" src="app/admin/admin.js"></script>
     <script type="text/javascript" src="app/admin/busca/buscaController.js"></script>
     <script type="text/javascript" src="app/admin/busca/models/hotelModel.js"></script>
+    <script type="text/javascript" src="app/admin/busca/models/apartamentoModel.js"></script>
+    <script type="text/javascript" src="app/admin/busca/directives/buscaDirective.js"></script>
 
     {{ Rapyd::scripts() }}
 

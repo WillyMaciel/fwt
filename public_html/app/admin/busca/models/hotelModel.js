@@ -8,10 +8,5 @@ adminModule.factory('hotelModel', ['$http', function($http)
 		return $http.get(urlBase);
 	};
 
-	hotel.getOfPacote = function(id)
-	{
-
-	}
-
 	return hotel;
 }]);
