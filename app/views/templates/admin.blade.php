@@ -5,7 +5,7 @@
 
 @include('common.admin.head')
 
-<body>
+<body data-ng-app="App">
     <div id="page-wrapper">
     
         @include('common.admin.header')
@@ -46,6 +46,13 @@
     <script type="text/javascript" src="js/scripts.js"></script>
 
     <script type="text/javascript" src="js/jquery-2.0.2.min.js"></script>
+
+    <script type="text/javascript" src="js/angular.min.js"></script>
+
+    <script type="text/javascript" src="app/app.js"></script>
+    <script type="text/javascript" src="app/admin/admin.js"></script>
+    <script type="text/javascript" src="app/admin/busca/buscaController.js"></script>
+    <script type="text/javascript" src="app/admin/busca/models/hotelModel.js"></script>
 
     {{ Rapyd::scripts() }}
 
