@@ -174,7 +174,17 @@ class ADMPacoteController extends \BaseController {
 
 		$servicosnoturnos = ServicoNoturno::with('pais')->get();
 
-		return View::make('admin.pacote.edit', compact('pacote', 'paises', 'hoteis', 'apartamentos', 'passeios', 'servicosnoturnos'));
+
+		$pacote_hoteis = $pacote->hoteis;
+
+		$angular['hoteis'] = $pacote_hoteis->map(function($hotel)
+		{
+			unset($hotel->descricao_br);
+			unset($hotel->descricao_en);
+			return $hotel;
+		});
+
+		return View::make('admin.pacote.edit', compact('pacote', 'paises', 'hoteis', 'apartamentos', 'passeios', 'servicosnoturnos', 'angular'));
 	}
 
 	/**

@@ -77,6 +77,7 @@
 <div class="container">
     <div id="main">
         <div class="row">
+            @include('elements.alerts')
             <div class="col-sm-4 col-md-3">
                 <h4 class="search-results-title"><i class="soap-icon-search"></i><b>Checkout</b></h4>
                 <div class="toggle-container filters-container">

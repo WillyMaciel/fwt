@@ -2,7 +2,7 @@ adminModule.directive('buscaDirective', function()
 {
   return{
   	restrict: 'E',
-  	scope: {model: '@scopeModel', objectListSelected: '@scopeObjectListSelected'},
+  	scope: {model: '@scopeModel', modelId: '@scopeModelId'},
   	controller: 'buscaController',
   	controllerAs: 'buscaCtrl',
   	bindToController: true,

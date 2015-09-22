@@ -171,6 +171,19 @@ class CheckoutController extends \BaseController {
 			$pedido->save();
 		}
 
+		if($response->Success)
+		{
+			$pedido->pedido_status_id = 25;
+			$pedido->OrderKey = $response->OrderKey;
+			$pedido->OrderStatusEnum = $response->OrderStatusEnum;
+			$pedido->save();
+			return Redirect::to('cliente/pedido')->with('success', [trans('checkout.sucesso')]);
+		}
+		else
+		{
+			return Redirect::back()->with('danger', [trans('checkout.erro')]);	
+		}
+
 		echo '<pre>';
 		echo var_dump($response);
 		echo var_dump($response->ErrorReport);

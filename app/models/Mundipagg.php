@@ -183,7 +183,9 @@ class Mundipagg
 		$ccTransaction3->ExpYear = $input['ano_cartao'];
 		$ccTransaction3->CreditCardBrandEnum = $input['card_brand'];
 		$ccTransaction3->InstallmentCount = (isset($input['parcelas'])) ? $input['parcelas'] : 1;
-		$ccTransaction3->PaymentMethodCode = 1;
+		//PaymentMethodCode 1 = Simulador MundiPagg	Transacões de simulação
+		//20	STONE	Visa e Mastercard
+		$ccTransaction3->PaymentMethodCode = 20;
 		// Define o tipo da autorização
 		$ccTransaction3->CreditCardOperationEnum = "AuthAndCapture";
 

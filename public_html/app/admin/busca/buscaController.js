@@ -1,4 +1,4 @@
-adminModule.controller('buscaController', ['hotelModel', 'apartamentoModel', '$scope', '$log', function(hotelModel, apartamentoModel, $scope, $log)
+adminModule.controller('buscaController', ['hotelModel', 'apartamentoModel', '$scope', '$q', function(hotelModel, apartamentoModel, $scope, $q)
 {
 	vm = this;
 
@@ -8,32 +8,53 @@ adminModule.controller('buscaController', ['hotelModel', 'apartamentoModel', '$s
 	vm.checkboxClick = checkboxClick;
 	vm.mergeSelectedWithListed = mergeSelectedWithListed;
 	vm.objectListSelected = [];
+	vm.modelId = '';
 
-	$scope.$watch('vm.model', function() {
-       console.log(vm.model);
-		switch(vm.model)
+	$scope.$watch('vm.modelId', function() {
+		var hoteis_all = hotelModel.getAll();
+		var pacote_hoteis = hotelModel.getPacoteHoteis(vm.modelId);
+
+
+		$q.all([hoteis_all, pacote_hoteis]).then(function(response)
 		{
-			case vm.model = 'hotel':
-			hotelModel.getAll().then(function(response)
+
+			vm.objectList = response[0].data;
+			vm.objectListSelected = response[1].data;
+
+			if(vm.modelId)
 			{
-				vm.objectList = response.data;
-				console.log(vm.objectList);
-
 				vm.mergeSelectedWithListed(vm.objectListSelected);
-			});
-			break;
-			case vm.model = 'apartamento':
-			apartamentoModel.getAll().then(function(response)
-			{
-				vm.objectList = response.data;
-				console.log(vm.objectList);
+			}
 
-				vm.mergeSelectedWithListed(vm.objectListSelected);
-			});
-			break;
-		}
+		});
+	});
 
-   	});
+
+	// $scope.$watch('vm.model', function() {
+ //       //console.log(vm.model);
+	// 	switch(vm.model)
+	// 	{
+	// 		case vm.model = 'hotel':
+	// 		hotelModel.getAll().then(function(response)
+	// 		{
+	// 			vm.objectList = response.data;
+	// 			//console.log(vm.objectList);
+
+	// 			vm.mergeSelectedWithListed(vm.objectListSelected);
+	// 		});
+	// 		break;
+	// 		case vm.model = 'apartamento':
+	// 		apartamentoModel.getAll().then(function(response)
+	// 		{
+	// 			vm.objectList = response.data;
+	// 			console.log(vm.objectList);
+
+	// 			vm.mergeSelectedWithListed(vm.objectListSelected);
+	// 		});
+	// 		break;
+	// 	}
+
+ //   	});
 
 	// hotelModel.getAll().then(function(response)
 	// {
@@ -41,6 +62,7 @@ adminModule.controller('buscaController', ['hotelModel', 'apartamentoModel', '$s
 
 	// 	vm.mergeSelectedWithListed(vm.objectListSelected);
 	// });
+
 
 	function checkboxClick(object)
 	{

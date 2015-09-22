@@ -130,7 +130,7 @@
 		        <div class="tab-pane fade" id="hoteis">
 		                <h2 class="tab-content-title">Hotéis</h2>
 		                
-		                <busca-directive data-scope-model="hotel" data-scope-object-list-selected="{{htmlspecialchars($pacote->hoteis)}}"></busca-directive>
+		                <busca-directive data-scope-model="hotel" data-scope-model-id="{{$pacote->id}}" ></busca-directive>
 
 		        </div>
 
