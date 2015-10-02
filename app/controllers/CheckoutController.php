@@ -194,7 +194,10 @@ class CheckoutController extends \BaseController {
 
 				foreach($response->ErrorReport->ErrorItemCollection as $error)
 				{
-					$erros[] = $error->Description;
+					if(isset($error->Description) && !empty($error->Description))
+					{
+						$erros[] = $error->Description;
+					}
 				}
 				// echo '<hr>';
 				// echo var_dump($response->ErrorReport->ErrorItemCollection);
