@@ -10,17 +10,20 @@ class Moeda
 	{
 		$lang = \Session::get('lang');
 
-		switch ($lang) 
-		{
-			case 'pt':
-				$this->moeda = 'BRL';
-				$this->simbolo = 'R$';
-				break;
-			case 'en':
-				$this->moeda = 'USD';
-				$this->simbolo = '$';
-				break;
-		}
+		// switch ($lang) 
+		// {
+		// 	case 'pt':
+		// 		$this->moeda = 'BRL';
+		// 		$this->simbolo = 'R$';
+		// 		break;
+		// 	case 'en':
+		// 		$this->moeda = 'USD';
+		// 		$this->simbolo = '$';
+		// 		break;
+		// }
+
+		$this->moeda = 'BRL';
+		$this->simbolo = 'R$';
 
 	}
 }

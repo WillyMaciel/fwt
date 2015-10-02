@@ -175,11 +175,11 @@
                                                     @if(Session::get('lang') == 'pt')
                                                     <li>
                                                         <label for="cvv">Parcelas</label>
-                                                        {{Form::select('parcelas', $parcelas)}}
-                                                        <input type="hidden" name="pedido_id" value="{{$pedido->id}}" />
-                                                        <input type="hidden" id="card_brand_input" name="card_brand" value="" />
+                                                        {{Form::select('parcelas', $parcelas)}}                                                        
                                                     </li>
                                                     @endif
+                                                    <input type="hidden" name="pedido_id" value="{{$pedido->id}}" />
+                                                    <input type="hidden" id="card_brand_input" name="card_brand" value="" />
                                                     <li style="padding-top: 20px;" style="">
                                                         <div style="padding-top: 1.6em;padding-right: 2.6em;">
                                                             <button type="submit" class="btn-medium icon-check uppercase full-width">Efetuar Pagamento</button>

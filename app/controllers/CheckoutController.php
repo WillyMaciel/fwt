@@ -170,10 +170,16 @@ class CheckoutController extends \BaseController {
 			$pedido->titular_cpf = $input['cpftitular'];
 			$pedido->save();
 		}
+		elseif(isset($input['passaportetitular']) && !empty($input['passaportetitular']))
+		{
+			$pedido->titular_passaporte = $input['passaportetitular'];
+			$pedido->save();
+		}
 
 		if($response->Success)
 		{
 			$pedido->pedido_status_id = 25;
+			$pedido->num_parcelas = (isset($input['parcelas'])) ? $input['parcelas'] : 1;
 			$pedido->OrderKey = $response->OrderKey;
 			$pedido->OrderStatusEnum = $response->OrderStatusEnum;
 			$pedido->save();
@@ -181,83 +187,25 @@ class CheckoutController extends \BaseController {
 		}
 		else
 		{
-			return Redirect::back()->with('danger', [trans('checkout.erro')]);	
+			$erros = [];
+			$erros[0] = trans('checkout.erro');
+			if(isset($response->ErrorReport) && $response->ErrorReport && isset($response->ErrorReport->ErrorItemCollection) && count($response->ErrorReport->ErrorItemCollection) > 0)
+			{
+
+				foreach($response->ErrorReport->ErrorItemCollection as $error)
+				{
+					$erros[] = $error->Description;
+				}
+				// echo '<hr>';
+				// echo var_dump($response->ErrorReport->ErrorItemCollection);
+			}
+			return Redirect::back()->with('danger', $erros);	
 		}
 
-		echo '<pre>';
-		echo var_dump($response);
-		echo var_dump($response->ErrorReport);
-		echo '</pre>';
-	}
-
-	/**
-	 * Show the form for creating a new resource.
-	 * GET /checkout/create
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /checkout
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
-
-	/**
-	 * Display the specified resource.
-	 * GET /checkout/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /checkout/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 * PUT /checkout/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /checkout/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
+		// echo '<pre>';
+		// echo var_dump($response);
+		// echo var_dump($response->ErrorReport);
+		// echo '</pre>';
 	}
 
 }

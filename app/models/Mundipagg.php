@@ -39,12 +39,12 @@ class Mundipagg
 
 	public function createOrder($input, Pedido $pedido)
 	{
-		$orderRequest = $this->createCreateOrder($input, $pedido);
-		$orderResponse = $this->client->CreateOrder($orderRequest);
+		// $orderRequest = $this->createCreateOrder($input, $pedido);
+		//$orderRequest = $this->createOrderBasico($input, $pedido);
+		//$orderResponse = $this->client->CreateOrder($orderRequest);
 
-		// return $orderRequest;
+		return $this->createOrderBasico($input, $pedido);
 
-		return $orderResponse;
 		// echo '<pre>';
 		// var_dump($orderResponse);
 		// echo '</pre>';
@@ -89,6 +89,7 @@ class Mundipagg
 		$orderRequest->AmountInCents = $tcents;
 		$orderRequest->AmountInCentsToConsiderPaid = $tcents;
 		$orderRequest->Retries = 0;
+		$orderRequest->MerchantKey = self::MerchantKey;
 		//$orderRequest->OrderReference = "SDK-PHP - Teste de Integracao - Matheus AR " . rand(0, 100000) ;
 		$orderRequest->OrderReference = $pedido->id;
 		//$orderRequest->EmailUpdateToBuyerEnum = "No";
@@ -185,7 +186,7 @@ class Mundipagg
 		$ccTransaction3->InstallmentCount = (isset($input['parcelas'])) ? $input['parcelas'] : 1;
 		//PaymentMethodCode 1 = Simulador MundiPagg	Transacões de simulação
 		//20	STONE	Visa e Mastercard
-		$ccTransaction3->PaymentMethodCode = 20;
+		$ccTransaction3->PaymentMethodCode = 0;
 		// Define o tipo da autorização
 		$ccTransaction3->CreditCardOperationEnum = "AuthAndCapture";
 
@@ -234,26 +235,12 @@ class Mundipagg
 	}
 
 
-	public function createOrderBasico($id)
+	public function createOrderBasico($input, $pedido)
 	{
-
-		$pedido = Pedido::findOrFail($id);
 
 		$cliente = Auth::user();
 
-		if($pedido->usuario->id != $cliente->id)
-		{
-			return false;
-		}
-
 		$valor_centavos = $pedido->total * 100;
-
-		$input = Input::all();
-
-		if($input['parcelas'] < 1 || $input['parcelas'] > 6)
-		{
-			return false;
-		}
 
 		$client = new SoapClient('https://transaction.mundipaggone.com/MundiPaggService.svc?wsdl',
 		array('trace' => true,
@@ -271,38 +258,55 @@ class Mundipagg
 		$createOrderRequest->createOrderRequest->OrderReference = $pedido->id;
 		$createOrderRequest->createOrderRequest->Buyer = new stdClass();
 		$createOrderRequest->createOrderRequest->Buyer->Email = $cliente->email;
-		$createOrderRequest->createOrderRequest->Buyer->HomePhone = '(11) 12345678';
+		$createOrderRequest->createOrderRequest->Buyer->BuyerReference = $cliente->id;
+		if($cliente->sexo)
+		{
+			$createOrderRequest->createOrderRequest->Buyer->GenderEnum = $cliente->sexo;
+		}
+		if(isset($input['cpftitular']) && !empty($input['cpftitular']))
+		{
+			$createOrderRequest->createOrderRequest->Buyer->TaxDocumentNumber = $input['cpftitular'];
+			$createOrderRequest->createOrderRequest->Buyer->TaxDocumentTypeEnum = 'CPF';
+		}
+		else
+		{
+			$createOrderRequest->createOrderRequest->Buyer->TaxDocumentNumber = '00000000000';
+			$createOrderRequest->createOrderRequest->Buyer->TaxDocumentTypeEnum = 'CPF';
+		}
+		$createOrderRequest->createOrderRequest->Buyer->HomePhone = $input['telefonetitular'];
 		$createOrderRequest->createOrderRequest->Buyer->Name = $cliente->nome;
 		$createOrderRequest->createOrderRequest->Buyer->PersonTypeEnum = 'Person';
-		$createOrderRequest->createOrderRequest->Buyer->TaxDocumentNumber = $cliente->cpf;
-		$createOrderRequest->createOrderRequest->Buyer->TaxDocumentTypeEnum = 'CPF';
+		// $createOrderRequest->createOrderRequest->Buyer->TaxDocumentNumber = $cliente->cpf;
+		// $createOrderRequest->createOrderRequest->Buyer->TaxDocumentTypeEnum = 'CPF';
 		$createOrderRequest->createOrderRequest->CreditCardTransactionCollection = [];
 		$createOrderRequest->createOrderRequest->CreditCardTransactionCollection[0] = new stdClass();
 		//$createOrderRequest->createOrderRequest->CreditCardTransactionCollection[0]->AmountInCents = 105172;
 		$createOrderRequest->createOrderRequest->CreditCardTransactionCollection[0]->AmountInCents = $valor_centavos;
 		$createOrderRequest->createOrderRequest->CreditCardTransactionCollection[0]->CaptureDelayInMinutes = 0;
-		$createOrderRequest->createOrderRequest->CreditCardTransactionCollection[0]->CreditCardBrandEnum = $input['cartao_marca'];
-		$createOrderRequest->createOrderRequest->CreditCardTransactionCollection[0]->CreditCardNumber = $input['cartao_num'];
-		$createOrderRequest->createOrderRequest->CreditCardTransactionCollection[0]->ExpMonth = $input['mes_exp'];
-		$createOrderRequest->createOrderRequest->CreditCardTransactionCollection[0]->ExpYear = $input['ano_exp'];
-		$createOrderRequest->createOrderRequest->CreditCardTransactionCollection[0]->HolderName = $input['nome_titular'];
-		$createOrderRequest->createOrderRequest->CreditCardTransactionCollection[0]->InstallmentCount = $input['parcelas'];
-		$createOrderRequest->createOrderRequest->CreditCardTransactionCollection[0]->PaymentMethodCode = 1;
-		$createOrderRequest->createOrderRequest->CreditCardTransactionCollection[0]->SecurityCode = $input['cod_seguranca'];
+		$createOrderRequest->createOrderRequest->CreditCardTransactionCollection[0]->CreditCardBrandEnum = $input['card_brand'];
+		$createOrderRequest->createOrderRequest->CreditCardTransactionCollection[0]->CreditCardNumber = $input['card_number'];
+		$createOrderRequest->createOrderRequest->CreditCardTransactionCollection[0]->ExpMonth = $input['mes_cartao'];
+		$createOrderRequest->createOrderRequest->CreditCardTransactionCollection[0]->ExpYear = $input['ano_cartao'];
+		$createOrderRequest->createOrderRequest->CreditCardTransactionCollection[0]->HolderName = $input['nometitular'];
+		$createOrderRequest->createOrderRequest->CreditCardTransactionCollection[0]->InstallmentCount = (isset($input['parcelas'])) ? $input['parcelas'] : 1;
+		$createOrderRequest->createOrderRequest->CreditCardTransactionCollection[0]->PaymentMethodCode = 0;
+		$createOrderRequest->createOrderRequest->CreditCardTransactionCollection[0]->SecurityCode = $input['cvv'];
 
-		try {
+		// try {
 		$auth = $client->CreateOrder($createOrderRequest);
 		$result = $auth->CreateOrderResult;
-		$cctResult = $result->CreditCardTransactionResultCollection->CreditCardTransactionResult;
+		// $cctResult = $result->CreditCardTransactionResultCollection->CreditCardTransactionResult;
 
-		printf("Exemplo de integração Mundipagg com PHP - CreateOrder\n\n");
-		printf("\t[%s -> %s] %s\n\n", $result->OrderStatusEnum,
-		$cctResult->CreditCardTransactionStatusEnum,
-		$cctResult->AcquirerMessage);
+		return $result;
+		// printf("Exemplo de integração Mundipagg com PHP - CreateOrder\n\n");
+		// printf("\t[%s -> %s] %s\n\n", $result->OrderStatusEnum,
+		// $cctResult->CreditCardTransactionStatusEnum,
+		// $cctResult->AcquirerMessage);
 
-		} catch (SoapFault $e) {
-		printf("Erro[%s]: %s\n%s\n\n", $e->getCode(), $e->getMessage(), $e->getTraceAsString());
-		}
+		// } catch (SoapFault $e) {
+		// printf("Erro[%s]: %s\n%s\n\n", $e->getCode(), $e->getMessage(), $e->getTraceAsString());
+		// }
+
 	}
 
 }

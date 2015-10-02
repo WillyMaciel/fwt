@@ -33,16 +33,18 @@ class Produto extends BaseModel {
 
   private function calculaFormataValor($valor)
   {
-    if(Session::get('moeda')->moeda == 'USD')
-    {
-      $valor = $valor / Configuracao::where('param', 'cotacao_dolar')->first()->valor;
+    // if(Session::get('moeda')->moeda == 'USD')
+    // {
+    //   $valor = $valor / Configuracao::where('param', 'cotacao_dolar')->first()->valor;
 
-      $valor = number_format($valor, 2, '.', ',');
-    }
-    else
-    {
-      $valor = number_format($valor, 2, ',', '.');
-    }
+    //   $valor = number_format($valor, 2, '.', ',');
+    // }
+    // else
+    // {
+    //   $valor = number_format($valor, 2, ',', '.');
+    // }
+
+    $valor = number_format($valor, 2, ',', '.');
 
     return $valor;
   }
