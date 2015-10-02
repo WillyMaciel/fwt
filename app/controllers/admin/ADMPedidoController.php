@@ -28,7 +28,6 @@ class ADMPedidoController extends \BaseController {
 		$grid->add('total', 'Valor do Pedido');
 		$grid->add('created_at', 'Data do Pedido', true);
 		$grid->add('
-					<a class="" title="Visualizar" href="admin/pedido/{{$id}}"><span class="glyphicon glyphicon-eye-open"> </span></a>
 					<a class="" title="Modificar" href="admin/pedido/{{$id}}/edit"><span class="glyphicon glyphicon-edit"> </span></a>
 					<a class="text-danger" title="Deletar" href="admin/pedido/delete/{{$id}}"><span class="glyphicon glyphicon-trash"> </span></a>
 					', 'Ações');
