@@ -106,25 +106,25 @@ return array(
 
 
 
-		// 'mysql' => array(
+		'mysql' => array(
 
-		// 	'driver'    => 'mysql',
+			'driver'    => 'mysql',
 
-		// 	'host'      => 'localhost',
+			'host'      => 'localhost',
 
-		// 	'database'  => 'funwo301_funworldtours',
+			'database'  => 'funwo301_funworldtours',
 
-		// 	'username'  => 'funwo301_admin',
+			'username'  => 'funwo301_admin',
 
-		// 	'password'  => 'mandrake2011',
+			'password'  => 'mandrake2011',
 
-		// 	'charset'   => 'utf8',
+			'charset'   => 'utf8',
 
-		// 	'collation' => 'utf8_unicode_ci',
+			'collation' => 'utf8_unicode_ci',
 
-		// 	'prefix'    => '',
+			'prefix'    => '',
 
-		// ),
+		),
 
 
 
@@ -148,25 +148,25 @@ return array(
 
 		// ),
 
-		'mysql' => array(
+		// 'mysql' => array(
 
-			'driver'    => 'mysql',
+		// 	'driver'    => 'mysql',
 
-			'host'      => 'willymaciel.com.br',
+		// 	'host'      => 'localhost',
 
-			'database'  => 'willy846_funworldtours',
+		// 	'database'  => 'willy846_funworldtours',
 
-			'username'  => 'willy846_fwt',
+		// 	'username'  => 'root',
 
-			'password'  => 'mandrake6066',
+		// 	'password'  => '',
 
-			'charset'   => 'utf8',
+		// 	'charset'   => 'utf8',
 
-			'collation' => 'utf8_unicode_ci',
+		// 	'collation' => 'utf8_unicode_ci',
 
-			'prefix'    => '',
+		// 	'prefix'    => '',
 
-		),
+		// ),
 
 
 
