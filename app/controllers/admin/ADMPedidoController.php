@@ -32,7 +32,6 @@ class ADMPedidoController extends \BaseController {
 					<a class="text-danger" title="Deletar" href="admin/pedido/delete/{{$id}}"><span class="glyphicon glyphicon-trash"> </span></a>
 					', 'Ações');
 		//$grid->edit('admin/serviconoturno/crud', 'Ações','show|modify|delete'); //shortcut to link DataEdit actions
-		$grid->link('admin/pedido/create',"Adicionar Novo", "TR");  //add button
 		$grid->orderBy('id','desc'); //default orderby
 		$grid->paginate(10); //pagination
 		$grid->attributes(array('class' => 'table table-striped table-hover'));
