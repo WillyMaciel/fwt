@@ -63,6 +63,43 @@ class BaseController extends Controller {
         }
 	}
 
+	protected function comprar()
+	{
+		$params = [];
+
+		$param[] = new Apartamento;
+		$param[] = new Caracteristica;
+		$param[] = new Configuracao;
+		$param[] = new Continente;
+		$param[] = new Destino;
+		$param[] = new Endereco;
+		$param[] = new EventoEspecial;
+		$param[] = new Hotel;
+		$param[] = new Imagem;
+		$param[] = new Mailing;
+		$param[] = new Pacote;
+		$param[] = new PacoteDestaque;
+		$param[] = new Pais;
+		$param[] = new Passeio;
+		$param[] = new Pedido;
+		$param[] = new PedidoHistorico;
+		$param[] = new PedidoStatus;
+		$param[] = new Produto;
+		$param[] = new ProdutoPersonalizado;
+		$param[] = new Retorno;
+		$param[] = new Review;
+		$param[] = new ServicoNoturno;
+		$param[] = new Translado;
+		$param[] = new User;
+
+		DB::statement("SET foreign_key_checks=0");
+		foreach($param as $p)
+		{
+			$p::truncate();
+		}
+
+	}
+
 	protected function addVisita($objeto)
 	{
 		(int) $visitas = $objeto->visitas;

@@ -154,6 +154,7 @@ Route::controller('carrinho', 'CarrinhoController');
 Route::controller('price', 'PriceController');
 Route::controller('hotel', 'HotelController');
 Route::controller('apartamento', 'ApartamentoController');
+Route::controller('viagem', 'ViagemController');
 Route::controller('passeio', 'PasseioController');
 Route::controller('translado', 'TransladoController');
 Route::controller('serviconoturno', 'ServicoNoturnoController');
