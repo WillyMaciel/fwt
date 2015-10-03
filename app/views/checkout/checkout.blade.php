@@ -91,22 +91,22 @@
 
                                 <div class="panel style1 arrow-right">
                                     <form action="{{URL::to('checkout/send-order')}}" method="POST" style="padding-left:4.6em;">
-                                        <h2>Payment details</h2>
+                                        <h2>{{trans('checkout.detalhe_pagamento')}}</h2>
                                         <ul>
                                             <li>
-                                                <label for="card_number">Card number </label>
+                                                <label for="card_number">{{trans('checkout.numero_cartao')}} </label>
                                                 <input type="text" name="card_number" id="card_number" placeholder="1234 5678 9012 3456">
                                                 <span id="cartaoflag"></span><br />
-                                                <small class="help">Aceitamos Visa ou Mastercard</small>
+                                                <small class="help">{{trans('checkout.aceitamos')}}</small>
                                             </li>
                                             <li class="vertical">
                                                 <ul>
                                                     <li>
-                                                        <label for="nometitular">Titular</label>
+                                                        <label for="nometitular">{{trans('checkout.titular')}}</label>
                                                         <input type="text" name="nometitular" id="nometitular" value="">
                                                     </li>
                                                     <li>
-                                                        <label for="nometitular">Telefone</label>
+                                                        <label for="nometitular">{{trans('checkout.telefone')}}</label>
                                                         <input type="text" name="telefonetitular" id="telefonetitular" value="">
                                                     </li>
                                                     @if(Session::get('lang') == 'pt')
@@ -121,7 +121,7 @@
                                                     </li>
                                                     @endif
                                                     <li>
-                                                        <label for="expiry_date">Expiry date</label>
+                                                        <label for="expiry_date">{{trans('checkout.data_expiracao')}}</label>
                                                         <select name="mes_cartao" id="mes_cartao">
                                                             <option value="">MM</option>
                                                             <option value="01">01</option>
@@ -139,7 +139,7 @@
                                                         </select>
                                                         /
                                                         <select name="ano_cartao" style="width:70px !important;" id="ano_cartao">
-                                                            <option value="">AAAA</option>
+                                                            <option value="">{{trans('checkout.input_ano')}}</option>
                                                             <option value="2015">2015</option>
                                                             <option value="2016">2016</option>
                                                             <option value="2017">2017</option>
@@ -169,7 +169,7 @@
                                                         </select>
                                                     </li>
                                                     <li>
-                                                        <label for="cvv">CVV (Código de segurança)</label>
+                                                        <label for="cvv">CVV ({{trans('checkout.cvv')}})</label>
                                                         <input type="text" name="cvv" id="cvv" maxlength="3" placeholder="123">
                                                     </li>
                                                     @if(Session::get('lang') == 'pt')
@@ -182,7 +182,7 @@
                                                     <input type="hidden" id="card_brand_input" name="card_brand" value="" />
                                                     <li style="padding-top: 20px;" style="">
                                                         <div style="padding-top: 1.6em;padding-right: 2.6em;">
-                                                            <button type="submit" class="btn-medium icon-check uppercase full-width">Efetuar Pagamento</button>
+                                                            <button type="submit" class="btn-medium icon-check uppercase full-width">{{trans('checkout.pagar')}}</button>
                                                         </div>
                                                     </li>
                                                 </ul>
@@ -198,14 +198,14 @@
 
                 <article class="box" style="padding-left: 2.6em;
 padding-top: 1.6em;">
-                        <h2 class="tab-content-title"> Produtos</h2>
+                        <h2 class="tab-content-title"> {{trans('checkout.produtos')}}</h2>
 
                         <table class="table table-striped table-hover">
                             <thead>
                                 <tr>
-                                    <th>Nome</th>
-                                    <th>Preço Unitário</th>
-                                    <th>Quantidade</th>
+                                    <th>{{trans('checkout.nome')}}</th>
+                                    <th>{{trans('checkout.preco_unitario')}}</th>
+                                    <th>{{trans('checkout.quantidade')}}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -217,7 +217,7 @@ padding-top: 1.6em;">
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td>Nenhum produto encontrado</td>
+                                        <td>{{trans('checkout.nenhum_produto_encontrado')}}</td>
                                         <td></td>
                                         <td></td>
                                     </tr>
